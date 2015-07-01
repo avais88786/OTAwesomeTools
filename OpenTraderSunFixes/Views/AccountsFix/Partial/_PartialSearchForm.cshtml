@@ -1,0 +1,10 @@
+﻿@using (@Html.BeginForm("Index", "AccountsFix", FormMethod.Get, new { id = "SearchForm" }))
+{
+
+    @Html.TextBox("searchText",(string)ViewBag.SearchText , new { placeholder = "Broker Reference, Policy Reference or RiskId", style = "width:50%;" });
+
+    @:&nbsp;
+
+    <input type="submit" value="Search" />
+
+}

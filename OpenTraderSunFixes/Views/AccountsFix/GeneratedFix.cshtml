@@ -1,0 +1,80 @@
+﻿@model OpenTraderSunFixes.Model.ViewModel.GeneratedXMLModel
+@{
+    ViewBag.Title = "GeneratedFix";
+}
+@section PageScripts{
+   @* <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>*@
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+    @Scripts.Render("~/Scripts/jQuery/GenerateXMLPartialViewEvents.js");
+    }
+
+<br/><br/>
+<fieldset style="margin-left:10px">
+    
+    <h2 style="display:inline;float:left">
+        @{
+        switch (@Model.SunFixType)
+        {
+            case OpenTraderSunFixes.Model.SunFixType.Sun:
+                @Html.Raw("Generated XML :");
+                                            break;
+            case OpenTraderSunFixes.Model.SunFixType.Trader: 
+            @Html.Raw("Generated Script :");
+                break;
+                @*default:
+                    @Html.Raw("Generated asss :");
+                    break;*@
+        }
+    }
+</h2>
+    @{ if (Model.SunFixType == OpenTraderSunFixes.Model.SunFixType.Trader)
+     {
+        <div style="display:inline;float:right;width:50%;padding-left:15px;">
+
+            @Html.Label("Generate XML for the Generated Script : (Only Test can be generated)", new { style = "font-size:22px;float:left;" }) <br />
+            @Html.Raw("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
+            <br/>
+            @{Html.RenderPartial(@"Partial\_PartialSunFixAttribute",new List<String>(){"auto","0px"});}
+
+            @Html.Raw("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
+            <input type="button" value="Generate XML" id="generateXML" style="padding:2px 4px 2px 4px;" />
+            &nbsp; &nbsp; &nbsp;
+            <img id="img_LoadGenerateXMl" src="~/Content/Images/loader.gif" hidden />
+             @using (@Html.BeginForm("Download", "AccountsFix", FormMethod.Post))
+            {
+            <input type="image" src=@Url.Content(@"~\Content\Images\document_save.png") alt="Submit" style="float:right;width:30px;height:30px" />
+            @Html.Hidden("GeneratedFix", "", new { @data_GeneratedXMLFix = "" })
+                 <input type="hidden" id="SunFixType" name="SunFixType" value="@OpenTraderSunFixes.Model.SunFixType.Sun.ToString()" hidden />
+            //@Html.Hidden("SunFixType2",@OpenTraderSunFixes.Model.SunFixType.Sun.ToString())
+            @Html.HiddenFor(item => item.PPReference)
+            @Html.HiddenFor(item => item.transactionType)
+             
+            }
+            <br/><br/>
+            <div id="renderedOutput" hidden>
+                @{Html.RenderPartial(@"Partial\_PartialSunXmlView", "--EMPTY--");}
+            </div>
+
+        </div>
+     }
+    }
+
+
+    @using (@Html.BeginForm("Download", "AccountsFix", FormMethod.Post, new { style = "width:50%;" }))
+    {
+        
+        @*<input type="submit" value="Save" style="float:right" /><br/><br/>*@
+        <input type="image" src=@Url.Content(@"~\Content\Images\document_save.png") alt="Submit" style="float:right;width:50px;height:50px"/><br/><br/>
+        @Html.TextAreaFor(item => item.GeneratedFix, new { style = "width:100%;height:1000px;", @readonly = "",@data_GeneratedFix="" })
+        @Html.HiddenFor(item => item.PPReference)
+        @Html.HiddenFor(item => item.SunFixType)
+        @Html.HiddenFor(item => item.transactionType)
+        @*@Html.TextArea("txtAreaXML", Model.GeneratedXML, new { style = "width:100%;height:1000px;", @readonly = "" })*@
+        
+        @*@Html.Hidden("")*@   
+        
+    }
+    
+        
+</fieldset>
+

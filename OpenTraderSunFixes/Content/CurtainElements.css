@@ -1,0 +1,32 @@
+﻿ #loadingBox  {
+            /*width: 150px;
+            height: 150px;*/
+            background: inherit;  /*rgba(44, 41, 41, 0.70);*/
+            /*background: rgba(44, 41, 41, 0.70)*/ 
+            /*#2C2929*/
+            /*border: red dotted 5px;*/
+            /*text-align: center;
+            
+            margin-left: -75px;
+            margin-top: -75px;*/
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 20;
+            display: none;
+            
+       }
+
+ /*#loadingBox img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /*margin:auto;
+}*/
+
+#screen {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: rgba(0,0,0,0.8);
+}

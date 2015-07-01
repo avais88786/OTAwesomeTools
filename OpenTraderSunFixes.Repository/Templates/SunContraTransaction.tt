@@ -1,0 +1,296 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="OpenTraderSunFixes.Model.GeneratedModel" #>
+
+SET NOCOUNT ON
+BEGIN
+ 
+	DECLARE	@Contra_CCTransactionStatusId INT				= 1	-- Selected for Payment
+	DECLARE	@Contra_CCAccountingPeriodId INT				= 0	-- Not Specified
+	DECLARE	@Contra_LogonUserId INT						= 4	-- Batch User (Countrywide)
+	DECLARE	@Contra_CompanyId INT						= 3	-- Countrywide
+	DECLARE	@Contra_CCOpenTransactionTypeId INT				= 3	-- Account Adjustment
+ 
+	DECLARE @New_CCTransactionStatusId INT					= 1	-- Selected for Payment
+	DECLARE @New_CCPaymentType INT						= 4 	-- Direct Debit
+	DECLARE	@New_CCAccountingPeriodId INT					= 0	-- Not Specified
+	DECLARE	@New_LogonUserId INT						= 4	-- Batch User (Countrywide)
+	DECLARE	@New_CompanyId INT						= 3	-- Countrywide
+	DECLARE	@New_CCOpenTransactionTypeId INT				= 3	-- Account Adjustment
+ 
+	DECLARE @GrossPremium_CCCategoryTypeId INT				= 4 	-- Gross Premium
+	DECLARE @GrossPremium_CCSubCategoryTypeId INT				= 1 	-- None
+	DECLARE @IPT_CCCategoryTypeId INT					= 3 	-- Tax
+	DECLARE @IPT_CCSubCategoryTypeId INT					= 1 	-- None
+	DECLARE @BrokerCommission_CCCategoryTypeId INT				= 2 	-- Commission
+	DECLARE @BrokerCommission_CCSubCategoryTypeId INT			= 5 	-- Broker
+	DECLARE @WholesalerCommission_CCCategoryTypeId INT			= 2 	-- Commission
+	DECLARE @WholesalerCommission_CCSubCategoryTypeId INT			= 6 	-- Wholesaler
+	DECLARE @Tax_CCCategoryTypeId INT					= 3 	-- Tax
+	DECLARE @Tax_CCSubCategoryTypeId INT					= 1 	-- None
+ 
+	DECLARE @UF_CCOpenPremiumTypeId INT					= 3 	-- Underwriting Fee
+	DECLARE @UF_OpenSectionPremiumTypeId INT				= 56 	-- Underwriting Fee
+	DECLARE @UF_CommissionTypeId_Commission INT				= 1 	-- Commission
+	DECLARE @UF_CommissionTypeId_Brokerage INT				= 3 	-- Brokerage
+ 
+ 
+ 
+    DECLARE @TransactionDate DATETIME 
+ 
+	-----------------------------------------------------------------------------------------------
+	-- STEP 1: Compile list of all contra transactions --------------------------------------------
+	-----------------------------------------------------------------------------------------------
+	DECLARE @ContraTransactions TABLE
+	(
+		i INT PRIMARY KEY IDENTITY,
+		CCTransactionId INT NOT NULL
+	)
+ 
+	--DECLARE @ContraUFTransactions TABLE
+	--(
+	--	i INT PRIMARY KEY IDENTITY,
+	--	CCTransactionId INT NOT NULL
+	--)
+ 
+	INSERT INTO @ContraTransactions(CCTransactionId) VALUES (<#= ccTransaction.CCTransactionId #>)
+	SET @TransactionDate = '<#= ccTransactionDateTimeNeeded  #>'	
+ 
+--	INSERT INTO @ContraUFTransactions(CCTransactionId)
+--select CCTransactionId from @ContraTransactions
+	--SELECT	u_cct.CCTransactionId
+	--FROM	CCTransaction cct
+	--JOIN	@ContraTransactions ct
+	--	ON	ct.CCTransactionId = cct.CCTransactionId
+	--JOIN	CCTransaction u_cct
+	--	ON	u_cct.RiskId = cct.RiskId
+	--	AND	u_cct.CCOpenPremiumTypeId = 3 -- Underwriting Fee
+	--	AND	u_cct.HasBeenReversed = 0
+	--	AND	u_cct.ReversesCCTransactionId IS NULL
+ --select * from @ContraUFTransactions
+	-----------------------------------------------------------------------------------------------
+	-- STEP 2: Create contras for these transactions ----------------------------------------------
+	-----------------------------------------------------------------------------------------------
+ 
+	-- STEP 2a: Main Transactions
+	-----------------------------------------------------------------------------------------------	
+	INSERT INTO CCTransaction(
+		RiskId, 
+		CCTransactionStatusId, 
+		CCPaymentTypeId, 
+		CCAccountingPeriodId, 
+		Amount, 
+		Reference, 
+		PaymentDate, 
+		EffectiveDate, 
+		ProcessDate, 
+		CurrencyId, 
+		CreatorUserId, 
+		CreatorCompanyId, 
+		CreationDate, 
+		LastUpdateUserId, 
+		LastUpdatedDate,
+		SettlementDate, 
+		Comments, 
+		CCOpenTransactionTypeId, 
+		BrokerCompanyId, 
+		InsurerCompanyId, 
+		ClientCompanyId, 
+		BrokerReference, 
+		CCOpenPremiumTypeId, 
+		HasBeenReversed, 
+		ReversesCCTransactionId
+	)
+	SELECT
+		cct.RiskId,							-- RiskId 
+		@Contra_CCTransactionStatusId,		-- CCTransactionStatusId 
+		cct.CCPaymentTypeId,				-- CCPaymentTypeId 
+		@Contra_CCAccountingPeriodId,		-- CCAccountingPeriodId 
+		cct.Amount * -1,					-- Amount 
+		cct.Reference,						-- Reference 
+		NULL,								-- PaymentDate 
+		@TransactionDate,--  cct.EffectiveDate,					-- EffectiveDate 
+		cct.ProcessDate,--  GETDATE(),							-- ProcessDate 
+		cct.CurrencyId,						-- CurrencyId 
+		@Contra_LogonUserId,				-- CreatorUserId 
+		@Contra_CompanyId,					-- CreatorCompanyId 
+		cct.CreationDate,-- GETDATE(),							-- CreationDate 
+		@Contra_LogonUserId,				-- LastUpdateUserId 
+		cct.LastUpdatedDate,-- GETDATE(),							-- LastUpdatedDate
+		NULL,								-- SettlementDate 
+		'Contra Main',						-- Comments 
+		@Contra_CCOpenTransactionTypeId,	-- CCOpenTransactionTypeId 
+		cct.BrokerCompanyId,				-- BrokerCompanyId 
+		cct.InsurerCompanyId,				-- InsurerCompanyId 
+		cct.ClientCompanyId,				-- ClientCompanyId 
+		cct.BrokerReference,				-- BrokerReference 
+		cct.CCOpenPremiumTypeId,			-- CCOpenPremiumTypeId 
+		0,									-- HasBeenReversed 
+		cct.CCTransactionId					-- ReversesCCTransactionId
+	FROM	@ContraTransactions ct
+	JOIN	CCTransaction cct
+		ON	cct.CCTransactionId = ct.CCTransactionId
+ declare @newCCTransId int = Scope_Identity()
+ 
+	-- STEP 2b: Underwriting Fee Transactions
+	-----------------------------------------------------------------------------------------------
+	--INSERT INTO CCTransaction(
+	--	RiskId, 
+	--	CCTransactionStatusId, 
+	--	CCPaymentTypeId, 
+	--	CCAccountingPeriodId, 
+	--	Amount, 
+	--	Reference, 
+	--	PaymentDate, 
+	--	EffectiveDate, 
+	--	ProcessDate, 
+	--	CurrencyId, 
+	--	CreatorUserId, 
+	--	CreatorCompanyId, 
+	--	CreationDate, 
+	--	LastUpdateUserId, 
+	--	LastUpdatedDate,
+	--	SettlementDate, 
+	--	Comments, 
+	--	CCOpenTransactionTypeId, 
+	--	BrokerCompanyId, 
+	--	InsurerCompanyId, 
+	--	ClientCompanyId, 
+	--	BrokerReference, 
+	--	CCOpenPremiumTypeId, 
+	--	HasBeenReversed, 
+	--	ReversesCCTransactionId
+	--)
+	--SELECT
+	--	cct.RiskId,						-- RiskId 
+	--	@Contra_CCTransactionStatusId,	-- CCTransactionStatusId 
+	--	cct.CCPaymentTypeId,			-- CCPaymentTypeId 
+	--	@Contra_CCAccountingPeriodId,	-- CCAccountingPeriodId 
+	--	cct.Amount * -1,				-- Amount 
+	--	cct.Reference,					-- Reference 
+	--	NULL,							-- PaymentDate 
+	--	cct.EffectiveDate,				-- EffectiveDate 
+	--	GETDATE(),						-- ProcessDate 
+	--	cct.CurrencyId,					-- CurrencyId 
+	--	@Contra_LogonUserId,			-- CreatorUserId 
+	--	@Contra_CompanyId,				-- CreatorCompanyId 
+	--	GETDATE(),						-- CreationDate 
+	--	@Contra_LogonUserId,			-- LastUpdateUserId 
+	--	GETDATE(),						-- LastUpdatedDate
+	--	NULL,							-- SettlementDate 
+	--	'Contra Underwriting Fee',		-- Comments 
+	--	@Contra_CCOpenTransactionTypeId,-- CCOpenTransactionTypeId 
+	--	cct.BrokerCompanyId,			-- BrokerCompanyId 
+	--	cct.InsurerCompanyId,			-- InsurerCompanyId 
+	--	cct.ClientCompanyId,			-- ClientCompanyId 
+	--	cct.BrokerReference,			-- BrokerReference 
+	--	cct.CCOpenPremiumTypeId,		-- CCOpenPremiumTypeId 
+	--	0,								-- HasBeenReversed 
+	--	cct.CCTransactionId				-- ReversesCCTransactionId
+	--FROM	@ContraUFTransactions ct
+	--JOIN	CCTransaction cct
+	--	ON	cct.CCTransactionId = ct.CCTransactionId
+ 
+    
+
+ 
+	-----------------------------------------------------------------------------------------------
+	-- STEP 3: Update the old transactions to show that they have been reversed -------------------
+	-----------------------------------------------------------------------------------------------		
+	--UPDATE	CCTransaction
+	--SET		HasBeenReversed = 1
+	--WHERE	CCTransactionId IN (
+	--	SELECT	CCTransactionId 
+	--	FROM	@ContraTransactions 
+	--	UNION
+	--	SELECT	CCTransactionId
+	--	FROM	@ContraUFTransactions
+	--)
+ 
+	-----------------------------------------------------------------------------------------------
+	-- STEP 4: Create contras for all transaction items -------------------------------------------
+	-----------------------------------------------------------------------------------------------
+	INSERT INTO CCTransactionItem(
+		CCTransactionId,
+		CCCategoryTypeId,
+		CCSubCategoryTypeId,
+		CompanyId,
+		Amount,
+		CreatorUserId,
+		CreatorCompanyId,
+		CreationDate,
+		LastUpdateUserId,
+		LastUpdatedDate,
+		Rate
+	)
+	SELECT
+		cct.CCTransactionId,		-- CCTransactionId
+		ccti.CCCategoryTypeId,		-- CCCategoryTypeId
+		ccti.CCSubCategoryTypeId,	-- CCSubCategoryTypeId
+		ccti.CompanyId,				-- CompanyId
+		ccti.Amount * -1,			-- Amount
+		@Contra_LogonUserId,		-- CreatorUserId
+		@Contra_CompanyId,			-- CreatorCompanyId
+		GETDATE(),					-- CreationDate
+		@Contra_LogonUserId,		-- LastUpdateUserId
+		GETDATE(),					-- LastUpdatedDate
+		ccti.Rate					-- Rate
+	FROM	@ContraTransactions ct
+	JOIN	CCTransactionItem ccti
+		ON	ccti.CCTransactionId = ct.CCTransactionId
+	JOIN	CCTransaction cct
+		ON	cct.ReversesCCTransactionId = ccti.CCTransactionId
+	UNION
+	SELECT
+		cct.CCTransactionId,		-- CCTransactionId
+		ccti.CCCategoryTypeId,		-- CCCategoryTypeId
+		ccti.CCSubCategoryTypeId,	-- CCSubCategoryTypeId
+		ccti.CompanyId,				-- CompanyId
+		ccti.Amount * -1,			-- Amount
+		@Contra_LogonUserId,		-- CreatorUserId
+		@Contra_CompanyId,			-- CreatorCompanyId
+		GETDATE(),					-- CreationDate
+		@Contra_LogonUserId,		-- LastUpdateUserId
+		GETDATE(),					-- LastUpdatedDate
+		ccti.Rate					-- Rate
+	FROM	@ContraTransactions ct
+	JOIN	CCTransactionItem ccti
+		ON	ccti.CCTransactionId = ct.CCTransactionId
+	JOIN	CCTransaction cct
+		ON	cct.ReversesCCTransactionId = ccti.CCTransactionId
+ 
+
+--GO
+ 
+	-----------------------------------------------------------------------------------------------
+	-- STEP 5: Create the new CCExternalTransactionProcess to be picked up by Sun -----------------
+	-----------------------------------------------------------------------------------------------
+	DECLARE @i INT = 1
+	DECLARE @ContraContraMain INT
+	SELECT	@ContraContraMain = COUNT(*) FROM @ContraTransactions
+ 
+	WHILE @i <= @ContraContraMain
+	BEGIN
+ 
+		DECLARE @Contra_CCTransactionId INT
+ 
+		SELECT	@Contra_CCTransactionId = cct.CCTransactionId
+		FROM	@ContraTransactions ct
+		JOIN	CCTransaction cct
+			ON	cct.ReversesCCTransactionId = ct.CCTransactionId
+		WHERE	ct.i = @i
+ 
+		IF (@Contra_CCTransactionId IS NOT NULL)
+		BEGIN
+			EXEC dbo.usp_open_acc_updTransactionStatus @Contra_CCTransactionId, 1, ''
+		END
+ 
+		SET @i = @i + 1
+ 
+	END
+
+	select @newCCTransId
+END

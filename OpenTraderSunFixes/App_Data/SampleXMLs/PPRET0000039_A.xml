@@ -1,0 +1,206 @@
+﻿<SSC>
+  <SunSystemsContext>
+    <BusinessUnit>PPL</BusinessUnit>
+    <BudgetCode>A</BudgetCode>
+  </SunSystemsContext>
+  <MethodContext>
+    <LedgerPostingParameters>
+      <Description>95320</Description>
+      <PostingType>2</PostingType>
+      <DefaultPeriod />
+      <SuppressSubstitutedMessages>Y</SuppressSubstitutedMessages>
+    </LedgerPostingParameters>
+  </MethodContext>
+  <Payload>
+    <Ledger>
+      <Line>
+        <AccountCode>111021001</AccountCode>
+        <AccountingPeriod>0011980</AccountingPeriod>
+        <AnalysisCode1 />
+        <AnalysisCode2>9</AnalysisCode2>
+        <AnalysisCode3>188</AnalysisCode3>
+        <AnalysisCode4>1788</AnalysisCode4>
+        <AnalysisCode5>14</AnalysisCode5>
+        <AnalysisCode6 />
+        <AnalysisCode7 />
+        <AnalysisCode8>Y</AnalysisCode8>
+        <AnalysisCode9 />
+        <AnalysisCode10>N/A</AnalysisCode10>
+        <BaseAmount>14.82</BaseAmount>
+        <CurrencyCode>GBP</CurrencyCode>
+        <DebitCredit>C</DebitCredit>
+        <Description>PP RET0000039</Description>
+        <EntryDate>21072014</EntryDate>
+        <JournalSource>PPL</JournalSource>
+        <JournalType>SNBU</JournalType>
+        <TransactionAmount>14.82</TransactionAmount>
+        <TransactionAmountDecimalPlaces>2</TransactionAmountDecimalPlaces>
+        <TransactionDate>21072014</TransactionDate>
+        <TransactionReference>1304588A</TransactionReference>
+        <MemoAmount>48.32</MemoAmount>
+        <DetailLad>
+          <GeneralDescription1>XNET158392</GeneralDescription1>
+          <GeneralDescription2>PP RET0000039</GeneralDescription2>
+          <GeneralDescription3>M. I. Traders Limited</GeneralDescription3>
+          <GeneralDescription4>6.0000000000</GeneralDescription4>
+          <GeneralDescription5>2.74</GeneralDescription5>
+          <GeneralDescription6>Main</GeneralDescription6>
+          <GeneralDescription7>32.5000000000</GeneralDescription7>
+          <GeneralDescription8>22.0000000000</GeneralDescription8>
+          <GeneralDescription9>10.5000000000</GeneralDescription9>
+          <GeneralDescription10>14.82</GeneralDescription10>
+          <GeneralDescription11>10.03</GeneralDescription11>
+          <GeneralDescription12>4.79</GeneralDescription12>
+          <GeneralDescription13>Northallerton Insurance Servic</GeneralDescription13>
+          <GeneralDescription14 />
+          <GeneralDescription15 />
+          <GeneralDescription16>1</GeneralDescription16>
+          <GeneralDescription18>X0000146</GeneralDescription18>
+          <GeneralDate1>08082014</GeneralDate1>
+          <GeneralDate2>11062014</GeneralDate2>
+        </DetailLad>
+      </Line>
+      <Line>
+        <AccountCode>111023500</AccountCode>
+        <AccountingPeriod>0011980</AccountingPeriod>
+        <AnalysisCode1 />
+        <AnalysisCode2>9</AnalysisCode2>
+        <AnalysisCode3>188</AnalysisCode3>
+        <AnalysisCode4>1788</AnalysisCode4>
+        <AnalysisCode5>14</AnalysisCode5>
+        <AnalysisCode6 />
+        <AnalysisCode7 />
+        <AnalysisCode8>Y</AnalysisCode8>
+        <AnalysisCode9 />
+        <AnalysisCode10>N/A</AnalysisCode10>
+        <BaseAmount>10.03</BaseAmount>
+        <CurrencyCode>GBP</CurrencyCode>
+        <DebitCredit>D</DebitCredit>
+        <Description>PP RET0000039</Description>
+        <EntryDate>21072014</EntryDate>
+        <JournalSource>PPL</JournalSource>
+        <JournalType>SNBU</JournalType>
+        <TransactionAmount>10.03</TransactionAmount>
+        <TransactionAmountDecimalPlaces>2</TransactionAmountDecimalPlaces>
+        <TransactionDate>21072014</TransactionDate>
+        <TransactionReference>1304588A</TransactionReference>
+        <MemoAmount>48.32</MemoAmount>
+        <DetailLad>
+          <GeneralDescription1>XNET158392</GeneralDescription1>
+          <GeneralDescription2>PP RET0000039</GeneralDescription2>
+          <GeneralDescription3>M. I. Traders Limited</GeneralDescription3>
+          <GeneralDescription4>6.0000000000</GeneralDescription4>
+          <GeneralDescription5>2.74</GeneralDescription5>
+          <GeneralDescription6>Main</GeneralDescription6>
+          <GeneralDescription7>32.5000000000</GeneralDescription7>
+          <GeneralDescription8>22.0000000000</GeneralDescription8>
+          <GeneralDescription9>10.5000000000</GeneralDescription9>
+          <GeneralDescription10>14.82</GeneralDescription10>
+          <GeneralDescription11>10.03</GeneralDescription11>
+          <GeneralDescription12>4.79</GeneralDescription12>
+          <GeneralDescription13>Northallerton Insurance Servic</GeneralDescription13>
+          <GeneralDescription14 />
+          <GeneralDescription15 />
+          <GeneralDescription16>1</GeneralDescription16>
+          <GeneralDescription18>X0000146</GeneralDescription18>
+          <GeneralDate1>08082014</GeneralDate1>
+          <GeneralDate2>11062014</GeneralDate2>
+        </DetailLad>
+      </Line>
+      <Line>
+        <AccountCode>IBA001788</AccountCode>
+        <AccountingPeriod>0011980</AccountingPeriod>
+        <AnalysisCode1 />
+        <AnalysisCode2>9</AnalysisCode2>
+        <AnalysisCode3>188</AnalysisCode3>
+        <AnalysisCode4>1788</AnalysisCode4>
+        <AnalysisCode5>14</AnalysisCode5>
+        <AnalysisCode6 />
+        <AnalysisCode7 />
+        <AnalysisCode8>Y</AnalysisCode8>
+        <AnalysisCode9 />
+        <AnalysisCode10>N/A</AnalysisCode10>
+        <BaseAmount>38.29</BaseAmount>
+        <CurrencyCode>GBP</CurrencyCode>
+        <DebitCredit>D</DebitCredit>
+        <Description>PP RET0000039</Description>
+        <EntryDate>21072014</EntryDate>
+        <JournalSource>PPL</JournalSource>
+        <JournalType>SNBU</JournalType>
+        <TransactionAmount>38.29</TransactionAmount>
+        <TransactionAmountDecimalPlaces>2</TransactionAmountDecimalPlaces>
+        <TransactionDate>21072014</TransactionDate>
+        <TransactionReference>1304588A</TransactionReference>
+        <MemoAmount>48.32</MemoAmount>
+        <DetailLad>
+          <GeneralDescription1>XNET158392</GeneralDescription1>
+          <GeneralDescription2>PP RET0000039</GeneralDescription2>
+          <GeneralDescription3>M. I. Traders Limited</GeneralDescription3>
+          <GeneralDescription4>6.0000000000</GeneralDescription4>
+          <GeneralDescription5>2.74</GeneralDescription5>
+          <GeneralDescription6>Main</GeneralDescription6>
+          <GeneralDescription7>32.5000000000</GeneralDescription7>
+          <GeneralDescription8>22.0000000000</GeneralDescription8>
+          <GeneralDescription9>10.5000000000</GeneralDescription9>
+          <GeneralDescription10>14.82</GeneralDescription10>
+          <GeneralDescription11>10.03</GeneralDescription11>
+          <GeneralDescription12>4.79</GeneralDescription12>
+          <GeneralDescription13>Northallerton Insurance Servic</GeneralDescription13>
+          <GeneralDescription14 />
+          <GeneralDescription15 />
+          <GeneralDescription16>1</GeneralDescription16>
+          <GeneralDescription18>X0000146</GeneralDescription18>
+          <GeneralDate1>08082014</GeneralDate1>
+          <GeneralDate2>11062014</GeneralDate2>
+        </DetailLad>
+      </Line>
+      <Line>
+        <AccountCode>IBA000188</AccountCode>
+        <AccountingPeriod>0011980</AccountingPeriod>
+        <AnalysisCode1 />
+        <AnalysisCode2>9</AnalysisCode2>
+        <AnalysisCode3>188</AnalysisCode3>
+        <AnalysisCode4>1788</AnalysisCode4>
+        <AnalysisCode5>14</AnalysisCode5>
+        <AnalysisCode6 />
+        <AnalysisCode7 />
+        <AnalysisCode8>Y</AnalysisCode8>
+        <AnalysisCode9 />
+        <AnalysisCode10>N/A</AnalysisCode10>
+        <BaseAmount>33.50</BaseAmount>
+        <CurrencyCode>GBP</CurrencyCode>
+        <DebitCredit>C</DebitCredit>
+        <Description>PP RET0000039</Description>
+        <EntryDate>21072014</EntryDate>
+        <JournalSource>PPL</JournalSource>
+        <JournalType>SNBU</JournalType>
+        <TransactionAmount>33.50</TransactionAmount>
+        <TransactionAmountDecimalPlaces>2</TransactionAmountDecimalPlaces>
+        <TransactionDate>21072014</TransactionDate>
+        <TransactionReference>1304588A</TransactionReference>
+        <MemoAmount>48.32</MemoAmount>
+        <DetailLad>
+          <GeneralDescription1>XNET158392</GeneralDescription1>
+          <GeneralDescription2>PP RET0000039</GeneralDescription2>
+          <GeneralDescription3>M. I. Traders Limited</GeneralDescription3>
+          <GeneralDescription4>6.0000000000</GeneralDescription4>
+          <GeneralDescription5>2.74</GeneralDescription5>
+          <GeneralDescription6>Main</GeneralDescription6>
+          <GeneralDescription7>32.5000000000</GeneralDescription7>
+          <GeneralDescription8>22.0000000000</GeneralDescription8>
+          <GeneralDescription9>10.5000000000</GeneralDescription9>
+          <GeneralDescription10>14.82</GeneralDescription10>
+          <GeneralDescription11>10.03</GeneralDescription11>
+          <GeneralDescription12>4.79</GeneralDescription12>
+          <GeneralDescription13>Northallerton Insurance Servic</GeneralDescription13>
+          <GeneralDescription14 />
+          <GeneralDescription15 />
+          <GeneralDescription16>1</GeneralDescription16>
+          <GeneralDescription18>X0000146</GeneralDescription18>
+          <GeneralDate1>08082014</GeneralDate1>
+          <GeneralDate2>11062014</GeneralDate2>
+        </DetailLad>
+      </Line>
+    </Ledger>
+  </Payload>
+</SSC>

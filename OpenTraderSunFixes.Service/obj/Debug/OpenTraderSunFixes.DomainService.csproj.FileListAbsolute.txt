@@ -1,0 +1,14 @@
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.DomainService.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.DomainService.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Service\bin\Debug\EntityFramework.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Model.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Repository.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Service\bin\Debug\StructureMap.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Model.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Repository.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Service\bin\Debug\EntityFramework.xml
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Service\bin\Debug\StructureMap.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Service\bin\Debug\StructureMap.xml
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Service\obj\Debug\OpenTraderSunFixes.DomainService.csprojResolveAssemblyReference.cache
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Service\obj\Debug\OpenTraderSunFixes.DomainService.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Service\obj\Debug\OpenTraderSunFixes.DomainService.pdb

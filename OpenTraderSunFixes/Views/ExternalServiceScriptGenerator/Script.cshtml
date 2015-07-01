@@ -1,0 +1,146 @@
+﻿@model OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems.ExternalServiceScriptViewModel
+
+
+@{
+    Layout = null;
+}
+<section style="white-space:pre-wrap;">
+
+    BEGIN TRANSACTION
+
+    BEGIN TRY
+
+    SET NOCOUNT ON
+
+    --------------------------------------------------------------------------------------------------
+    -- STEP 1: Remove any conflicting constraints ----------------------------------------------------
+    --------------------------------------------------------------------------------------------------
+
+    ALTER TABLE ExternalService
+    DROP CONSTRAINT FK_ExternalService_ExternalServiceTransform
+
+    ALTER TABLE ExternalServiceVersioning
+    DROP CONSTRAINT FK_ExternalServiceVersioning_ExternalService
+
+    ALTER TABLE imarketExternalService
+    DROP CONSTRAINT FK_imarketExternalService_externalService
+
+    ALTER TABLE imarketExternalServiceItem
+    DROP CONSTRAINT FK_imarketExternalServiceItem_imarketResponseType
+
+    --------------------------------------------------------------------------------------------------
+    -- STEP 2: Truncate the tables rather than delete to prevent the keys from becoming ridiculous ---
+    --------------------------------------------------------------------------------------------------
+
+    TRUNCATE TABLE ExternalServiceTransform
+    TRUNCATE TABLE ExternalService
+    TRUNCATE TABLE ExternalServiceItem
+    TRUNCATE TABLE ExternalServiceVersioning
+    TRUNCATE TABLE imarketExternalService
+    TRUNCATE TABLE imarketExternalServiceItem
+    TRUNCATE TABLE imarketResponseType
+
+ </section>
+    @{int i = 0; }
+    -- ExternalServiceTransform ----------------------------------------------------------------------<br />
+
+    @*@{var y = Model.ExistingDatabaseValues.ExternalServiceTransforms.ToList().GetType().GenericTypeArguments[0].GetCustomAttributes(typeof(System.ComponentModel.DataAnnotations.Schema.TableAttribute), true).FirstOrDefault();}*@
+    @foreach (var item in Model.ExistingDatabaseValues.ExternalServiceTransforms)
+    {
+        var transformConfig = string.IsNullOrEmpty(item.TransformConfig) ? "NULL" : string.Format("'{0}'", item.TransformConfig);
+        @Html.Encode(Html.Raw("INSERT INTO ExternalServiceTransform(RequestTransform, ResponseTransform, TransformConfig) VALUES ('" + item.RequestTransform + "','" + item.ResponseTransform + "'," + @transformConfig + ")"))
+        <br />
+    }
+    -- ExternalServiceItem ---------------------------------------------------------------------------<br />
+
+    @foreach (var item in Model.ExistingDatabaseValues.ExternalServiceItems)
+    {
+        @Html.Raw("INSERT INTO ExternalServiceItem(SchemeRiskId, ExternalServiceTypeId, Name, Description) VALUES (" + item.SchemeRiskId + "," + item.ExternalServiceTypeId + ",'" + item.Name + "','" + item.Description + "')")
+        <br />
+    }
+    <br/>-- @Model.SchemeName <br />
+    @foreach (var item in Model.ExternalServiceTypes)
+    {
+        i = Model.ExternalServiceTypes.FindIndex(s => s == item);
+        @Html.Raw("INSERT INTO ExternalServiceItem(SchemeRiskId, ExternalServiceTypeId, Name, Description) VALUES (" + Model.SchemeId + "," + Model.ExternalServiceTypes[i] + ",'" + Model.ExternalServiceNames[i] + "','" + Model.Description[i] + "')")
+        <br />
+    }
+
+    <br/>-- imarketResponseType ---------------------------------------------------------------------------<br/>
+    @foreach (var item in Model.ExistingDatabaseValues.imarketResponseTypes)
+    {
+        @Html.Raw("INSERT INTO imarketResponseType(Name) VALUES ('" + item.Name + "')")
+        <br />
+    }
+
+    <br/>-- ExternalService -------------------------------------------------------------------------------<br/>
+    @foreach (var item in Model.ExistingDatabaseValues.ExternalServices)
+    {
+        var tt = Model.ExistingDatabaseValues.ExternalServiceTransforms.ToList().SingleOrDefault(ex => ex.ExternalServiceTransformId == item.ExternalServiceTransformId);
+        var yy = string.Empty;
+        if (tt != null) { 
+            yy = string.Format("(SELECT ExternalServiceTransformId FROM ExternalServiceTransform WHERE RequestTransform = '{0}' AND ResponseTransform = '{1}' AND ISNULL(CAST(TransformConfig AS VARCHAR(MAX)), '') = '{2}')",tt.RequestTransform,tt.ResponseTransform,tt.TransformConfig);
+            @Html.Encode(Html.Raw(string.Format("INSERT INTO ExternalService(Url, SoapAction, ExternalServiceTransformId) VALUES ('{0}','{1}',{2})", item.Url, item.SoapAction,yy)))
+        }
+        else 
+        { 
+            @Html.Raw(string.Format("INSERT INTO ExternalService(Url, SoapAction, ExternalServiceTransformId) VALUES ('{0}','{1}',{2})", item.Url, item.SoapAction,"NULL"))
+        }
+        <br />
+    }
+    <br/>-- @Model.SchemeName <br />
+    @foreach (var item in Model.ExternalServiceTypes)
+    {
+        i = Model.ExternalServiceTypes.FindIndex(s => s == item);
+        @Html.Raw(string.Format("INSERT INTO ExternalService(Url, SoapAction, ExternalServiceTransformId) VALUES ('{0}','{1}',{2})",Model.URL[i],Model.SoapAction[i],"NULL"))
+        <br />
+    }
+<section style="white-space:pre-wrap;">
+    ALTER TABLE ExternalService
+    ADD CONSTRAINT FK_ExternalService_ExternalServiceTransform
+    FOREIGN KEY (ExternalServiceTransformId)
+    REFERENCES ExternalServiceTransform(ExternalServiceTransformId)
+
+    ALTER TABLE ExternalServiceVersioning
+    ADD CONSTRAINT FK_ExternalServiceVersioning_ExternalService
+    FOREIGN KEY (ExternalServiceId)
+    REFERENCES ExternalService(ExternalServiceId)
+
+    ALTER TABLE imarketExternalService
+    ADD CONSTRAINT FK_imarketExternalService_externalService
+    FOREIGN KEY (ExternalServiceId)
+    REFERENCES ExternalService(ExternalServiceId)
+
+    ALTER TABLE imarketExternalServiceItem
+    ADD CONSTRAINT FK_imarketExternalServiceItem_imarketResponseType
+    FOREIGN KEY (imarketResponseTypeId)
+    REFERENCES imarketResponseType(imarketResponseTypeId)
+
+    SET NOCOUNT OFF
+
+    COMMIT TRANSACTION
+
+    END TRY
+    BEGIN CATCH
+    --If during synchronization process an error occurred then the following code will be executed
+
+    if @Html.Raw("@@error") <> 0 AND @Html.Raw("@@trancount") > 0
+    BEGIN
+    DECLARE @@EX_ERROR_MESSAGE nvarchar(MAX), @@STATE int, @@SEVERITY int
+    SELECT @@EX_ERROR_MESSAGE =
+    'An error occured:' + char(13) + char(10)
+    + 'Msg ' + cast( ERROR_NUMBER() as nvarchar(20) )
+    + ', Level ' + cast( ERROR_SEVERITY() as nvarchar(20) )
+    + ', State ' + cast( ERROR_STATE() as nvarchar(20) )
+    + ', Line ' + cast( ERROR_LINE() as nvarchar(20) ) + char(13) + char(10)
+    + ERROR_MESSAGE() + char(13) + char(10),
+    @@SEVERITY = ERROR_SEVERITY(),
+    @@STATE = ERROR_STATE()
+    RAISERROR(@@EX_ERROR_MESSAGE, @@SEVERITY, @@STATE)
+    END
+
+    ROLLBACK TRAN
+
+    PRINT 'Data synchronization is completed with errors, all changes were cancelled'
+    END CATCH
+</section>

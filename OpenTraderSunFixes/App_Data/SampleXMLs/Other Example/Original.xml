@@ -1,0 +1,206 @@
+﻿<SSC>
+  <SunSystemsContext>
+    <BusinessUnit>TST</BusinessUnit>
+    <BudgetCode>A</BudgetCode>
+  </SunSystemsContext>
+  <MethodContext>
+    <LedgerPostingParameters>
+      <Description>9339</Description>
+      <PostingType>2</PostingType>
+      <DefaultPeriod />
+      <SuppressSubstitutedMessages>Y</SuppressSubstitutedMessages>
+    </LedgerPostingParameters>
+  </MethodContext>
+  <Payload>
+    <Ledger>
+      <Line>
+        <AccountCode>111021001</AccountCode>
+        <AccountingPeriod>0011980</AccountingPeriod>
+        <AnalysisCode1 />
+        <AnalysisCode2>9</AnalysisCode2>
+        <AnalysisCode3>158</AnalysisCode3>
+        <AnalysisCode4>99999</AnalysisCode4>
+        <AnalysisCode5>.</AnalysisCode5>
+        <AnalysisCode6 />
+        <AnalysisCode7 />
+        <AnalysisCode8>Y</AnalysisCode8>
+        <AnalysisCode9> </AnalysisCode9>
+        <AnalysisCode10>N/A</AnalysisCode10>
+        <BaseAmount>80.10</BaseAmount>
+        <CurrencyCode>GBP</CurrencyCode>
+        <DebitCredit>C</DebitCredit>
+        <Description>PP EPI 00000000000007</Description>
+        <EntryDate>21102014</EntryDate>
+        <JournalSource>TST</JournalSource>
+        <JournalType>SREN</JournalType>
+        <TransactionAmount>80.10</TransactionAmount>
+        <TransactionAmountDecimalPlaces>2</TransactionAmountDecimalPlaces>
+        <TransactionDate>12122013</TransactionDate>
+        <TransactionReference>508685</TransactionReference>
+        <MemoAmount>242.60</MemoAmount>
+        <DetailLad>
+          <GeneralDescription1>OFRS38FWF9</GeneralDescription1>
+          <GeneralDescription2>PP EPI 00000000000007</GeneralDescription2>
+          <GeneralDescription3>Timmy Tester</GeneralDescription3>
+          <GeneralDescription4>6.0000000000</GeneralDescription4>
+          <GeneralDescription5>13.73</GeneralDescription5>
+          <GeneralDescription6>Main</GeneralDescription6>
+          <GeneralDescription7>35.0000000000</GeneralDescription7>
+          <GeneralDescription8>21.0000000000</GeneralDescription8>
+          <GeneralDescription9>14.0000000000</GeneralDescription9>
+          <GeneralDescription10>80.10</GeneralDescription10>
+          <GeneralDescription11>48.06</GeneralDescription11>
+          <GeneralDescription12>32.04</GeneralDescription12>
+          <GeneralDescription13>Open GI Test Broker</GeneralDescription13>
+          <GeneralDescription14 />
+          <GeneralDescription15 />
+          <GeneralDescription16>1</GeneralDescription16>
+          <GeneralDescription18>T00002</GeneralDescription18>
+          <GeneralDate1>12122013</GeneralDate1>
+          <GeneralDate2>12122013</GeneralDate2>
+        </DetailLad>
+      </Line>
+      <Line>
+        <AccountCode>111023500</AccountCode>
+        <AccountingPeriod>0011980</AccountingPeriod>
+        <AnalysisCode1 />
+        <AnalysisCode2>9</AnalysisCode2>
+        <AnalysisCode3>158</AnalysisCode3>
+        <AnalysisCode4>99999</AnalysisCode4>
+        <AnalysisCode5>.</AnalysisCode5>
+        <AnalysisCode6 />
+        <AnalysisCode7 />
+        <AnalysisCode8>Y</AnalysisCode8>
+        <AnalysisCode9> </AnalysisCode9>
+        <AnalysisCode10>N/A</AnalysisCode10>
+        <BaseAmount>48.06</BaseAmount>
+        <CurrencyCode>GBP</CurrencyCode>
+        <DebitCredit>D</DebitCredit>
+        <Description>PP EPI 00000000000007</Description>
+        <EntryDate>21102014</EntryDate>
+        <JournalSource>TST</JournalSource>
+        <JournalType>SREN</JournalType>
+        <TransactionAmount>48.06</TransactionAmount>
+        <TransactionAmountDecimalPlaces>2</TransactionAmountDecimalPlaces>
+        <TransactionDate>12122013</TransactionDate>
+        <TransactionReference>508685</TransactionReference>
+        <MemoAmount>242.60</MemoAmount>
+        <DetailLad>
+          <GeneralDescription1>OFRS38FWF9</GeneralDescription1>
+          <GeneralDescription2>PP EPI 00000000000007</GeneralDescription2>
+          <GeneralDescription3>Timmy Tester</GeneralDescription3>
+          <GeneralDescription4>6.0000000000</GeneralDescription4>
+          <GeneralDescription5>13.73</GeneralDescription5>
+          <GeneralDescription6>Main</GeneralDescription6>
+          <GeneralDescription7>35.0000000000</GeneralDescription7>
+          <GeneralDescription8>21.0000000000</GeneralDescription8>
+          <GeneralDescription9>14.0000000000</GeneralDescription9>
+          <GeneralDescription10>80.10</GeneralDescription10>
+          <GeneralDescription11>48.06</GeneralDescription11>
+          <GeneralDescription12>32.04</GeneralDescription12>
+          <GeneralDescription13>Open GI Test Broker</GeneralDescription13>
+          <GeneralDescription14 />
+          <GeneralDescription15 />
+          <GeneralDescription16>1</GeneralDescription16>
+          <GeneralDescription18>T00002</GeneralDescription18>
+          <GeneralDate1>12122013</GeneralDate1>
+          <GeneralDate2>12122013</GeneralDate2>
+        </DetailLad>
+      </Line>
+      <Line>
+        <AccountCode>IBA099999</AccountCode>
+        <AccountingPeriod>0011980</AccountingPeriod>
+        <AnalysisCode1 />
+        <AnalysisCode2>9</AnalysisCode2>
+        <AnalysisCode3>158</AnalysisCode3>
+        <AnalysisCode4>99999</AnalysisCode4>
+        <AnalysisCode5>.</AnalysisCode5>
+        <AnalysisCode6 />
+        <AnalysisCode7 />
+        <AnalysisCode8>Y</AnalysisCode8>
+        <AnalysisCode9> </AnalysisCode9>
+        <AnalysisCode10>N/A</AnalysisCode10>
+        <BaseAmount>194.54</BaseAmount>
+        <CurrencyCode>GBP</CurrencyCode>
+        <DebitCredit>D</DebitCredit>
+        <Description>PP EPI 00000000000007</Description>
+        <EntryDate>21102014</EntryDate>
+        <JournalSource>TST</JournalSource>
+        <JournalType>SREN</JournalType>
+        <TransactionAmount>194.54</TransactionAmount>
+        <TransactionAmountDecimalPlaces>2</TransactionAmountDecimalPlaces>
+        <TransactionDate>12122013</TransactionDate>
+        <TransactionReference>508685</TransactionReference>
+        <MemoAmount>242.60</MemoAmount>
+        <DetailLad>
+          <GeneralDescription1>OFRS38FWF9</GeneralDescription1>
+          <GeneralDescription2>PP EPI 00000000000007</GeneralDescription2>
+          <GeneralDescription3>Timmy Tester</GeneralDescription3>
+          <GeneralDescription4>6.0000000000</GeneralDescription4>
+          <GeneralDescription5>13.73</GeneralDescription5>
+          <GeneralDescription6>Main</GeneralDescription6>
+          <GeneralDescription7>35.0000000000</GeneralDescription7>
+          <GeneralDescription8>21.0000000000</GeneralDescription8>
+          <GeneralDescription9>14.0000000000</GeneralDescription9>
+          <GeneralDescription10>80.10</GeneralDescription10>
+          <GeneralDescription11>48.06</GeneralDescription11>
+          <GeneralDescription12>32.04</GeneralDescription12>
+          <GeneralDescription13>Open GI Test Broker</GeneralDescription13>
+          <GeneralDescription14 />
+          <GeneralDescription15 />
+          <GeneralDescription16>1</GeneralDescription16>
+          <GeneralDescription18>T00002</GeneralDescription18>
+          <GeneralDate1>12122013</GeneralDate1>
+          <GeneralDate2>12122013</GeneralDate2>
+        </DetailLad>
+      </Line>
+      <Line>
+        <AccountCode>IBA000158</AccountCode>
+        <AccountingPeriod>0011980</AccountingPeriod>
+        <AnalysisCode1 />
+        <AnalysisCode2>9</AnalysisCode2>
+        <AnalysisCode3>158</AnalysisCode3>
+        <AnalysisCode4>99999</AnalysisCode4>
+        <AnalysisCode5>.</AnalysisCode5>
+        <AnalysisCode6 />
+        <AnalysisCode7 />
+        <AnalysisCode8>Y</AnalysisCode8>
+        <AnalysisCode9> </AnalysisCode9>
+        <AnalysisCode10>N/A</AnalysisCode10>
+        <BaseAmount>162.50</BaseAmount>
+        <CurrencyCode>GBP</CurrencyCode>
+        <DebitCredit>C</DebitCredit>
+        <Description>PP EPI 00000000000007</Description>
+        <EntryDate>21102014</EntryDate>
+        <JournalSource>TST</JournalSource>
+        <JournalType>SREN</JournalType>
+        <TransactionAmount>162.50</TransactionAmount>
+        <TransactionAmountDecimalPlaces>2</TransactionAmountDecimalPlaces>
+        <TransactionDate>12122013</TransactionDate>
+        <TransactionReference>508685</TransactionReference>
+        <MemoAmount>242.60</MemoAmount>
+        <DetailLad>
+          <GeneralDescription1>OFRS38FWF9</GeneralDescription1>
+          <GeneralDescription2>PP EPI 00000000000007</GeneralDescription2>
+          <GeneralDescription3>Timmy Tester</GeneralDescription3>
+          <GeneralDescription4>6.0000000000</GeneralDescription4>
+          <GeneralDescription5>13.73</GeneralDescription5>
+          <GeneralDescription6>Main</GeneralDescription6>
+          <GeneralDescription7>35.0000000000</GeneralDescription7>
+          <GeneralDescription8>21.0000000000</GeneralDescription8>
+          <GeneralDescription9>14.0000000000</GeneralDescription9>
+          <GeneralDescription10>80.10</GeneralDescription10>
+          <GeneralDescription11>48.06</GeneralDescription11>
+          <GeneralDescription12>32.04</GeneralDescription12>
+          <GeneralDescription13>Open GI Test Broker</GeneralDescription13>
+          <GeneralDescription14 />
+          <GeneralDescription15 />
+          <GeneralDescription16>1</GeneralDescription16>
+          <GeneralDescription18>T00002</GeneralDescription18>
+          <GeneralDate1>12122013</GeneralDate1>
+          <GeneralDate2>12122013</GeneralDate2>
+        </DetailLad>
+      </Line>
+    </Ledger>
+  </Payload>
+</SSC>

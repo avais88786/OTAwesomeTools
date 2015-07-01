@@ -1,0 +1,4 @@
+﻿@model List<string>
+
+    @Html.Label("lblTransRefAppendChar", "Append Character To Transaction Reference:", new { style = "width:"+@Model.ElementAt(0)+";float:left" })
+    @Html.TextBox("AppendChar", "", new { maxlength = 1, size = 1, style = "float:left;margin-top:" + @Model.ElementAt(1) + ";margin-left:5px", placeholder = "A,B.." })

@@ -1,0 +1,22 @@
+﻿#filedrag
+{
+    width:50%;
+	font-weight: bold;
+	text-align: center;
+	padding: 1em 0;
+	margin: 1em 0;
+	color: #555;
+	border: 2px dashed #555;
+	border-radius: 7px;
+	cursor: default;
+}
+
+#filedrag.hover
+{
+	color: #fff;
+	border-color: #fff;
+    background: linear-gradient(to right, rgba(250,168,213,1) 0%, rgba(250,168,213,1) 0%, rgba(250,168,213,1) 72%, rgba(17,126,173,1) 100%);
+    /*background-color:lightgray;*/
+	border-style: solid;
+	box-shadow: inset 0 3px 4px #888;
+}

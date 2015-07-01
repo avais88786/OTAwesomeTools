@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{73B044DB-42FD-440C-A9E2-4B85569F74EC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenTraderSunFixes.Model</RootNamespace>
+    <AssemblyName>OpenTraderSunFixes.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Stack 5\Packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft ASP.NET\ASP.NET MVC 4\Assemblies\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GeneratedModel\CCAccountingPeriod.cs" />
+    <Compile Include="GeneratedModel\CCAcountingPeriodStatus.cs" />
+    <Compile Include="GeneratedModel\CCCategoryType.cs" />
+    <Compile Include="GeneratedModel\CCExternalBrokerProcess.cs" />
+    <Compile Include="GeneratedModel\CCExternalBrokerProcessStatus.cs" />
+    <Compile Include="GeneratedModel\CCExternalSunTransactionType.cs" />
+    <Compile Include="GeneratedModel\CCExternalTransactionProcess.cs" />
+    <Compile Include="GeneratedModel\CCExternalTransactionProcessBatch.cs" />
+    <Compile Include="GeneratedModel\CCExternalTransactionProcessStatus.cs" />
+    <Compile Include="GeneratedModel\CCOmittedRisk.cs" />
+    <Compile Include="GeneratedModel\CCOpenPremiumType.cs" />
+    <Compile Include="GeneratedModel\CCOpenTransactionType.cs" />
+    <Compile Include="GeneratedModel\CCPaymentCategory.cs" />
+    <Compile Include="GeneratedModel\CCPaymentType.cs" />
+    <Compile Include="GeneratedModel\CCStatementGroup.cs" />
+    <Compile Include="GeneratedModel\CCStatementGroupCompany.cs" />
+    <Compile Include="GeneratedModel\CCStatementGroupStatus.cs" />
+    <Compile Include="GeneratedModel\CCStatusCategory.cs" />
+    <Compile Include="GeneratedModel\CCSubCategoryType.cs" />
+    <Compile Include="GeneratedModel\CCTransaction.cs" />
+    <Compile Include="GeneratedModel\CCTransactionItem.cs" />
+    <Compile Include="GeneratedModel\CCTransactionStatus.cs" />
+    <Compile Include="GeneratedModel\Company.cs" />
+    <Compile Include="GeneratedModel\ExternalServiceItems\ExternalService.cs" />
+    <Compile Include="GeneratedModel\ExternalServiceItems\ExternalServiceItem.cs" />
+    <Compile Include="GeneratedModel\ExternalServiceItems\ExternalServiceTransform.cs" />
+    <Compile Include="GeneratedModel\ExternalServiceItems\ExternalServiceType.cs" />
+    <Compile Include="GeneratedModel\ExternalServiceItems\ExternalServiceVersioning.cs" />
+    <Compile Include="GeneratedModel\ExternalServiceItems\imarketExternalService.cs" />
+    <Compile Include="GeneratedModel\ExternalServiceItems\imarketExternalServiceItem.cs" />
+    <Compile Include="GeneratedModel\ExternalServiceItems\imarketResponseType.cs" />
+    <Compile Include="GeneratedModel\ExternalServiceItems\ExternalServiceItemsContext.cs" />
+    <Compile Include="GeneratedModel\Model1.cs" />
+    <Compile Include="GeneratedModel\OpenCompany.cs" />
+    <Compile Include="GeneratedModel\Risk.cs" />
+    <Compile Include="GeneratedModel\RiskReference.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReferenceType.cs" />
+    <Compile Include="SunFixAttributes.cs" />
+    <Compile Include="SunFixType.cs" />
+    <Compile Include="SunTransactionType.cs" />
+    <Compile Include="SunXML.cs" />
+    <Compile Include="ViewModel\ExternalServiceItems\ExternalServiceScriptViewModel.cs" />
+    <Compile Include="ViewModel\GeneratedXMLModel.cs" />
+    <Compile Include="ViewModel\SearchResultModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

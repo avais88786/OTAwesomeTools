@@ -1,0 +1,26 @@
+﻿<form id="upload" action="AccountsFix\Upload2" method="POST" enctype="text/plain" style="background-color:aliceblue; padding: 5px; ">
+
+    <fieldset>
+        <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+
+        <div>
+            <label for="fileselect">Files to upload:</label>
+            <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" style="display:inline;" />
+            <div id="filedrag" style="width:100%">or drop files here</div>
+        </div>
+
+
+        <div id="fileNames">
+        </div>
+        <br />
+
+        <button id="btnFileUpload" type="button">Upload Files</button>
+
+        <link rel="license" />
+        @Html.ActionLink("placeholdername", "Download", null, new { id = "lnkDownloadFile", style = "font-size:20px;" })
+
+
+
+    </fieldset>
+
+</form>

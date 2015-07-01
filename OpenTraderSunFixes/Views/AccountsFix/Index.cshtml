@@ -1,0 +1,332 @@
+﻿@model IEnumerable<OpenTraderSunFixes.Model.GeneratedModel.CCTransaction>
+
+@{
+    ViewBag.Title = "Index";
+    
+}
+
+@section PageScripts{
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+    @Scripts.Render("~/Scripts/jQuery/MainPageValidationAndEvents.js")
+    @Scripts.Render("~/Scripts/jQuery/CurtainHandler.js")
+    @Styles.Render("~/Content/CurtainElements.css")
+
+    
+}
+
+@helper TransformJournalType(int ccopentransactiontypeid) 
+{
+               switch (ccopentransactiontypeid)
+               {
+                   case 1:
+                       @Html.Raw("SNBU")
+                        break;
+                   case 2:
+                   @Html.Raw("SMTA")
+                        
+                        break;
+                   case 3: 
+                   @Html.Raw("SADJ")
+                        
+                        break;
+                   case 4: 
+                   @Html.Raw("SCNC")
+                        
+                        break;
+                   case 5: 
+                   @Html.Raw("SREN")
+                        
+                        break;
+                   default:
+                        @: "N/A"
+                        break;
+               }       
+           
+}
+
+
+<h2>Search for the Required Risk below: </h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create",FormMethod.Get)
+</p>*@
+
+@using (@Html.BeginForm("Index", "AccountsFix", FormMethod.Get, new { id = "SearchForm" }))
+{
+
+@Html.TextBox("searchText", null, new { placeholder = "Broker Reference, Policy Reference or RiskId", style = "width:50%;" });
+    
+         @:&nbsp;
+   
+<input type="submit" value="Search" />
+
+}
+
+
+<br/>
+<br/>
+<div id='loadingBox'>
+    <img src="~/Content/Images/loader_large2.gif" align="middle" />
+</div>
+
+<div id='screen' hidden></div>
+
+    @{Html.RenderPartial(@"\Partial\_PartialSunChecklistView");}
+<br />
+<div>
+    @if (!(@Model == null))
+    {
+
+        <fieldset>
+
+            @Html.ValidationMessage("TransactionType", new { @class = "text-danger" })
+            <br />
+            @Html.ValidationMessage("BusinessUnit", new { @class = "text-danger" })
+        </fieldset>
+
+        //style="border-left:2px solid;"
+        <table class="table" id="table">
+            <tr>
+                <th style=" border: none;"></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CCTransactionId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RiskId)
+                </th>
+                <th>
+                    Account Code
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.CCExternalTransactionProcess.ErrorXML)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CCOpenPremiumType.Description)
+                    </th>*@
+                @*<th>
+                        Period
+                    </th>
+                    <th>
+                        Journal No.
+                    </th>
+                    <th>
+                        Journal Line
+                    </th>*@
+                <th>
+                    General Desc 01 (Broker Ref.)
+                </th>
+                <th>
+                    General Desc 03
+                </th>
+                <th>
+                    Description (Policy Ref.)
+                </th>
+                <th>
+                    Memo Amt.
+                </th>
+                <th>
+                    Amount
+                </th>
+                <th>
+                    Journal Type
+                </th>
+                <th>
+                    General Desc 06
+                </th>
+                <th>
+                    Total Comm. Rate
+                </th>
+                <th>
+                    Broker Comm. Rate
+                </th>
+                <th>
+                    Powerplace Comm. Rate
+                </th>
+                <th>
+                    Total Comm. Value
+                </th>
+                <th>
+                    Powerplace Comm. Value
+                </th>
+                <th>
+                    Broker Comm. Value
+                </th>
+                <th>
+                    Reference
+                </th>
+                <th>
+                    IPT
+                </th>
+            </tr>
+            @{
+        int i = 0;
+            }
+            @foreach (var item in Model)
+            {
+
+                var memoAmount = @item.CCTransactionItem.Single(cci => cci.CCCategoryTypeId == 4 && cci.CCSubCategoryTypeId == 1).Amount;
+                var totalCommissionValue = @item.CCTransactionItem.Where(cci => cci.CCCategoryTypeId == 2).Sum(ccix => ccix.Amount);
+                var powerplaceCommissionValue = @item.CCTransactionItem.FirstOrDefault(cci => cci.CCCategoryTypeId == 2 && cci.CCSubCategoryTypeId == 6).Amount;
+                var brokerCommissionValue = @item.CCTransactionItem.FirstOrDefault(cci => cci.CCCategoryTypeId == 2 && cci.CCSubCategoryTypeId == 5).Amount;
+                var iptAmount = @item.CCTransactionItem.FirstOrDefault(cci => cci.CCCategoryTypeId == 3 && cci.CCSubCategoryTypeId == 1).Amount;
+
+                <tr>
+                    @using (@Html.BeginForm("GenerateFix", "AccountsFix", FormMethod.Post, new { CCTransactionId = item.CCTransactionId }))
+                    {
+                        @Html.Hidden("CCTransactionId", @item.CCTransactionId)
+                        @Html.Hidden("PremiumsEdited", "false", new { @data_sun_premiumedited = @item.CCTransactionId })
+                        @Html.Hidden("MemoAmountNew", memoAmount, new { @data_sun_MemoAmountNewId = @item.CCTransactionId });
+                        @Html.Hidden("CCAmountNew", @item.Amount, new { @data_sun_CCAmountNewNewId = @item.CCTransactionId });
+                        @Html.Hidden("TotalCommNew", totalCommissionValue, new { @data_sun_TotalCommNewId = @item.CCTransactionId });
+                        @Html.Hidden("PowerplaceCommNew", powerplaceCommissionValue, new { @data_sun_PowerplaceCommNewId = @item.CCTransactionId });
+                        @Html.Hidden("BrokerCommNew", brokerCommissionValue, new { @data_sun_BrokerCommNewId = @item.CCTransactionId });
+                        @Html.Hidden("IPTNew", iptAmount, new { @data_sun_IPTNewId = @item.CCTransactionId });
+
+                        <td style="display: block; width: 280px; border-left: none;border-right:none;border-bottom:none">
+                            <table style="border:none;border-collapse:separate" id=@item.CCTransactionId>
+                                <tr>
+                                    <td style="border:none;">
+                                        @Html.Label("lblFixType", "Fix Type:") &nbsp; &nbsp;
+                                        @Html.DropDownList("SunFixType", new SelectList(new List<String>() { "Trader", "Sun" }, "Sun"), new { @data_rowid = @item.CCTransactionId})
+                                </tr>
+                                <tr>
+                                    <td style="border:none;">
+                                        <input type="button" value="Change Premiums" id="btnChangePrems" name="btnChangePrems" data-rowid="@item.CCTransactionId" />
+                                        &nbsp;<img src="~/Content/Images/exclamation.png" style="width:20px;height:20px;" title="Due to browser caching the submitted values might not be the same as you see in the textboxes.
+Make sure you have refreshed the page from last 'back press' and re-keyed the changed premiums again." />
+                                    </td>
+                                </tr>
+                                <tr id="transactiontype">
+                                    <td style="padding: 8px; line-height: inherit; vertical-align: inherit; border: none; ">
+                                        @Html.Label("lblTransactionType", "Transaction Type:")<br />
+                                        @(Html.RadioButton("TransactionType", 0, true)) Original
+                                        &nbsp;&nbsp;
+                                        @(Html.RadioButton("TransactionType", 1)) Contra
+
+                                    </td>
+                                </tr>
+                                <tr id="businessunit">
+                                    <td style="padding: 8px; line-height: inherit; vertical-align: inherit; border: none; ">
+                                    @Html.Label("lblBusinessUnit", "Business Unit:")
+                                    <br />
+                                    @(Html.RadioButton("BusinessUnit", "TST", true)) Test
+                                    &nbsp;&nbsp;
+                                    @(Html.RadioButton("BusinessUnit", "PPL")) Live
+
+                                </td>
+                                </tr>
+                                <tr id="postingdate">
+                                    <td style="padding: 8px; line-height: inherit; vertical-align: inherit; border: none;">
+                                        @Html.Label("lblPostingDate", "Posting Date:")<br />
+                                        @(Html.RadioButton("PostingDate", @item.EffectiveDate)) Original
+                                        &nbsp;&nbsp;
+                                        @(Html.RadioButton("PostingDate", @DateTime.Now, true)) This Month
+
+                                    </td>
+                                </tr>
+                                <tr id="charappend">
+                                    <td style="padding: 8px; line-height: inherit; vertical-align: inherit; border: none; display:inline-block">
+                                        @{Html.RenderPartial(@"Partial\_PartialSunFixAttribute", new List<String>() { "180px", "5px" });}
+                                    </td>
+                                    @*<td style="padding: 8px; line-height: inherit; vertical-align: inherit; border: none; display:inline-block">
+                @Html.Label("lblTransRefAppendChar", "Transaction Reference Append Character:", new { style="width:180px;float:left" })
+                @Html.TextBox("AppendChar", "", new { maxlength = 1, size = 1, style = "float:right;margin-top:5px", placeholder = "A,B.." })
+            </td>*@
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; line-height: inherit; vertical-align: inherit; border: none;">
+                                        <input type="submit" value="Generate Fix" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                            @*<input type="button" value="Generate XML" onclick="location.href='@Url.Action("GenerateXML", "SUN", new { item.CCTransactionId })'"/>*@
+
+                            @{i++;}
+                        </td>
+                    }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CCTransactionId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RiskId)
+                    </td>
+                    <td>
+                        @{
+                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                    String x = "000000" + item.BrokerCompany.ParentCompany.OpenCompany.OpenCompanyID;
+                    x = x.Substring((x.Length - 6));
+                        }
+                        @Html.Raw("IBA")@x
+                    </td>
+                    @*<td>
+                            @* Period Value
+                        </td>
+                        <td>
+                            @* Journal No.
+                        </td>
+                        <td>
+                            @* Journal Line
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BrokerReference)
+                    </td>
+
+                    <td>
+                        @item.ClientCompany.CompanyName
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reference)
+                    </td>
+                    <td>
+                        @Html.TextBox("txtBoxMemoAmount" + @item.CCTransactionId, @item.CCTransactionItem.Single(cci => cci.CCCategoryTypeId == 4 && cci.CCSubCategoryTypeId == 1).Amount, new { @readonly = "", style = "width:auto;padding:3px", @data_sun = @item.CCTransactionId, @data_sun_orignalAmount = @memoAmount })
+                    </td>
+                    <td>
+                        @Html.TextBox("txtBoxCCAmountNew" + @item.CCTransactionId, @item.Amount, new { @readonly = "", style = "width:auto;padding:3px", @data_sun = @item.CCTransactionId, @data_sun_orignalAmount = @item.Amount })
+                    </td>
+                    <td>
+                        @TransformJournalType(@item.CCOpenTransactionTypeId)
+                    </td>
+                    <td>
+                        @item.CCOpenPremiumType.Description
+                    </td>
+                    <td>
+                        @item.CCTransactionItem.Where(cci => cci.CCCategoryTypeId == 2).Sum(ccix => ccix.Rate)  @*Total Commission Rate*@
+                    </td>
+                    <td>
+                        @item.CCTransactionItem.FirstOrDefault(cci => cci.CCCategoryTypeId == 2 && cci.CCSubCategoryTypeId == 5).Rate @*Broker Commission rate*@
+                    </td>
+                    <td>
+                        @item.CCTransactionItem.FirstOrDefault(cci => cci.CCCategoryTypeId == 2 && cci.CCSubCategoryTypeId == 6).Rate  @*Powerplace commission rate*@
+                    </td>
+                    <td>
+                        @Html.TextBox("txtBoxTotalCommValue" + @item.CCTransactionId, @item.CCTransactionItem.Where(cci => cci.CCCategoryTypeId == 2).Sum(ccix => ccix.Amount), new { @readonly = "", style = "width:auto;padding:3px", @data_sun_orignalAmount = @totalCommissionValue }) @*Total Commission Value*@
+                    </td>
+                    <td>
+                        @*Powerplace commission amount*@
+                        @Html.TextBox("txtBoxPPCommValue" + @item.CCTransactionId, @item.CCTransactionItem.FirstOrDefault(cci => cci.CCCategoryTypeId == 2 && cci.CCSubCategoryTypeId == 6).Amount, new { @readonly = "", style = "width:auto;padding:3px", @data_sun = @item.CCTransactionId, @data_sun_orignalAmount = @powerplaceCommissionValue })
+                    </td>
+                    <td>
+                        @*Broker Commission amount*@
+                        @Html.TextBox("txtBoxBrokerCommValue" + @item.CCTransactionId, @item.CCTransactionItem.FirstOrDefault(cci => cci.CCCategoryTypeId == 2 && cci.CCSubCategoryTypeId == 5).Amount, new { @readonly = "", style = "width:auto;padding:3px", @data_sun = @item.CCTransactionId, @data_sun_orignalAmount = @brokerCommissionValue })
+                    </td>
+                    <td>
+                        @item.CCTransactionId
+                    </td>
+
+                    <td>
+                        @*IPT amount*@
+                        @Html.TextBox("txtBoxIPTValue" + @item.CCTransactionId, @item.CCTransactionItem.FirstOrDefault(cci => cci.CCCategoryTypeId == 3 && cci.CCSubCategoryTypeId == 1).Amount, new { @readonly = "", style = "width:auto;padding:3px", @data_sun = @item.CCTransactionId, @data_sun_orignalAmount = @iptAmount })
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { id=item.CCTransactionId }) |
+                            @Html.ActionLink("Details", "Details", new { id=item.CCTransactionId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id=item.CCTransactionId })
+                        </td>*@
+                </tr>
+            }
+
+        </table>
+
+    }
+</div>

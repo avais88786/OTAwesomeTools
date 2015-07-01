@@ -1,0 +1,350 @@
+﻿@model OpenTraderSunFixes.Model.ViewModel.SearchResultModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section PageScripts{
+
+    @Scripts.Render("~/Scripts/jQuery/MainPageValidationAndEvents.js")
+    @Scripts.Render("~/Scripts/jQuery/CurtainHandler.js")
+    @Scripts.Render("~/Scripts/jQuery/HelpData.js")
+    @Styles.Render("~/Content/CurtainElements.css")
+    @Styles.Render("~/Content/dragdrop.css")
+    @Scripts.Render("~/Scripts/jQuery/filedrophandler.js")
+    @*@Scripts.Render("~/Scripts/jQuery/deletethislater.js")*@
+
+
+}
+
+@{
+    ViewBag.Title = "Accounts Fixes";
+}
+
+@helper TransformJournalType(int ccopentransactiontypeid)
+{
+    switch (ccopentransactiontypeid)
+    {
+        case 1:
+            @Html.Raw("SNBU")
+            break;
+        case 2:
+        @Html.Raw("SMTA")
+
+            break;
+        case 3:
+        @Html.Raw("SADJ")
+
+            break;
+        case 4:
+        @Html.Raw("SCNC")
+
+            break;
+        case 5:
+        @Html.Raw("SREN")
+
+            break;
+        default:
+        @: "N/A"
+                        break;
+    }
+
+}
+
+<h2>Search for the Required Risk below: </h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create",FormMethod.Get)
+    </p>*@
+
+@using (@Html.BeginForm("Index", "AccountsFix", FormMethod.Get, new { id = "SearchForm" }))
+{
+
+    @Html.TextBox("searchText", null, new { placeholder = "Broker Reference, Policy Reference or RiskId", style = "width:50%;" });
+
+    @:&nbsp;
+
+    <input type="submit" value="Search" />
+
+}
+<br />
+@Html.Label("Convert Test XMLs to Live", new { id = "testToLiveToggle", style = "color:blue;cursor:pointer;" })
+
+<form id="upload" action="AccountsFix\Upload2" method="POST" enctype="text/plain" style="background-color:aliceblue; padding: 5px; ">
+
+    <fieldset>
+        <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+
+        <div>
+            <label for="fileselect">Files to upload:</label>
+            <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" style="display:inline;" />
+            <div id="filedrag" style="width:100%">or drop files here</div>
+        </div>
+
+
+        <div id="fileNames">
+        </div>
+        <br />
+
+        <button id="btnFileUpload" type="button">Upload Files</button>
+
+        <link rel="license" />
+        @Html.ActionLink("placeholdername", "Download", null, new { id = "lnkDownloadFile", style = "font-size:20px;" })
+
+
+
+    </fieldset>
+
+</form>
+
+
+
+<br />
+<br />
+<div id='loadingBox'>
+    <img src="~/Content/Images/loader_large2.gif" align="middle" />
+</div>
+
+<div id='screen' hidden></div>
+
+@if (!(@Model == null))
+{
+    Html.RenderPartial(@"\Partial\_PartialSunChecklistView");
+}
+
+<br />
+<div>
+    @if (!(@Model == null))
+    {
+
+        <fieldset>
+
+            @Html.ValidationMessage("TransactionType", new { @class = "text-danger" })
+            <br />
+            @Html.ValidationMessage("BusinessUnit", new { @class = "text-danger" })
+        </fieldset>
+
+        //style="border-left:2px solid;"
+        <table class="table" id="table">
+            <tr>
+                <th style=" border: none;"></th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.CCTransactionId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RiskId)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.AccountCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BrokerReference)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClientName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PolicyReference)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MemoAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JournalType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GeneralDescrition6)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalCommissionRate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BrokerCommissionRate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PowerplaceCommissionRate)
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.TotalCommissionValue)*@
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PowerplaceCommissionValue)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BrokerCommissionValue)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClientName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IPTValue)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CCTransactionId)
+                </th>
+            </tr>
+           
+            @{
+                var memoAmount = Model.MemoAmount;
+                var totalCommissionValue = Model.TotalCommissionValue;
+                var powerplaceCommissionValue = Model.PowerplaceCommissionValue;
+                var brokerCommissionValue = Model.BrokerCommissionValue;
+                var iptAmount = Model.IPTValue;
+    }
+                <tr>
+                    @using (@Html.BeginForm("GenerateFix", "AccountsFix", FormMethod.Post, new { CCTransactionId = Model.CCTransactionId }))
+                    {
+                        @Html.ValidationSummary(false)
+
+                        @Html.TextBoxFor(modelModel => modelModel.TotalCommissionValue)
+                        @Html.ValidationMessageFor(modelModel => Model.TotalCommissionValue)
+                        @Html.Hidden("CCTransactionId", Model.CCTransactionId)
+                        @Html.Hidden("PremiumsEdited", "false", new { @data_sun_premiumedited = Model.CCTransactionId })
+                        @Html.Hidden("MemoAmountNew", memoAmount, new { @data_sun_MemoAmountNewId = Model.CCTransactionId });
+                        @Html.Hidden("CCAmountNew", Model.Amount, new { @data_sun_CCAmountNewNewId = Model.CCTransactionId });
+                        @Html.Hidden("TotalCommNew", totalCommissionValue, new { @data_sun_TotalCommNewId = Model.CCTransactionId });
+                        @Html.Hidden("PowerplaceCommNew", powerplaceCommissionValue, new { @data_sun_PowerplaceCommNewId = Model.CCTransactionId });
+                        @Html.Hidden("BrokerCommNew", brokerCommissionValue, new { @data_sun_BrokerCommNewId = Model.CCTransactionId });
+                        @Html.Hidden("IPTNew", iptAmount, new { @data_sun_IPTNewId = Model.CCTransactionId });
+
+                        <td style="display: block; width: 280px; border-left: none;border-right:none;border-bottom:none">
+                            <table style="border:none;border-collapse:separate" id=Model.CCTransactionId>
+                                <tr>
+                                    <td style="border:none;">
+                                        @Html.Label("lblFixType", "Fix Type:") &nbsp; &nbsp;
+                                        @Html.DropDownList("SunFixType", new SelectList(new List<String>() { "Trader", "Sun" }, "Sun"), new { @data_rowid = Model.CCTransactionId })
+                                        @*&nbsp;&nbsp; <img src="~/Content/Images/icon_help.png" alt="submit" />*@
+                                </tr>
+                                <tr>
+                                    <td style="border:none;">
+                                        <input type="button" value="Change Premiums" id="btnChangePrems" name="btnChangePrems" data-rowid="Model.CCTransactionId" />
+                                        &nbsp;<img src="~/Content/Images/exclamation.png" style="width:20px;height:20px;" title="Due to browser caching the submitted values might not be the same as you see in the textboxes.
+Make sure you have refreshed the page from last 'back press' and re-keyed the changed premiums again." />
+                                    </td>
+                                </tr>
+                                <tr id="transactiontype" data-transactiontype-rowid="Model.CCTransactionId">
+                                    <td style="padding: 8px; line-height: inherit; vertical-align: inherit; border: none; ">
+                                        @Html.Label("lblTransactionType", "Transaction Type:")<br />
+                                        @(Html.RadioButton("TransactionType", 0, true)) Original
+                                        &nbsp;&nbsp;
+                                        @(Html.RadioButton("TransactionType", 1)) Contra
+
+                                    </td>
+                                </tr>
+                                <tr id="businessunit">
+                                    <td style="padding: 8px; line-height: inherit; vertical-align: inherit; border: none; ">
+                                        @Html.Label("lblBusinessUnit", "Business Unit:")
+                                        <br />
+                                        @(Html.RadioButton("BusinessUnit", "TST", true)) Test
+                                        &nbsp;&nbsp;
+                                        @(Html.RadioButton("BusinessUnit", "PPL", new { disabled = "disabled" })) Live
+
+                                    </td>
+                                </tr>
+                                <tr id="postingdate">
+                                    <td style="padding: 8px; line-height: inherit; vertical-align: inherit; border: none;">
+                                        @Html.Label("lblPostingDate", "Posting Date:")<br />
+                                        @(Html.RadioButton("PostingDate", Model.EffectiveDate)) Original
+                                        &nbsp;&nbsp;
+                                        @(Html.RadioButton("PostingDate", @DateTime.Now, true)) This Month
+
+                                    </td>
+                                </tr>
+                                <tr id="charappend">
+                                    <td style="padding: 8px; line-height: inherit; vertical-align: inherit; border: none; display:inline-block">
+                                        @{Html.RenderPartial(@"Partial\_PartialSunFixAttribute", new List<String>() { "180px", "5px" });}
+                                    </td>
+                                    @*<td style="padding: 8px; line-height: inherit; vertical-align: inherit; border: none; display:inline-block">
+                                            @Html.Label("lblTransRefAppendChar", "Transaction Reference Append Character:", new { style="width:180px;float:left" })
+                                            @Html.TextBox("AppendChar", "", new { maxlength = 1, size = 1, style = "float:right;margin-top:5px", placeholder = "A,B.." })
+                                        </td>*@
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; line-height: inherit; vertical-align: inherit; border: none;">
+                                        <input type="submit" value="Generate Fix" />
+                                        &nbsp; &nbsp; <img id=@Html.Raw("img_LoadGenerateXMl-"+Model.CCTransactionId) src="~/Content/Images/loader.gif" hidden />
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                        </td>
+                    }
+                    @*<td>
+                            @Html.DisplayFor(modelModel => Model.CCTransactionId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelModel => Model.RiskId)
+                        </td>*@
+                    <td>
+                        Model.AccountCode
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelModel => Model.BrokerReference)
+                    </td>
+                    <td>
+                        Model.ClientName
+                    </td>
+                    <td>
+                        Model.PolicyReference
+                    </td>
+                    <td>
+                        @Html.TextBox("txtBoxMemoAmount" + Model.CCTransactionId, Model.MemoAmount, new { @readonly = "", style = "min-width:50px;max-width:100px;padding:3px", @data_sun = Model.CCTransactionId, @data_sun_orignalAmount = @memoAmount })
+                    </td>
+                    <td>
+                        @Html.TextBox("txtBoxCCAmountNew" + Model.CCTransactionId, Model.Amount, new { @readonly = "", style = "min-width:50px;max-width:100px;padding:3px", @data_sun = Model.CCTransactionId, @data_sun_orignalAmount = Model.Amount })
+                    </td>
+                    <td>
+                        @TransformJournalType(Model.CCOpenTransactionTypeId)
+                    </td>
+                    <td>
+                        Model.GeneralDescrition6
+                    </td>
+                    <td>
+                        Model.TotalCommissionRate
+                    </td>
+                    <td>
+                        Model.BrokerCommissionRate
+                    </td>
+                    <td>
+                        Model.PowerplaceCommissionRate
+                    </td>
+                    <td>
+
+                        @Html.TextBox("txtBoxTotalCommValue" + Model.CCTransactionId, Model.TotalCommissionValue, new { @readonly = "", style = "min-width:50px;max-width:100px;padding:3px", @data_sun_orignalAmount = @totalCommissionValue }) @*Total Commission Value*@
+                    </td>
+                    <td>
+                        @*Powerplace commission amount*@
+                        @Html.TextBox("txtBoxPPCommValue" + Model.CCTransactionId, Model.PowerplaceCommissionValue, new { @readonly = "", style = "min-width:50px;max-width:100px;padding:3px", @data_sun = Model.CCTransactionId, @data_sun_orignalAmount = @powerplaceCommissionValue })
+                    </td>
+                    <td>
+                        @*Broker Commission amount*@
+                        @Html.TextBox("txtBoxBrokerCommValue" + Model.CCTransactionId, Model.BrokerCommissionValue, new { @readonly = "", style = "min-width:50px;max-width:100px;padding:3px", @data_sun = Model.CCTransactionId, @data_sun_orignalAmount = @brokerCommissionValue })
+                    </td>
+                    <td>
+                        Model.CCTransactionId
+                    </td>
+
+                    <td>
+                        @*IPT amount*@
+                        @Html.TextBox("txtBoxIPTValue" + Model.CCTransactionId, Model.IPTValue, new { @readonly = "", style = "min-width:50px;max-width:100px;padding:3px", @data_sun = Model.CCTransactionId, @data_sun_orignalAmount = @iptAmount })
+                    </td>
+                    <td>
+                        Model.CCTransactionId
+                    </td>
+                </tr>
+            
+
+        </table>
+
+    }
+    else
+    {
+        <div align="center">
+            <h2 style="color:red">Nothing Found! Please check if the policy exists.</h2>
+        </div>
+    }
+</div>
+

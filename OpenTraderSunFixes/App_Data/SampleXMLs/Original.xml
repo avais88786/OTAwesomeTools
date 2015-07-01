@@ -1,0 +1,207 @@
+﻿<SSC>
+  <SunSystemsContext>
+    <BusinessUnit>TST</BusinessUnit>
+    <BudgetCode>A</BudgetCode>
+  </SunSystemsContext>
+  <MethodContext>
+    <LedgerPostingParameters>
+      <Description>9308</Description>
+      <PostingType>2</PostingType>
+      <DefaultPeriod />
+      <SuppressSubstitutedMessages>Y</SuppressSubstitutedMessages>
+    </LedgerPostingParameters>
+  </MethodContext>
+  <Payload>
+    
+    <Ledger>
+      <Line>
+        <AccountCode>111021001</AccountCode>
+        <AccountingPeriod>0011980</AccountingPeriod>
+        <AnalysisCode1 />
+        <AnalysisCode2>17</AnalysisCode2>
+        <AnalysisCode3>54</AnalysisCode3>
+        <AnalysisCode4>extranet</AnalysisCode4>
+        <AnalysisCode5>0</AnalysisCode5>
+        <AnalysisCode6 />
+        <AnalysisCode7 />
+        <AnalysisCode8>Y</AnalysisCode8>
+        <AnalysisCode9> </AnalysisCode9>
+        <AnalysisCode10>N/A</AnalysisCode10>
+        <BaseAmount>0.00</BaseAmount>
+        <CurrencyCode>GBP</CurrencyCode>
+        <DebitCredit>D</DebitCredit>
+        <Description>POWPOW0009890</Description>
+        <EntryDate>20102014</EntryDate>
+        <JournalSource>TST</JournalSource>
+        <JournalType>SMTA</JournalType>
+        <TransactionAmount>0.00</TransactionAmount>
+        <TransactionAmountDecimalPlaces>2</TransactionAmountDecimalPlaces>
+        <TransactionDate>29092014</TransactionDate>
+        <TransactionReference>509563</TransactionReference>
+        <MemoAmount>-50.08</MemoAmount>
+        <DetailLad>
+          <GeneralDescription1>XNET752254</GeneralDescription1>
+          <GeneralDescription2>POWPOW0009890</GeneralDescription2>
+          <GeneralDescription3>!!!!!!!!Davie TEST</GeneralDescription3>
+          <GeneralDescription4>6.0000000000</GeneralDescription4>
+          <GeneralDescription5>-2.83</GeneralDescription5>
+          <GeneralDescription6>Main</GeneralDescription6>
+          <GeneralDescription7>0.0000000000</GeneralDescription7>
+          <GeneralDescription8>0.0000000000</GeneralDescription8>
+          <GeneralDescription9>0.0000000000</GeneralDescription9>
+          <GeneralDescription10>0.00</GeneralDescription10>
+          <GeneralDescription11>0.00</GeneralDescription11>
+          <GeneralDescription12>0.00</GeneralDescription12>
+          <GeneralDescription13>extranet</GeneralDescription13>
+          <GeneralDescription14 />
+          <GeneralDescription15 />
+          <GeneralDescription16>0</GeneralDescription16>
+          <GeneralDescription18>X0000657</GeneralDescription18>
+          <GeneralDate1>29092014</GeneralDate1>
+          <GeneralDate2>29092014</GeneralDate2>
+        </DetailLad>
+      </Line>
+      <Line>
+        <AccountCode>111023500</AccountCode>
+        <AccountingPeriod>0011980</AccountingPeriod>
+        <AnalysisCode1 />
+        <AnalysisCode2>17</AnalysisCode2>
+        <AnalysisCode3>54</AnalysisCode3>
+        <AnalysisCode4>extranet</AnalysisCode4>
+        <AnalysisCode5>0</AnalysisCode5>
+        <AnalysisCode6 />
+        <AnalysisCode7 />
+        <AnalysisCode8>Y</AnalysisCode8>
+        <AnalysisCode9> </AnalysisCode9>
+        <AnalysisCode10>N/A</AnalysisCode10>
+        <BaseAmount>0.00</BaseAmount>
+        <CurrencyCode>GBP</CurrencyCode>
+        <DebitCredit>C</DebitCredit>
+        <Description>POWPOW0009890</Description>
+        <EntryDate>20102014</EntryDate>
+        <JournalSource>TST</JournalSource>
+        <JournalType>SMTA</JournalType>
+        <TransactionAmount>0.00</TransactionAmount>
+        <TransactionAmountDecimalPlaces>2</TransactionAmountDecimalPlaces>
+        <TransactionDate>29092014</TransactionDate>
+        <TransactionReference>509563</TransactionReference>
+        <MemoAmount>-50.08</MemoAmount>
+        <DetailLad>
+          <GeneralDescription1>XNET752254</GeneralDescription1>
+          <GeneralDescription2>POWPOW0009890</GeneralDescription2>
+          <GeneralDescription3>!!!!!!!!Davie TEST</GeneralDescription3>
+          <GeneralDescription4>6.0000000000</GeneralDescription4>
+          <GeneralDescription5>-2.83</GeneralDescription5>
+          <GeneralDescription6>Main</GeneralDescription6>
+          <GeneralDescription7>0.0000000000</GeneralDescription7>
+          <GeneralDescription8>0.0000000000</GeneralDescription8>
+          <GeneralDescription9>0.0000000000</GeneralDescription9>
+          <GeneralDescription10>0.00</GeneralDescription10>
+          <GeneralDescription11>0.00</GeneralDescription11>
+          <GeneralDescription12>0.00</GeneralDescription12>
+          <GeneralDescription13>extranet</GeneralDescription13>
+          <GeneralDescription14 />
+          <GeneralDescription15 />
+          <GeneralDescription16>0</GeneralDescription16>
+          <GeneralDescription18>X0000657</GeneralDescription18>
+          <GeneralDate1>29092014</GeneralDate1>
+          <GeneralDate2>29092014</GeneralDate2>
+        </DetailLad>
+      </Line>
+      <Line>
+        <AccountCode>IBAtranet</AccountCode>
+        <AccountingPeriod>0011980</AccountingPeriod>
+        <AnalysisCode1 />
+        <AnalysisCode2>17</AnalysisCode2>
+        <AnalysisCode3>54</AnalysisCode3>
+        <AnalysisCode4>extranet</AnalysisCode4>
+        <AnalysisCode5>0</AnalysisCode5>
+        <AnalysisCode6 />
+        <AnalysisCode7 />
+        <AnalysisCode8>Y</AnalysisCode8>
+        <AnalysisCode9> </AnalysisCode9>
+        <AnalysisCode10>N/A</AnalysisCode10>
+        <BaseAmount>-50.08</BaseAmount>
+        <CurrencyCode>GBP</CurrencyCode>
+        <DebitCredit>C</DebitCredit>
+        <Description>POWPOW0009890</Description>
+        <EntryDate>20102014</EntryDate>
+        <JournalSource>TST</JournalSource>
+        <JournalType>SMTA</JournalType>
+        <TransactionAmount>-50.08</TransactionAmount>
+        <TransactionAmountDecimalPlaces>2</TransactionAmountDecimalPlaces>
+        <TransactionDate>29092014</TransactionDate>
+        <TransactionReference>509563</TransactionReference>
+        <MemoAmount>-50.08</MemoAmount>
+        <DetailLad>
+          <GeneralDescription1>XNET752254</GeneralDescription1>
+          <GeneralDescription2>POWPOW0009890</GeneralDescription2>
+          <GeneralDescription3>!!!!!!!!Davie TEST</GeneralDescription3>
+          <GeneralDescription4>6.0000000000</GeneralDescription4>
+          <GeneralDescription5>-2.83</GeneralDescription5>
+          <GeneralDescription6>Main</GeneralDescription6>
+          <GeneralDescription7>0.0000000000</GeneralDescription7>
+          <GeneralDescription8>0.0000000000</GeneralDescription8>
+          <GeneralDescription9>0.0000000000</GeneralDescription9>
+          <GeneralDescription10>0.00</GeneralDescription10>
+          <GeneralDescription11>0.00</GeneralDescription11>
+          <GeneralDescription12>0.00</GeneralDescription12>
+          <GeneralDescription13>extranet</GeneralDescription13>
+          <GeneralDescription14 />
+          <GeneralDescription15 />
+          <GeneralDescription16>0</GeneralDescription16>
+          <GeneralDescription18>X0000657</GeneralDescription18>
+          <GeneralDate1>29092014</GeneralDate1>
+          <GeneralDate2>29092014</GeneralDate2>
+        </DetailLad>
+      </Line>
+      <Line>
+        <AccountCode>IBA000054</AccountCode>
+        <AccountingPeriod>0011980</AccountingPeriod>
+        <AnalysisCode1 />
+        <AnalysisCode2>17</AnalysisCode2>
+        <AnalysisCode3>54</AnalysisCode3>
+        <AnalysisCode4>extranet</AnalysisCode4>
+        <AnalysisCode5>0</AnalysisCode5>
+        <AnalysisCode6 />
+        <AnalysisCode7 />
+        <AnalysisCode8>Y</AnalysisCode8>
+        <AnalysisCode9> </AnalysisCode9>
+        <AnalysisCode10>N/A</AnalysisCode10>
+        <BaseAmount>-50.08</BaseAmount>
+        <CurrencyCode>GBP</CurrencyCode>
+        <DebitCredit>D</DebitCredit>
+        <Description>POWPOW0009890</Description>
+        <EntryDate>20102014</EntryDate>
+        <JournalSource>TST</JournalSource>
+        <JournalType>SMTA</JournalType>
+        <TransactionAmount>-50.08</TransactionAmount>
+        <TransactionAmountDecimalPlaces>2</TransactionAmountDecimalPlaces>
+        <TransactionDate>29092014</TransactionDate>
+        <TransactionReference>509563</TransactionReference>
+        <MemoAmount>-50.08</MemoAmount>
+        <DetailLad>
+          <GeneralDescription1>XNET752254</GeneralDescription1>
+          <GeneralDescription2>POWPOW0009890</GeneralDescription2>
+          <GeneralDescription3>!!!!!!!!Davie TEST</GeneralDescription3>
+          <GeneralDescription4>6.0000000000</GeneralDescription4>
+          <GeneralDescription5>-2.83</GeneralDescription5>
+          <GeneralDescription6>Main</GeneralDescription6>
+          <GeneralDescription7>0.0000000000</GeneralDescription7>
+          <GeneralDescription8>0.0000000000</GeneralDescription8>
+          <GeneralDescription9>0.0000000000</GeneralDescription9>
+          <GeneralDescription10>0.00</GeneralDescription10>
+          <GeneralDescription11>0.00</GeneralDescription11>
+          <GeneralDescription12>0.00</GeneralDescription12>
+          <GeneralDescription13>extranet</GeneralDescription13>
+          <GeneralDescription14 />
+          <GeneralDescription15 />
+          <GeneralDescription16>0</GeneralDescription16>
+          <GeneralDescription18>X0000657</GeneralDescription18>
+          <GeneralDate1>29092014</GeneralDate1>
+          <GeneralDate2>29092014</GeneralDate2>
+        </DetailLad>
+      </Line>
+    </Ledger>
+  </Payload>
+</SSC>

@@ -1,0 +1,99 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+   <style type="text/css">
+       #loadingBox {
+           width: 150px;
+           height: 150px;
+           background: #FFF;
+           border: red dotted 5px;
+           text-align: center;
+           position: absolute;
+           margin-left: -75px;
+           margin-top: -75px;
+           left: 50%;
+           top: 50%;
+           z-index: 20;
+           display: none;
+       }
+
+       #screen {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #000;
+       }
+   </style>
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+    <script>
+        $(function(){
+            	var pop = function(){
+            	        $('#screen').css({ opacity: 0.7, 'width': $(document).width(), 'height': $(document).height(), 'background': '#ff88bb' });
+            	        $('#screen').removeAttr('hidden');
+                	    $('body').css({'overflow':'hidden'});
+            	        $('#loadingBox').css({ 'display': 'block' });
+            	        $('#loadingBox').css({ 'display': 'block' }).click(function () {
+                	        $(this).css('display', 'none');
+                	        //$('#screen').css('display', 'none');
+                	        $('#screen').attr("hidden","");
+                	    });
+                	}
+            	$('#button').click(pop);
+       
+
+            	$("#sunFixButton").click(function () {
+
+            	    $("#SunFixDownDiv").slideToggle();
+            	    $("#TraderFixDownDiv").slideUp();
+            	});
+
+
+            	$("#traderFixButton").click(function () {
+
+            	    $("#TraderFixDownDiv").slideToggle();
+            	    $("#SunFixDownDiv").slideUp();
+            	   
+            	});
+
+        });
+    </script>
+    <title></title>
+</head>
+<body>
+
+    <input type='button' value='Sun Fix Help!' id='sunFixButton' />
+    <input type='button' value='Trader Fix Help!' id='traderFixButton' />
+
+    <br/>
+    <div id="SunFixDownDiv" style="display:inline;padding:5px">
+        <label>Sun Fixes</label>
+    </div>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div id="TraderFixDownDiv" style="display: inline; padding: 5px;">
+        <label>Trader Fixes</label>
+    </div>
+
+    <br/>
+    <input type='button' value='grey out me!' id='button'/>
+
+	<div id='loadingBox' hidden>
+        <img src="~/Content/Images/loader.gif" />
+    </div>
+
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><b /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+	<div id='screen' hidden/>
+
+
+       
+
+    
+
+</body>
+</html>

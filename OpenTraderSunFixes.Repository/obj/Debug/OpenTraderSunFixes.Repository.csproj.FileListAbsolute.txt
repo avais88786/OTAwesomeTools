@@ -1,0 +1,7 @@
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Repository\bin\Debug\OpenTraderSunFixes.Repository.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Repository\bin\Debug\OpenTraderSunFixes.Repository.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Repository\bin\Debug\OpenTraderSunFixes.Model.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Repository\bin\Debug\OpenTraderSunFixes.Model.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.pdb

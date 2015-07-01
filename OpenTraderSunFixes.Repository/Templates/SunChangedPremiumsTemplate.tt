@@ -1,0 +1,159 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="OpenTraderSunFixes.Model" #>
+
+
+DECLARE	@Contra_CCTransactionStatusId INT				= 1	-- Selected for Payment
+DECLARE	@Contra_CCAccountingPeriodId INT				= 0	-- Not Specified
+DECLARE	@Contra_LogonUserId INT						= 4	-- Batch User (Countrywide)
+DECLARE	@Contra_CompanyId INT						= 3	-- Countrywide
+DECLARE	@Contra_CCOpenTransactionTypeId INT				= 3	-- Account Adjustment
+
+DECLARE @OriginalCCTransactionId INT =  <#= sunFixAttributes.CCTransactionId  #> -- ORIGINAL TRANSaCTIONID HERE
+DECLARE @NewCCTransactionId INT --new cctransId
+DECLARE @NewCCAmount DECIMAL(28,10) = <#= sunFixAttributes.CCAmountNew  #> -- CC Amount Here
+DECLARE @NewMemoAmount DECIMAL(28,10) = <#= sunFixAttributes.MemoAmountNew  #> -- Memo Amount Here
+DECLARE @NewTaxAmount DECIMAL(28,10) = <#= sunFixAttributes.IPTNew  #> -- Tax amount here
+DECLARE @NewBrokerCommissionAmount DECIMAL(28,10) = <#= sunFixAttributes.BrokerCommNew  #> -- Broker Commission Amount
+DECLARE @NewWholesalerCommissionAmount DECIMAL(28,10) = <#= sunFixAttributes.PowerplaceCommNew  #> -- Wholesaler Commission Amount (powerplace)
+
+DECLARE @NewBrokerCommissionRate DECIMAL(28,10) = <#= sunFixAttributes.BrokerCommissionRate  #> -- Broker Commission Rate
+DECLARE @NewWholesalerCommissionRate DECIMAL(28,10) = <#= sunFixAttributes.PowerplaceCommissionRate  #> -- Wholesaler Commission Rate (powerplace)
+
+
+BEGIN TRANSACTION T1
+
+BEGIN TRY
+
+	INSERT INTO CCTransaction(
+			RiskId, 
+			CCTransactionStatusId, 
+			CCPaymentTypeId, 
+			CCAccountingPeriodId, 
+			Amount, 
+			Reference, 
+			PaymentDate, 
+			EffectiveDate, 
+			ProcessDate, 
+			CurrencyId, 
+			CreatorUserId, 
+			CreatorCompanyId, 
+			CreationDate, 
+			LastUpdateUserId, 
+			LastUpdatedDate,
+			SettlementDate, 
+			Comments, 
+			CCOpenTransactionTypeId, 
+			BrokerCompanyId, 
+			InsurerCompanyId, 
+			ClientCompanyId, 
+			BrokerReference, 
+			CCOpenPremiumTypeId, 
+			HasBeenReversed, 
+			ReversesCCTransactionId
+		)
+		SELECT
+			cct.RiskId,							-- RiskId 
+			@Contra_CCTransactionStatusId,		-- CCTransactionStatusId 
+			cct.CCPaymentTypeId,				-- CCPaymentTypeId 
+			@Contra_CCAccountingPeriodId,		-- CCAccountingPeriodId 
+			@NewCCAmount,          				-- Amount 
+			cct.Reference,						-- Reference 
+			NULL,								-- PaymentDate 
+			cct.EffectiveDate,					-- EffectiveDate 
+			GETDATE(),							-- ProcessDate 
+			cct.CurrencyId,						-- CurrencyId 
+			@Contra_LogonUserId,				-- CreatorUserId 
+			@Contra_CompanyId,					-- CreatorCompanyId 
+			GETDATE(),							-- CreationDate 
+			@Contra_LogonUserId,				-- LastUpdateUserId 
+			GETDATE(),							-- LastUpdatedDate
+			NULL,								-- SettlementDate 
+			CCT.Comments,						-- Comments 
+			@Contra_CCOpenTransactionTypeId,	-- CCOpenTransactionTypeId 
+			cct.BrokerCompanyId,				-- BrokerCompanyId 
+			cct.InsurerCompanyId,				-- InsurerCompanyId 
+			cct.ClientCompanyId,				-- ClientCompanyId 
+			cct.BrokerReference,				-- BrokerReference 
+			cct.CCOpenPremiumTypeId,			-- CCOpenPremiumTypeId 
+			0,									-- HasBeenReversed 
+			cct.CCTransactionId					-- ReversesCCTransactionId
+		FROM 
+			CCTransaction cct
+			WHERE cct.CCTransactionId = @OriginalCCTransactionId
+
+	SET @NewCCTransactionId = SCOPE_IDENTITY()
+
+	INSERT INTO CCTransactionItem(
+			CCTransactionId,
+			CCCategoryTypeId,
+			CCSubCategoryTypeId,
+			CompanyId,
+			Amount,
+			CreatorUserId,
+			CreatorCompanyId,
+			CreationDate,
+			LastUpdateUserId,
+			LastUpdatedDate,
+			Rate
+		)
+		SELECT
+			@NewCCTransactionId,		-- CCTransactionId
+			ccti.CCCategoryTypeId,		-- CCCategoryTypeId
+			ccti.CCSubCategoryTypeId,	-- CCSubCategoryTypeId
+			ccti.CompanyId,				-- CompanyId
+			CASE ccti.CCCategoryTypeId
+				WHEN 3 THEN @NewTaxAmount -- Tax
+				WHEN 4 THEN @NewMemoAmount
+				WHEN 2 THEN
+				CASE ccti.CCSubCategoryTypeId
+					WHEN 5 THEN @NewBrokerCommissionAmount --Broker Commission amount
+					WHEN 6 THEN @NewWholesalerCommissionAmount --Wholesaler Commission amount
+				END
+			END, 
+			@Contra_LogonUserId,		-- CreatorUserId
+			@Contra_CompanyId,			-- CreatorCompanyId
+			GETDATE(),					-- CreationDate
+			@Contra_LogonUserId,		-- LastUpdateUserId
+			GETDATE(),					-- LastUpdatedDate
+			CASE ccti.CCCategoryTypeId
+				WHEN 3 THEN ccti.Rate
+				WHEN 4 THEN ccti.Rate
+				WHEN 2 THEN
+				CASE ccti.CCSubCategoryTypeId
+					WHEN 5 THEN @NewBrokerCommissionRate --Broker Commission rate
+					WHEN 6 THEN @NewWholesalerCommissionRate --Wholesaler Commission rate
+				END
+			END
+		FROM
+			CCTransactionItem ccti
+			WHERE
+			ccti.CCTransactionId = @OriginalCCTransactionId
+
+			IF (@NewCCTransactionId IS NOT NULL)
+			BEGIN
+	    		EXEC dbo.usp_open_acc_updTransactionStatus @NewCCTransactionId, 1, ''
+				COMMIT TRANSACTION T1
+				SELECT @NewCCTransactionId
+			END
+			ELSE
+			BEGIN
+				PRINT 'NEW CCTRANSID IS NULL...ROLLBACKING'
+				ROLLBACK TRANSACTION T1
+			END
+	   
+END TRY
+BEGIN CATCH
+		ROLLBACK TRANSACTION T1
+		PRINT 'Error Occured'
+		SELECT
+		ERROR_NUMBER() AS ErrorNumber
+		,ERROR_SEVERITY() AS ErrorSeverity
+		,ERROR_STATE() AS ErrorState
+		,ERROR_PROCEDURE() AS ErrorProcedure
+		,ERROR_LINE() AS ErrorLine
+		,ERROR_MESSAGE() AS ErrorMessage;
+END CATCH

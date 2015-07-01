@@ -1,0 +1,118 @@
+﻿@model OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems.ExternalServiceViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+@Styles.Render("~/Content/bootstrap.css")
+@*@Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+@Scripts.Render("~/Scripts/jquery.validate.min.js")
+@Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")*@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    Things Remaining : 
+    ExternalServiceTransformConfigs
+    iMarketResponseType
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+    
+        <fieldset>
+            <legend>ExternalServiceScriptViewModel</legend>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.SchemeId)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.SchemeId)
+                @Html.ValidationMessageFor(model => model.SchemeId)
+            </div>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ExternalServiceTypes)
+            </div>
+
+
+
+            <table class="table">
+                <tr>
+                    <th>@Html.LabelFor(model => model.ExternalServiceTypes)</th>
+                    <th>@Html.LabelFor(model => model.ExternalServiceNames)</th>
+
+
+                    <th>@Html.LabelFor(model => model.Description)</th>
+                    <th>@Html.LabelFor(model => model.URL)</th>
+                    <th>@Html.LabelFor(model => model.SoapAction)</th>
+
+                </tr>
+                
+                
+                @{int i = 0; }
+                @foreach (var item in Model.ExternalStypes)
+                {
+                <tr>
+                    <td>
+                        <input type="checkbox"
+                               style="display: inline-block"
+                               name=@Html.Raw("ExternalServiceTypes[" + @i + "]")
+                               value=@item.Value />
+                        <label style="display: inline-block">@item.Text</label>
+                        </td>
+                        
+                    <td>
+                        @Html.TextBox("ExternalServiceNames[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Service Name for " + @item.Text })
+                    </td>
+                    <td>
+                        @Html.TextBox("Description[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Description for " + @item.Text })
+                    </td>
+                    <td>
+                        @Html.TextBox("URL[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Ext Service Url for " + @item.Text })
+                    </td>
+                    <td>
+                        @Html.TextBox("SoapAction[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "SOAP Action for " + @item.Text })
+                    </td>
+                        @{i++;
+                        }
+            </tr>
+            }
+            </table>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ExternalServiceTransform)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ExternalServiceTransform)
+                @Html.ValidationMessageFor(model => model.ExternalServiceTransform)
+            </div>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.OpenRatingEngineId)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.OpenRatingEngineId)
+                @Html.ValidationMessageFor(model => model.OpenRatingEngineId)
+            </div>
+            
+            @Html.HiddenFor(model => model.ExternalStypes)
+    
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>
