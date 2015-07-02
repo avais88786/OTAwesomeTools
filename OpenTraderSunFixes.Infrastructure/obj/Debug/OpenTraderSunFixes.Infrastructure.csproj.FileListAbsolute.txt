@@ -9,3 +9,14 @@ C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Infras
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Infrastructure\obj\Debug\OpenTraderSunFixes.Infrastructure.csprojResolveAssemblyReference.cache
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Infrastructure\obj\Debug\OpenTraderSunFixes.Infrastructure.dll
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Infrastructure\obj\Debug\OpenTraderSunFixes.Infrastructure.pdb
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Infrastructure\bin\Debug\OpenTraderSunFixes.Infrastructure.dll
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Infrastructure\bin\Debug\OpenTraderSunFixes.Infrastructure.pdb
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Infrastructure\bin\Debug\OpenTraderSunFixes.Model.dll
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Infrastructure\bin\Debug\System.Web.Mvc.dll
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Infrastructure\bin\Debug\EntityFramework.dll
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Infrastructure\bin\Debug\OpenTraderSunFixes.Model.pdb
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Infrastructure\bin\Debug\System.Web.Mvc.xml
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Infrastructure\bin\Debug\EntityFramework.xml
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Infrastructure\obj\Debug\OpenTraderSunFixes.Infrastructure.csprojResolveAssemblyReference.cache
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Infrastructure\obj\Debug\OpenTraderSunFixes.Infrastructure.dll
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Infrastructure\obj\Debug\OpenTraderSunFixes.Infrastructure.pdb

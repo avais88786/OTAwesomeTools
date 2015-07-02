@@ -5,3 +5,10 @@ C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Reposi
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.csprojResolveAssemblyReference.cache
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.dll
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\SunFixes\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.pdb
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Repository\bin\Debug\OpenTraderSunFixes.Repository.dll
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Repository\bin\Debug\OpenTraderSunFixes.Repository.pdb
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Repository\bin\Debug\OpenTraderSunFixes.Model.dll
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Repository\bin\Debug\OpenTraderSunFixes.Model.pdb
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.csprojResolveAssemblyReference.cache
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.dll
+C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.pdb
