@@ -22,14 +22,14 @@ namespace OpenTraderSunFixes.Controllers
             
                 new SelectListItem() { Value = x1.ExternalServiceTypeId.ToString(), Text = x1.Name }
             );
-            var vm = new ExternalServiceViewModel();
+            var vm = new ExternalServiceScriptViewModel();
             vm.ExternalStypes = items.Cast<SelectListItem>();
-
+             
             return View(vm);
         }
 
         [HttpPost]
-        public ActionResult Index(ExternalServiceViewModel ViewModel)
+        public ActionResult Index(ExternalServiceScriptViewModel ViewModel)
         {
             var x = PartialView("Script", ViewModel);
             //ViewEngineResult result = ViewEngines.Engines.FindPartialView(this.ControllerContext, "Script");
@@ -50,20 +50,7 @@ namespace OpenTraderSunFixes.Controllers
             //    var y = sb.ToString();
             //}
 
-            var externalServiceScriptViewModel = new ExternalServiceScriptViewModel();
-            externalServiceScriptViewModel.Description = ViewModel.Description;
-            externalServiceScriptViewModel.ExistingDatabaseValues = new ExternalServiceItemsContext();
-            externalServiceScriptViewModel.ExternalServiceNames = ViewModel.ExternalServiceNames;
-            externalServiceScriptViewModel.ExternalServiceTransform = ViewModel.ExternalServiceTransform;
-            externalServiceScriptViewModel.ExternalServiceTypes = ViewModel.ExternalServiceTypes;
-            externalServiceScriptViewModel.ExternalStypes = ViewModel.ExternalStypes;
-            externalServiceScriptViewModel.OpenRatingEngineId = ViewModel.OpenRatingEngineId;
-            externalServiceScriptViewModel.SchemeId = ViewModel.SchemeId;
-            externalServiceScriptViewModel.SoapAction = ViewModel.SoapAction;
-            externalServiceScriptViewModel.URL = ViewModel.URL;
-
-
-            return View("Script",externalServiceScriptViewModel);
+            return View("Script", ViewModel);
         }
 
         [AllowAnonymous]

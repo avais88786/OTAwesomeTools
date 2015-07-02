@@ -47,7 +47,7 @@
     @*@{var y = Model.ExistingDatabaseValues.ExternalServiceTransforms.ToList().GetType().GenericTypeArguments[0].GetCustomAttributes(typeof(System.ComponentModel.DataAnnotations.Schema.TableAttribute), true).FirstOrDefault();}*@
     @foreach (var item in Model.ExistingDatabaseValues.ExternalServiceTransforms)
     {
-        var transformConfig = string.IsNullOrEmpty(item.TransformConfig) ? "NULL" : string.Format("'{0}'", item.TransformConfig);
+        var transformConfig = string.IsNullOrEmpty(item.TransformConfig) ? "NULL" : string.Format("'{0}'", item.TransformConfig.Replace(" />", "/>"));
         @Html.Encode(Html.Raw("INSERT INTO ExternalServiceTransform(RequestTransform, ResponseTransform, TransformConfig) VALUES ('" + item.RequestTransform + "','" + item.ResponseTransform + "'," + @transformConfig + ")"))
         <br />
     }
@@ -78,8 +78,10 @@
     {
         var tt = Model.ExistingDatabaseValues.ExternalServiceTransforms.ToList().SingleOrDefault(ex => ex.ExternalServiceTransformId == item.ExternalServiceTransformId);
         var yy = string.Empty;
-        if (tt != null) { 
-            yy = string.Format("(SELECT ExternalServiceTransformId FROM ExternalServiceTransform WHERE RequestTransform = '{0}' AND ResponseTransform = '{1}' AND ISNULL(CAST(TransformConfig AS VARCHAR(MAX)), '') = '{2}')",tt.RequestTransform,tt.ResponseTransform,tt.TransformConfig);
+        if (tt != null)
+        {
+            var transformConfig = !string.IsNullOrEmpty(tt.TransformConfig) ? tt.TransformConfig.Replace(" />", "/>") : tt.TransformConfig;
+            yy = string.Format("(SELECT ExternalServiceTransformId FROM ExternalServiceTransform WHERE RequestTransform = '{0}' AND ResponseTransform = '{1}' AND ISNULL(CAST(TransformConfig AS VARCHAR(MAX)), '') = '{2}')", tt.RequestTransform, tt.ResponseTransform, transformConfig);
             @Html.Encode(Html.Raw(string.Format("INSERT INTO ExternalService(Url, SoapAction, ExternalServiceTransformId) VALUES ('{0}','{1}',{2})", item.Url, item.SoapAction,yy)))
         }
         else 
@@ -95,6 +97,69 @@
         @Html.Raw(string.Format("INSERT INTO ExternalService(Url, SoapAction, ExternalServiceTransformId) VALUES ('{0}','{1}',{2})",Model.URL[i],Model.SoapAction[i],"NULL"))
         <br />
     }
+
+
+    <br/>-- ExternalServiceVersioning ---------------------------------------------------------------------<br/>
+    @foreach (var item in Model.ExistingDatabaseValues.ExternalServiceVersionings)
+    {
+        var externalServiceItem = Model.ExistingDatabaseValues.ExternalServiceItems.Single(esi => esi.ExternalServiceItemId == item.ExternalServiceItemId);
+        var externalServiceItemSelectQuery = String.Format("(SELECT ExternalServiceItemId FROM ExternalServiceItem WHERE SchemeRiskId = {0} AND ExternalServiceTypeId = {1} AND Name = '{2}' AND  Description = '{3}')", externalServiceItem.SchemeRiskId, externalServiceItem.ExternalServiceTypeId, externalServiceItem.Name, externalServiceItem.Description);
+
+        var externalService = Model.ExistingDatabaseValues.ExternalServices.Single(es => es.ExternalServiceId == item.ExternalServiceId);
+        var externalServiceTransform = Model.ExistingDatabaseValues.ExternalServiceTransforms.SingleOrDefault(est => est.ExternalServiceTransformId == externalService.ExternalServiceTransformId);
+        
+        var externalServiceTransformQuery = string.Empty;
+        var externalServiceSelectQuery = string.Empty;
+        
+        if (externalServiceTransform != null)
+        {
+            var transformConfig = !string.IsNullOrEmpty(externalServiceTransform.TransformConfig) ? externalServiceTransform.TransformConfig.Replace(" />","/>") : externalServiceTransform.TransformConfig;
+            externalServiceTransformQuery = string.Format("(SELECT ExternalServiceTransformId FROM ExternalServiceTransform WHERE RequestTransform = '{0}' AND ResponseTransform = '{1}' AND ISNULL(CAST(TransformConfig AS VARCHAR(MAX)), '') = '{2}')", externalServiceTransform.RequestTransform, externalServiceTransform.ResponseTransform, transformConfig);
+            externalServiceSelectQuery = string.Format("(SELECT ExternalServiceId FROM ExternalService WHERE Url = '{0}' AND SoapAction = '{1}' AND ExternalServiceTransformId = {2})", externalService.Url, externalService.SoapAction, externalServiceTransformQuery);
+        }
+        else
+        {
+            externalServiceSelectQuery = string.Format("(SELECT ExternalServiceId FROM ExternalService WHERE Url = '{0}' AND SoapAction = '{1}' AND ExternalServiceTransformId IS NULL)", externalService.Url, externalService.SoapAction);
+        }
+        
+         
+        
+        
+        var openRatingEngine = Model.ExistingDatabaseValues.OpenRatingEngines.Where(ore => ore.SchemeRiskID == externalServiceItem.SchemeRiskId).OrderByDescending(o => o.EffectiveDate).First();
+        var openRatingEngineSelectQuery = string.Format("(SELECT OpenRatingEngineId FROM OpenRatingEngine WHERE SchemeRiskId = {0} AND OpenRatingEngineTypeId = {1} AND EffectiveDate = '{2}')",openRatingEngine.SchemeRiskID,openRatingEngine.OpenRatingEngineTypeID,openRatingEngine.EffectiveDate);
+        @Html.Encode(Html.Raw(string.Format("INSERT INTO ExternalServiceVersioning(ExternalServiceItemId, ExternalServiceId, OpenRatingEngineId, IsLive) VALUES ({0},{1},{2},{3})", externalServiceItemSelectQuery, externalServiceSelectQuery, openRatingEngineSelectQuery, item.IsLive ? "1" : "0")))
+        <br />
+    }
+    <br />-- @Model.SchemeName <br />
+    @foreach (var item in Model.ExternalServiceTypes)
+    {
+        i = Model.ExternalServiceTypes.FindIndex(s => s == item);
+        var externalServiceItemSelectQuery = String.Format("(SELECT ExternalServiceItemId FROM ExternalServiceItem WHERE SchemeRiskId = {0} AND ExternalServiceTypeId = {1} AND Name = '{2}' AND  Description = '{3}')", Model.SchemeId, item, Model.ExternalServiceNames[i], Model.Description[i]);
+        var externalServiceTransformQuery = string.Empty;
+        
+        if ((!string.IsNullOrEmpty(Model.RequestTransforms[i])) && (!string.IsNullOrEmpty(Model.RequestTransforms[i])))
+        {
+            externalServiceTransformQuery = string.Format("(SELECT ExternalServiceTransformId FROM ExternalServiceTransform WHERE RequestTransform = '{0}' AND ResponseTransform = '{1}' AND ISNULL(CAST(TransformConfig AS VARCHAR(MAX)), '') = '{2}')", Model.RequestTransforms[i], Model.ResponseTransforms[i], Model.TransformConfigs[i] == null ? "" : Model.TransformConfigs[i]);    
+        }
+
+        var externalServiceSelectQuery = string.Empty;
+
+        if (!string.IsNullOrEmpty(externalServiceTransformQuery))
+        {
+            externalServiceSelectQuery = string.Format("(SELECT ExternalServiceId FROM ExternalService WHERE Url = '{0}' AND SoapAction = '{1}' AND ExternalServiceTransformId = {2})", Model.URL[i], Model.SoapAction[i], externalServiceTransformQuery);
+        }
+        else
+        {
+            externalServiceSelectQuery = string.Format("(SELECT ExternalServiceId FROM ExternalService WHERE Url = '{0}' AND SoapAction = '{1}' AND ExternalServiceTransformId IS NULL)",  Model.URL[i], Model.SoapAction[i]);    
+        }
+            
+        var openRatingEngineSelectQuery = string.Format("(SELECT OpenRatingEngineId FROM OpenRatingEngine WHERE SchemeRiskId = {0} AND OpenRatingEngineTypeId = {1} AND EffectiveDate = '{2}')", Model.SchemeId, Model.OpenRatingEngineTypeId, Model.OpenRatingEngineEffectiveDate);
+        
+        
+         @Html.Encode(@Html.Raw(string.Format("INSERT INTO ExternalServiceVersioning(ExternalServiceItemId, ExternalServiceId, OpenRatingEngineId, IsLive) VALUES ({0},{1},{2},{3})", externalServiceItemSelectQuery, externalServiceSelectQuery, openRatingEngineSelectQuery,Model.IsLive ? "1" : "0")));
+        <br />
+    }
+
 <section style="white-space:pre-wrap;">
     ALTER TABLE ExternalService
     ADD CONSTRAINT FK_ExternalService_ExternalServiceTransform
