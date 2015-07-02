@@ -21,6 +21,7 @@ namespace OpenTraderSunFixes.Model.GeneratedModel.ExternalServiceItems
         public virtual DbSet<imarketExternalServiceItem> imarketExternalServiceItems { get; set; }
         public virtual DbSet<imarketResponseType> imarketResponseTypes { get; set; }
         public virtual DbSet<OpenRatingEngine> OpenRatingEngines { get; set; }
+        public virtual DbSet<Risk> Risks { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
