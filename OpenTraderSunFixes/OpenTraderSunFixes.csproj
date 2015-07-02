@@ -216,6 +216,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jQuery\CurtainHandler.js" />
+    <Content Include="Scripts\jQuery\externalservice.js" />
     <Content Include="Scripts\jQuery\filedrophandler.js" />
     <Content Include="Scripts\jQuery\GenerateXMLPartialViewEvents.js" />
     <Content Include="Scripts\jQuery\HelpData.js" />

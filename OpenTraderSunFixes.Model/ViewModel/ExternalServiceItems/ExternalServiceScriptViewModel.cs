@@ -26,7 +26,7 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
         }
 
         [Display(Name="Scheme Id (Risk Id of Scheme")]
-        [Remote("GetSchemeName", "ExternalServiceScriptGenerator")]
+        //[Remote("GetSchemeName", "ExternalServiceScriptGenerator")]
         public int SchemeId { get; set; }
 
         public string SchemeName { get; set; }

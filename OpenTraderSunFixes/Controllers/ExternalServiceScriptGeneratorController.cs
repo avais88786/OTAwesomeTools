@@ -54,10 +54,10 @@ namespace OpenTraderSunFixes.Controllers
         }
 
         [AllowAnonymous]
-        public JsonResult GetSchemeName(ExternalServiceViewModel ViewModel)
+        public JsonResult GetSchemeName(int SchemeId)
         {
             ExternalServiceItemsContext context = new ExternalServiceItemsContext();
-            var x = context.Risks.Where(r => r.RiskId == ViewModel.SchemeId);
+            var x = context.Risks.Where(r => r.RiskId == SchemeId);
             return Json(x.First().Description,JsonRequestBehavior.AllowGet);
         }
 
