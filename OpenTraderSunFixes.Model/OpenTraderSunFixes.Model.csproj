@@ -75,6 +75,9 @@
     <Compile Include="GeneratedModel\CCTransactionItem.cs" />
     <Compile Include="GeneratedModel\CCTransactionStatus.cs" />
     <Compile Include="GeneratedModel\Company.cs" />
+    <Compile Include="GeneratedModel\deletethisafteruse\ExternalServiceItem.cs" />
+    <Compile Include="GeneratedModel\deletethisafteruse\Model1.cs" />
+    <Compile Include="GeneratedModel\deletethisafteruse\OpenRatingEngine.cs" />
     <Compile Include="GeneratedModel\ExternalServiceItems\ExternalService.cs" />
     <Compile Include="GeneratedModel\ExternalServiceItems\ExternalServiceItem.cs" />
     <Compile Include="GeneratedModel\ExternalServiceItems\ExternalServiceTransform.cs" />
@@ -84,6 +87,7 @@
     <Compile Include="GeneratedModel\ExternalServiceItems\imarketExternalServiceItem.cs" />
     <Compile Include="GeneratedModel\ExternalServiceItems\imarketResponseType.cs" />
     <Compile Include="GeneratedModel\ExternalServiceItems\ExternalServiceItemsContext.cs" />
+    <Compile Include="GeneratedModel\ExternalServiceItems\OpenRatingEngine.cs" />
     <Compile Include="GeneratedModel\Model1.cs" />
     <Compile Include="GeneratedModel\OpenCompany.cs" />
     <Compile Include="GeneratedModel\Risk.cs" />

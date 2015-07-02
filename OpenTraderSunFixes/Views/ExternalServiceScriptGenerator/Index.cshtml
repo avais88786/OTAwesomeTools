@@ -1,4 +1,4 @@
-﻿@model OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems.ExternalServiceViewModel
+﻿@model OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems.ExternalServiceScriptViewModel
 
 @{
     Layout = null;
@@ -7,10 +7,10 @@
 <!DOCTYPE html>
 
 @Styles.Render("~/Content/bootstrap.css")
-@*@Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
-@Scripts.Render("~/Scripts/jquery.validate.min.js")
+@Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+@Scripts.Render("~/Scripts/jquery.validate.js")
 @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
-@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")*@
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -35,6 +35,7 @@
             </div>
             <div class="editor-field">
                 @Html.EditorFor(model => model.SchemeId)
+                <label>Scheme Name : </label>
                 @Html.ValidationMessageFor(model => model.SchemeId)
             </div>
     
@@ -53,6 +54,9 @@
                     <th>@Html.LabelFor(model => model.Description)</th>
                     <th>@Html.LabelFor(model => model.URL)</th>
                     <th>@Html.LabelFor(model => model.SoapAction)</th>
+                    <th>@Html.LabelFor(model => model.RequestTransforms)</th>
+                    <th>@Html.LabelFor(model => model.ResponseTransforms)</th>
+                    <th>@Html.LabelFor(model => model.TransformConfigs)</th>
 
                 </tr>
                 
@@ -81,28 +85,21 @@
                     <td>
                         @Html.TextBox("SoapAction[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "SOAP Action for " + @item.Text })
                     </td>
+                    <td>
+                        @Html.TextBox("RequestTransforms[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Request Transform for " + @item.Text })
+                    </td>
+                    <td>
+                        @Html.TextBox("ResponseTransforms[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Response Transform for " + @item.Text })
+                    </td>
+                    <td>
+                        @Html.TextBox("TransformConfigs[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Transform Config for " + @item.Text })
+                    </td>
                         @{i++;
                         }
             </tr>
             }
             </table>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.ExternalServiceTransform)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.ExternalServiceTransform)
-                @Html.ValidationMessageFor(model => model.ExternalServiceTransform)
-            </div>
-    
-            <div class="editor-label">
-                @Html.LabelFor(model => model.OpenRatingEngineId)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.OpenRatingEngineId)
-                @Html.ValidationMessageFor(model => model.OpenRatingEngineId)
-            </div>
-            
             @Html.HiddenFor(model => model.ExternalStypes)
     
             <p>

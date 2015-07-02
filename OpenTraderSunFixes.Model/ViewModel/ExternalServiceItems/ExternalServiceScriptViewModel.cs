@@ -21,6 +21,8 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
             SoapAction = new List<string>();
             URL = new List<string>();
             SchemeName = "Change Me Later";
+            RequestTransforms = new List<string>();
+            ResponseTransforms = new List<string>();
         }
 
         [Display(Name="Scheme Id (Risk Id of Scheme")]
@@ -44,11 +46,20 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
         [Display(Name = "External Service SOAP")]
         public List<String> SoapAction { get; set; }
 
-        [Display(Name = "External Service Transform")]
-        public string ExternalServiceTransform { get; set; }
+        [Display(Name = "External Service Request Transform")]
+        public List<String> RequestTransforms { get; set; }
 
-        [Display(Name = "EngineId")]
-        public int OpenRatingEngineId { get; set; }
+        [Display(Name = "External Service Response Transform")]
+        public List<String> ResponseTransforms { get; set; }
+
+        [Display(Name = "External Service Transform Config")]
+        public List<String> TransformConfigs { get; set; }
+
+        public int OpenRatingEngineTypeId { get; set; }
+
+        public DateTime OpenRatingEngineEffectiveDate { get; set; }
+
+        public bool IsLive { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         public IEnumerable<SelectListItem> ExternalStypes { get; set; }
@@ -56,6 +67,11 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
 
     public class ExternalServiceScriptViewModel : ExternalServiceViewModel
     {
+        public ExternalServiceScriptViewModel()
+        {
+            ExistingDatabaseValues = new ExternalServiceItemsContext();
+        }
+
         public ExternalServiceItemsContext ExistingDatabaseValues { get; set; }
     }
 
