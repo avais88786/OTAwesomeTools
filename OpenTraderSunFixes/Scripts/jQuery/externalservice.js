@@ -10,7 +10,8 @@
             data: datas,
             cache: false,
             success: function (result) {
-                $('#schemeplaceholder').text(result);
+                $('#schemeplaceholder').text(result.SchemeName);
+                alert(result.OpenRatingEngines);
             },
             error: function () {
                 $('#schemeplaceholder').text("No Scheme Found");

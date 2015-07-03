@@ -8,6 +8,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
+using System.Web.Script.Serialization;
 
 namespace OpenTraderSunFixes.Controllers
 {
@@ -57,8 +58,10 @@ namespace OpenTraderSunFixes.Controllers
         public JsonResult GetSchemeName(int SchemeId)
         {
             ExternalServiceItemsContext context = new ExternalServiceItemsContext();
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
             var x = context.Risks.Where(r => r.RiskId == SchemeId);
-            return Json(x.First().Description,JsonRequestBehavior.AllowGet);
+            var y = context.OpenRatingEngines.Where(ore => ore.SchemeRiskID == SchemeId);
+            return Json(new {SchemeName = x.First().Description,OpenRatingEngines = serializer.Serialize(y) }, JsonRequestBehavior.AllowGet);
         }
 
 
