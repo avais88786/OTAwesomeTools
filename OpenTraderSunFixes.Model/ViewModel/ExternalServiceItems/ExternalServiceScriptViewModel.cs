@@ -20,9 +20,9 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
             Description = new List<string>();
             SoapAction = new List<string>();
             URL = new List<string>();
-            SchemeName = "Change Me Later";
             RequestTransforms = new List<string>();
             ResponseTransforms = new List<string>();
+            iMarketResponseTypes = new List<string>();
         }
 
         [Display(Name="Scheme Id (Risk Id of Scheme")]
@@ -55,9 +55,23 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
         [Display(Name = "External Service Transform Config")]
         public List<String> TransformConfigs { get; set; }
 
+        [Display(Name = "iMarket Response Type Name")]
+        public List<String> iMarketResponseTypes { get; set; }
+
         public int OpenRatingEngineTypeId { get; set; }
 
         public DateTime OpenRatingEngineEffectiveDate { get; set; }
+
+        [Display(Name="Script Type")]
+        public bool ScriptTypeSingleSchemeOnly { get; set; }
+
+        public string EffectiveDateFormatted
+        {
+            get
+            {
+                return OpenRatingEngineEffectiveDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            }
+        }
 
         public bool IsLive { get; set; }
 
@@ -72,7 +86,27 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
             ExistingDatabaseValues = new ExternalServiceItemsContext();
         }
 
-        public ExternalServiceItemsContext ExistingDatabaseValues { get; set; }
+        public ExternalServiceItemsContext ExistingDatabaseValues { get
+        {
+            if (base.ScriptTypeSingleSchemeOnly)
+            {
+                var x = new ExternalServiceItemsContext();
+                x.ExternalServiceTransforms = null;
+                x.ExternalServices = null;
+                x.ExternalServiceTransforms = null;
+                x.ExternalServiceItems = null;
+                x.ExternalServiceTypes = null;
+                x.ExternalServiceVersionings = null;
+                x.imarketExternalServiceItems = null;
+                x.imarketExternalServices = null;
+                x.imarketResponseTypes = null;
+                x.OpenRatingEngines = null;
+                return x;
+            }
+            return new ExternalServiceItemsContext();
+        }
+            private set { }
+        }
     }
 
 }

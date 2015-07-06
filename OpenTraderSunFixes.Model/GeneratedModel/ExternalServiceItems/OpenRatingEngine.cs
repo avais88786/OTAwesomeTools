@@ -17,6 +17,12 @@ namespace OpenTraderSunFixes.Model.GeneratedModel.ExternalServiceItems
 
         public DateTime? EffectiveDate { get; set; }
 
+        public string EffectiveDateFormatted { 
+        get{
+                return EffectiveDate.Value.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            } 
+        }
+
         public DateTime? SpecifiedEffectiveDate { get; set; }
     }
 }

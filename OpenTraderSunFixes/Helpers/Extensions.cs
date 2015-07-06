@@ -52,5 +52,13 @@ namespace OpenTraderSunFixes.Helpers
             //var y = StringWriter.ToString();
             return x2;
         }
+
+        public static IEnumerable<T> CheckScriptType<T>(this IEnumerable<T> source) 
+        {
+            if (source == null)
+                return Activator.CreateInstance<List<T>>().AsEnumerable();
+            return source;
+        }
+
     }
 }

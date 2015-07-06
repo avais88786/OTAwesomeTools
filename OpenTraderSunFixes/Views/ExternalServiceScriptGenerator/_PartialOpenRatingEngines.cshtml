@@ -1,0 +1,27 @@
+﻿@model List<OpenTraderSunFixes.Model.GeneratedModel.ExternalServiceItems.OpenRatingEngine>
+
+@{
+    Layout = null;
+}
+
+@{
+    <text> Please Select One : </text>
+    <br/>
+    <br/>
+    
+    int i = 0;
+    foreach (var openRatingEngine in Model)
+    {
+        <label>Effective Date :  </label> <text>&nbsp;&nbsp;&nbsp;&nbsp;</text>
+        @Html.RadioButton("OpenRatingEngineEffectiveDate", openRatingEngine.EffectiveDate, new { @class="updateORETypeId",data_index=i }); <text>&nbsp;&nbsp;&nbsp;&nbsp;</text> @openRatingEngine.EffectiveDate    
+        
+        <text>&nbsp;&nbsp;&nbsp;&nbsp;</text>
+        <label>OpenRating Engine Type Id :  </label> <text>&nbsp;&nbsp;&nbsp;&nbsp;</text>
+        <label>@openRatingEngine.OpenRatingEngineTypeID</label>
+        @Html.RadioButton("OpenRatingEngineTypeId", openRatingEngine.OpenRatingEngineTypeID, new { hidden = "hidden",@class="ORETypeId"+i });
+        i++;
+        <br/>
+        <br/>
+    }
+        
+}

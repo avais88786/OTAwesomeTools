@@ -1,8 +1,6 @@
 ﻿@model OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems.ExternalServiceScriptViewModel
 
-@{
-    Layout = null;
-}
+
 
 <!DOCTYPE html>
 
@@ -17,103 +15,129 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
-<body>
-
-    Things Remaining : 
-    iMarketResponseType
-
+<body style="margin: 15px;">
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
     
-        <fieldset>
-            <legend>ExternalServiceScriptViewModel</legend>
-    
-            <div class="editor-label">
-                @Html.LabelFor(model => model.SchemeId)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.SchemeId)
-                <label>Scheme Name : </label>
-                <label id="schemeplaceholder" style="color:red;"></label>
-            </div>
-    
-            <div class="editor-label">
-                @Html.LabelFor(model => model.ExternalServiceTypes)
+        <h3>External Service Script Generator: Lazy of editing and maintaining the existing script to insert and update external service values ? Use Me ! </h3>
+        <fieldset style="background: #4f84b8; padding: 15px;border-radius: 5px;">
+            <div id="confessionArea">
+                <h4>Confess before I can help you : </h4>
+                @Html.RadioButton("iamlazy", false, new { id = "iamnotLazy" })   <label for="iamnotLazy">I dont want you, I will modify the big script and be happy!</label> 
+                <br/>
+                @Html.RadioButton("iamlazy", true, new { id = "iamLazy" })    <label for="iamLazy">I am lazy</label>
             </div>
 
-
-
-            <table class="table">
-                <tr>
-                    <th>@Html.LabelFor(model => model.ExternalServiceTypes)</th>
-                    <th>@Html.LabelFor(model => model.ExternalServiceNames)</th>
-
-
-                    <th>@Html.LabelFor(model => model.Description)</th>
-                    <th>@Html.LabelFor(model => model.URL)</th>
-                    <th>@Html.LabelFor(model => model.SoapAction)</th>
-                    <th>@Html.LabelFor(model => model.RequestTransforms)</th>
-                    <th>@Html.LabelFor(model => model.ResponseTransforms)</th>
-                    <th>@Html.LabelFor(model => model.TransformConfigs)</th>
-
-                </tr>
-                
-                
-                @{int i = 0; }
-                @foreach (var item in Model.ExternalStypes)
-                {
-                <tr>
-                    <td>
-                        <input type="checkbox"
-                               style="display: inline-block"
-                               name=@Html.Raw("ExternalServiceTypes[" + @i + "]")
-                               value=@item.Value />
-                        <label style="display: inline-block">@item.Text</label>
-                        </td>
-                        
-                    <td>
-                        @Html.TextBox("ExternalServiceNames[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Service Name for " + @item.Text })
-                    </td>
-                    <td>
-                        @Html.TextBox("Description[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Description for " + @item.Text })
-                    </td>
-                    <td>
-                        @Html.TextBox("URL[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Ext Service Url for " + @item.Text })
-                    </td>
-                    <td>
-                        @Html.TextBox("SoapAction[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "SOAP Action for " + @item.Text })
-                    </td>
-                    <td>
-                        @Html.TextBox("RequestTransforms[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Request Transform for " + @item.Text })
-                    </td>
-                    <td>
-                        @Html.TextBox("ResponseTransforms[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Response Transform for " + @item.Text })
-                    </td>
-                    <td>
-                        @Html.TextBox("TransformConfigs[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Transform Config for " + @item.Text })
-                    </td>
-                        @{i++;
-                        }
-            </tr>
-            }
-            </table>
-
-            @Html.HiddenFor(model => model.ExternalStypes)
-    
-            <div id="ratingengineplaceholder">
-
+            <div id="whatyoudoinghere">
+                add meme or something funny
             </div>
 
-            <p>
-                <input type="submit" value="Create" />
-            </p>
-        </fieldset>
+            <div id="scriptingArea">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.ScriptTypeSingleSchemeOnly)
+                </div>
+
+                <div class="editor-field" style="margin-left:20px;">
+                    @Html.RadioButtonFor(model => model.ScriptTypeSingleSchemeOnly, true, new { id = "radio1" }) <label for="radio1">Script this scheme only</label>
+                    <br />
+                    @Html.RadioButtonFor(model => model.ScriptTypeSingleSchemeOnly, false, new { id = "radio2" }) <label for="radio2"> Script this scheme and all existing values from database </label>
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.SchemeId)
+                </div>
+                <div class="editor-field" style="margin-left:20px;">
+                    @Html.EditorFor(model => model.SchemeId)
+                    <label>Scheme Name : </label>
+
+                    <img id="loadingImage" src="~/Content/Images/loader.gif" hidden="hidden" />
+                    <label id="SchemeNameLabel" style="color:red;"></label>
+
+                    @Html.HiddenFor(model => model.SchemeName)
+                </div>
+
+                <div id="ratingengineplaceholder">
+
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.ExternalServiceTypes)
+                </div>
+
+
+                <table class="table" style="margin-left:20px;">
+                    <tr>
+                        <th>@Html.LabelFor(model => model.ExternalServiceTypes)</th>
+                        <th>@Html.LabelFor(model => model.ExternalServiceNames)</th>
+                        <th>@Html.LabelFor(model => model.Description)</th>
+                        <th>@Html.LabelFor(model => model.URL)</th>
+                        <th>@Html.LabelFor(model => model.SoapAction)</th>
+                        <th>@Html.LabelFor(model => model.RequestTransforms)</th>
+                        <th>@Html.LabelFor(model => model.ResponseTransforms)</th>
+                        <th>@Html.LabelFor(model => model.TransformConfigs)</th>
+                        <th>@Html.LabelFor(model => model.iMarketResponseTypes)</th>
+
+                    </tr>
+
+
+                    @{int i = 0; }
+                    @foreach (var item in Model.ExternalStypes)
+                    {
+                        <tr>
+                            <td>
+                                <input type="checkbox"
+                                       style="display: inline-block"
+                                       name=@Html.Raw("ExternalServiceTypes[" + @i + "]")
+                                       id=@Html.Raw("ExternalServiceTypes[" + @i + "]")
+                                       data-index=@i
+                                       value=@item.Value />
+                                <label for="@Html.Raw("ExternalServiceTypes[" + @i + "]")" style="display: inline-block">  @item.Text</label>
+                            </td>
+
+                            <td>
+                                @Html.TextBox("ExternalServiceNames[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Service Name for " + @item.Text })
+                            </td>
+                            <td>
+                                @Html.TextBox("Description[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Description for " + @item.Text })
+                            </td>
+                            <td>
+                                @Html.TextBox("URL[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Ext Service Url for " + @item.Text })
+                            </td>
+                            <td>
+                                @Html.TextBox("SoapAction[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "SOAP Action for " + @item.Text })
+                            </td>
+                            <td data-index=@i>
+                                @Html.TextBox("RequestTransforms[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Request Transform for " + @item.Text })
+                            </td>
+                            <td data-index=@i>
+                                @Html.TextBox("ResponseTransforms[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Response Transform for " + @item.Text })
+                            </td>
+                            <td data-index=@i>
+                                @Html.TextBox("TransformConfigs[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Transform Config for " + @item.Text })
+                            </td>
+                            <td>
+                                @Html.TextBox("iMarketResponseTypes[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "iMarket Response Type for " + @item.Text })
+                            </td>
+                            @{i++;
+                            }
+                        </tr>
+                    }
+                </table>
+
+
+
+                @Html.HiddenFor(model => model.ExternalStypes)
+
+
+
+                <p>
+                    <input type="submit" value="Generate Script" />
+                </p>
+            </div>
+</fieldset>
     }
     
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
 </body>
 </html>

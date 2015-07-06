@@ -32,25 +32,6 @@ namespace OpenTraderSunFixes.Controllers
         [HttpPost]
         public ActionResult Index(ExternalServiceScriptViewModel ViewModel)
         {
-            var x = PartialView("Script", ViewModel);
-            //ViewEngineResult result = ViewEngines.Engines.FindPartialView(this.ControllerContext, "Script");
-
-            //if (result.View != null)
-            //{
-            //    this.ViewData.Model = ViewModel;
-            //    StringBuilder sb = new StringBuilder();
-            //    using (StringWriter sw = new StringWriter(sb))
-            //    {
-            //        using (HtmlTextWriter output = new HtmlTextWriter(sw))
-            //        {
-            //            ViewContext viewContext = new ViewContext(this.ControllerContext, result.View, this.ViewData, this.TempData, output);
-            //            result.View.Render(viewContext, output);
-            //        }
-            //    }
-                
-            //    var y = sb.ToString();
-            //}
-
             return View("Script", ViewModel);
         }
 
@@ -60,8 +41,27 @@ namespace OpenTraderSunFixes.Controllers
             ExternalServiceItemsContext context = new ExternalServiceItemsContext();
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             var x = context.Risks.Where(r => r.RiskId == SchemeId);
-            var y = context.OpenRatingEngines.Where(ore => ore.SchemeRiskID == SchemeId);
-            return Json(new {SchemeName = x.First().Description,OpenRatingEngines = serializer.Serialize(y) }, JsonRequestBehavior.AllowGet);
+            var y = context.OpenRatingEngines.Where(ore => ore.SchemeRiskID == SchemeId).OrderByDescending(ore =>ore.EffectiveDate).ToList();
+
+            ViewEngineResult result = ViewEngines.Engines.FindPartialView(this.ControllerContext, "_PartialOpenRatingEngines");
+            var partialResultView = string.Empty;
+            if (result.View != null)
+            {
+                this.ViewData.Model = y;
+                StringBuilder sb = new StringBuilder();
+                using (StringWriter sw = new StringWriter(sb))
+                {
+                    using (HtmlTextWriter output = new HtmlTextWriter(sw))
+                    {
+                        ViewContext viewContext = new ViewContext(this.ControllerContext, result.View, this.ViewData, this.TempData, output);
+                        result.View.Render(viewContext, output);
+                    }
+                }
+
+                partialResultView = sb.ToString();
+            }
+            
+            return Json(new {SchemeName = x.First().Description,OpenRatingEnginesView = partialResultView }, JsonRequestBehavior.AllowGet);
         }
 
 

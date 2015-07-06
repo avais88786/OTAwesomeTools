@@ -70,5 +70,20 @@ namespace OpenTraderSunFixes.Model.GeneratedModel.ExternalServiceItems
                 .Property(e => e.Name)
                 .IsUnicode(false);
         }
+
+        internal ExternalServiceItemsContext EmptyAll()
+        {
+            this.ExternalServiceTransforms.ToList().Clear();
+            this.ExternalServices.ToList().Clear();
+            this.ExternalServiceTransforms.ToList().Clear();
+            this.ExternalServiceTypes.ToList().Clear();
+            this.ExternalServiceVersionings.ToList().Clear();
+            this.imarketExternalServiceItems.ToList().Clear();
+            this.imarketExternalServices.ToList().Clear();
+            this.imarketResponseTypes.ToList().Clear();
+            OpenRatingEngines.ToList().Clear();
+            return this;
+
+        }
     }
 }
