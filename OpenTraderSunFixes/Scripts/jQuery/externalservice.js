@@ -19,7 +19,7 @@
 
 
 
-    $('input[type="checkbox"').click(function () {
+    $('input[type="checkbox"]').click(function () {
         var isChecked = $(this).prop('checked');
         if (isChecked)
         {
