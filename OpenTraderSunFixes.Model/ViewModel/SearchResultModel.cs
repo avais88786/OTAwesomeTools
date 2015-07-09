@@ -172,7 +172,7 @@ namespace OpenTraderSunFixes.Model.ViewModel
             this.BrokerReference = ccTransaction.BrokerReference;
             this.ClientName = ccTransaction.ClientCompany.CompanyName;
             this.PolicyReference = ccTransaction.Reference;
-            this.MemoAmount = ccTransaction.CCTransactionItem.Single(cci => cci.CCCategoryTypeId == 4 && cci.CCSubCategoryTypeId == 1).Amount;
+            this.MemoAmount = ccTransaction.CCTransactionItem.FirstOrDefault(cci => cci.CCCategoryTypeId == 4 && cci.CCSubCategoryTypeId == 1).Amount;
             this.Amount = ccTransaction.Amount;
             this.JournalType = null; //handled as custom helper in view
             this.GeneralDescrition6 = ccTransaction.CCOpenPremiumType.Description;
