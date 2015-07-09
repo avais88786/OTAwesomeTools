@@ -30,6 +30,7 @@ namespace OpenTraderSunFixes.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Index(ExternalServiceScriptViewModel ViewModel)
         {
             return View("Script", ViewModel);

@@ -55,6 +55,7 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
         public List<String> ResponseTransforms { get; set; }
 
         [Display(Name = "External Service Transform Config")]
+        [AllowHtml]
         public List<String> TransformConfigs { get; set; }
 
         [Display(Name = "iMarket Response Type Name")]
