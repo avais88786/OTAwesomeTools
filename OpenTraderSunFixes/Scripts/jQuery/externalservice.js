@@ -3,21 +3,19 @@
 
     $('.table th').not('th:first-child').hide();
     $('.table td').not('td:first-child').hide();
-    $('#scriptingArea').hide();
-    $('#whatyoudoinghere').hide();
 
-    $('input[name="iamlazy"]:radio').change(function () {
-        var isChecked = $(this).val();
+    //$('input[name="iamlazy"]:radio').change(function () {
+    //    var isChecked = $(this).val();
         
-        if (isChecked == "True") {
-            $('#confessionArea').slideUp();
-            $('#whatyoudoinghere').hide();
-            $('#scriptingArea').slideDown();
-        }
-        else {
-            $('#whatyoudoinghere').slideDown();
-        }
-    });
+    //    if (isChecked == "True") {
+    //        $('#confessionArea').slideUp();
+    //        $('#whatyoudoinghere').hide();
+    //        $('#scriptingArea').slideDown();
+    //    }
+    //    else {
+    //        $('#whatyoudoinghere').slideDown();
+    //    }
+    //});
 
 
 

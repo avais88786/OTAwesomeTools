@@ -23,16 +23,16 @@
     
         <h3>External Service Script Generator: Lazy of editing and maintaining the existing script to insert and update external service values ? Use Me ! </h3>
         <fieldset style="background: #4f84b8; padding: 15px;border-radius: 5px;">
-            <div id="confessionArea">
+            @*<div id="confessionArea">
                 <h4>Confess before I can help you : </h4>
                 @Html.RadioButton("iamlazy", false, new { id = "iamnotLazy" })   <label for="iamnotLazy">I dont want you, I will modify the big script and be happy!</label> 
                 <br/>
                 @Html.RadioButton("iamlazy", true, new { id = "iamLazy" })    <label for="iamLazy">I am lazy</label>
-            </div>
+            </div>*@
 
-            <div id="whatyoudoinghere">
+            @*<div id="whatyoudoinghere">
                 add meme or something funny
-            </div>
+            </div>*@
 
             <div id="scriptingArea">
                 <div class="editor-label">
@@ -82,43 +82,55 @@
                     </tr>
 
 
-                    @{int i = 0; }
+                    @{int i = 0,j=0; }
                     @foreach (var item in Model.ExternalStypes)
                     {
+                        //i = Convert.ToInt32(item.Value);
                         <tr>
                             <td>
                                 <input type="checkbox"
                                        style="display: inline-block"
-                                       name=@Html.Raw("ExternalServiceTypes[" + @i + "]")
-                                       id=@Html.Raw("ExternalServiceTypes[" + @i + "]")
+                                       name=@Html.Raw("ExternalServiceTypesCheckBox[" + @i + "]")
+                                       id=@Html.Raw("ExternalServiceTypesCheckBox[" + @i + "]")
                                        data-index=@i
-                                       value=@item.Value />
+                                       value=@i />
                                 <label for="@Html.Raw("ExternalServiceTypes[" + @i + "]")" style="display: inline-block">  @item.Text</label>
+                                @Html.Hidden("ExternalServiceTypesCheckBox.Index", @i)
+                                @Html.Hidden("ExternalServiceTypes", @item.Value)
+                                @Html.Hidden("ExternalServiceTypes.Index", @i)
                             </td>
 
                             <td>
                                 @Html.TextBox("ExternalServiceNames[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Service Name for " + @item.Text })
+                                @Html.Hidden("ExternalServiceNames.Index", @i)
                             </td>
                             <td>
                                 @Html.TextBox("Description[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Description for " + @item.Text })
+                                @Html.Hidden("Description.Index", @i)
                             </td>
                             <td>
                                 @Html.TextBox("URL[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Ext Service Url for " + @item.Text })
+                                @Html.Hidden("URL.Index", @i)
                             </td>
                             <td>
                                 @Html.TextBox("SoapAction[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "SOAP Action for " + @item.Text })
+                                @Html.Hidden("SoapAction.Index", @i)
                             </td>
                             <td data-index=@i>
                                 @Html.TextBox("RequestTransforms[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Request Transform for " + @item.Text })
+                                @Html.Hidden("RequestTransforms.Index", @i)
                             </td>
                             <td data-index=@i>
                                 @Html.TextBox("ResponseTransforms[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Response Transform for " + @item.Text })
+                                @Html.Hidden("ResponseTransforms.Index", @i)
                             </td>
                             <td data-index=@i>
                                 @Html.TextBox("TransformConfigs[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "Transform Config for " + @item.Text })
+                                @Html.Hidden("TransformConfigs.Index", @i)
                             </td>
                             <td>
                                 @Html.TextBox("iMarketResponseTypes[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "iMarket Response Type for " + @item.Text })
+                                @Html.Hidden("iMarketResponseTypes.Index", @i)
                             </td>
                             @{i++;
                             }

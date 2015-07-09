@@ -59,9 +59,9 @@
         <br />
     }
     <br/>-- @Model.SchemeName <br />
-    @foreach (var item in Model.ExternalServiceTypes)
+    @foreach (var item in Model.ExternalServiceTypesCheckBox)
     {
-        i = Model.ExternalServiceTypes.FindIndex(s => s == item);
+        i = item;
         @Html.Raw("INSERT INTO ExternalServiceItem(SchemeRiskId, ExternalServiceTypeId, Name, Description) VALUES (" + Model.SchemeId + "," + Model.ExternalServiceTypes[i] + ",'" + Model.ExternalServiceNames[i] + "','" + Model.Description[i] + "')")
         <br />
     }
@@ -75,9 +75,9 @@
 
 
     <br />-- imarketResponseType ---------------------------------------------------------------------------<br />
-    @foreach (var item in Model.ExternalServiceTypes)
+    @foreach (var item in Model.ExternalServiceTypesCheckBox)
     {
-        i = Model.ExternalServiceTypes.FindIndex(s => s == item);
+        i = item;
         if (!string.IsNullOrEmpty(Model.iMarketResponseTypes[i])) 
         { 
             @Html.Raw(string.Format("IF NOT EXISTS(SELECT '#' FROM imarketResponseType WHERE Name = '{0}')<br/>BEGIN<br/> &nbsp;&nbsp;&nbsp;INSERT INTO imarketResponseType(Name) VALUES ('{1}')<br/>END", Model.iMarketResponseTypes[i], Model.iMarketResponseTypes[i]))
@@ -104,9 +104,9 @@
         <br />
     }
     <br/>-- @Model.SchemeName <br />
-    @foreach (var item in Model.ExternalServiceTypes)
+    @foreach (var item in Model.ExternalServiceTypesCheckBox)
     {
-        i = Model.ExternalServiceTypes.FindIndex(s => s == item);
+        i = item;
         @Html.Raw(string.Format("INSERT INTO ExternalService(Url, SoapAction, ExternalServiceTransformId) VALUES ('{0}','{1}',{2})",Model.URL[i],Model.SoapAction[i],"NULL"))
         <br />
     }
@@ -144,10 +144,10 @@
         <br />
     }
     <br />-- @Model.SchemeName <br />
-    @foreach (var item in Model.ExternalServiceTypes)
+    @foreach (var item in Model.ExternalServiceTypesCheckBox)
     {
-        i = Model.ExternalServiceTypes.FindIndex(s => s == item);
-        var externalServiceItemSelectQuery = String.Format("(SELECT ExternalServiceItemId FROM ExternalServiceItem WHERE SchemeRiskId = {0} AND ExternalServiceTypeId = {1} AND Name = '{2}' AND  Description = '{3}')", Model.SchemeId, item, Model.ExternalServiceNames[i], Model.Description[i]);
+        i = item;
+        var externalServiceItemSelectQuery = String.Format("(SELECT ExternalServiceItemId FROM ExternalServiceItem WHERE SchemeRiskId = {0} AND ExternalServiceTypeId = {1} AND Name = '{2}' AND  Description = '{3}')", Model.SchemeId, Model.ExternalServiceTypes[i], Model.ExternalServiceNames[i], Model.Description[i]);
         var externalServiceTransformQuery = string.Empty;
         
         if ((!string.IsNullOrEmpty(Model.RequestTransforms[i])) && (!string.IsNullOrEmpty(Model.RequestTransforms[i])))
@@ -182,9 +182,9 @@
         <br />
     }
     <br />-- @Model.SchemeName <br />
-    @foreach (var item in Model.ExternalServiceTypes)
+    @foreach (var item in Model.ExternalServiceTypesCheckBox)
     {
-        i = Model.ExternalServiceTypes.FindIndex(s => s == item);
+        i = item;
         var externalserviceIdQuery = string.Format("(SELECT TOP 1 ExternalServiceId FROM ExternalService WHERE Url = '{0}' AND SoapAction = '{1}')", Model.URL[i], Model.SoapAction[i]);
         @Html.Raw("INSERT INTO imarketExternalService(ExternalServiceId, AddressAction, AddressTo) VALUES (" + externalserviceIdQuery + ",'" + Model.SoapAction[i] + "','" + Model.URL[i] + "')")
         <br />
@@ -200,12 +200,12 @@
         <br />
     }
     <br />-- @Model.SchemeName <br />
-    @foreach (var item in Model.ExternalServiceTypes)
+    @foreach (var item in Model.ExternalServiceTypesCheckBox)
     {
-        i = Model.ExternalServiceTypes.FindIndex(s => s == item);
+        i = item;
         if (!string.IsNullOrEmpty(Model.iMarketResponseTypes[i]))
         {
-            var externalServiceItemQuery = string.Format("(SELECT ExternalServiceItemId FROM ExternalServiceItem WHERE SchemeRiskId = {0} AND ExternalServiceTypeId = {1} AND Name = '{2}' AND Description = '{3}')", Model.SchemeId, item,Model.ExternalServiceNames[i],Model.Description[i]);
+            var externalServiceItemQuery = string.Format("(SELECT ExternalServiceItemId FROM ExternalServiceItem WHERE SchemeRiskId = {0} AND ExternalServiceTypeId = {1} AND Name = '{2}' AND Description = '{3}')", Model.SchemeId, Model.ExternalServiceTypes[i],Model.ExternalServiceNames[i],Model.Description[i]);
             var imarketResponseTypeQuery = string.Format("(SELECT imarketResponseTypeId FROM imarketResponseType WHERE Name = '{0}')",Model.iMarketResponseTypes[i]);
             @Html.Raw(string.Format("INSERT INTO imarketExternalServiceItem(ExternalServiceItemId, imarketResponseTypeId) VALUES ({0},{1})",externalServiceItemQuery,imarketResponseTypeQuery))    
         }

@@ -15,7 +15,7 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
         public ExternalServiceViewModel()
         {
             ExternalStypes = new List<SelectListItem>();
-            ExternalServiceTypes = new List<int>();
+            ExternalServiceTypesCheckBox = new List<int>();
             ExternalServiceNames = new List<string>();
             Description = new List<string>();
             SoapAction = new List<string>();
@@ -25,13 +25,15 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
             iMarketResponseTypes = new List<string>();
         }
 
-        [Display(Name="Scheme Id (Risk Id of Scheme")]
+        [Display(Name="Scheme Id (Risk Id of Scheme)")]
         //[Remote("GetSchemeName", "ExternalServiceScriptGenerator")]
         public int SchemeId { get; set; }
 
         public string SchemeName { get; set; }
 
         [Display(Name = "External Service Types")]
+        public List<int> ExternalServiceTypesCheckBox { get; set; }
+
         public List<int> ExternalServiceTypes { get; set; }
 
         [Display(Name = "External Service Names")]
