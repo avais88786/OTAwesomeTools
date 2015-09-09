@@ -13,7 +13,7 @@
     foreach (var openRatingEngine in Model)
     {
         <label>Effective Date :  </label> <text>&nbsp;&nbsp;&nbsp;&nbsp;</text>
-        @Html.RadioButton("OpenRatingEngineEffectiveDate", openRatingEngine.EffectiveDate, new { @class="updateORETypeId",data_index=i }); <text>&nbsp;&nbsp;&nbsp;&nbsp;</text> @openRatingEngine.EffectiveDate    
+        @Html.RadioButton("OpenRatingEngineEffectiveDate", openRatingEngine.SpecifiedEffectiveDate, new { @class = "updateORETypeId", data_index = i }); <text>&nbsp;&nbsp;&nbsp;&nbsp;</text> @openRatingEngine.SpecifiedEffectiveDate    
         
         <text>&nbsp;&nbsp;&nbsp;&nbsp;</text>
         <label>OpenRating Engine Type Id :  </label> <text>&nbsp;&nbsp;&nbsp;&nbsp;</text>

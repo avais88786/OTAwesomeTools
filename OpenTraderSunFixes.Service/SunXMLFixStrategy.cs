@@ -14,10 +14,17 @@ namespace OpenTraderSunFixes.DomainService
         public override string GenerateFix(Model.SunFixAttributes sunFixAttributes)
         {
             XmlDocument xmlDoc = ccTransSunRepo.GenerateXML(sunFixAttributes);
-            return ProcessXML(xmlDoc.IndentAndBeautify(),sunFixAttributes.AppendChar);
+            return ProcessXML(xmlDoc.IndentAndBeautify(),sunFixAttributes);
         }
 
+        private string ProcessXML(string generatedXML, Model.SunFixAttributes sunFixAttributes)
+        {
+            SSC sunSyntaxXML = XMLSerializer.DeserializeSunXML(generatedXML);
+            sunSyntaxXML.ProcessXML(sunFixAttributes);
+            return XMLSerializer.SerializeSunXML(sunSyntaxXML);
+        }
 
+        [Obsolete("Use another overloaded method")]
         private string ProcessXML(string generatedXML, char? appendChar)
         {
             if (appendChar == null)

@@ -134,12 +134,12 @@
         {
             externalServiceSelectQuery = string.Format("(SELECT ExternalServiceId FROM ExternalService WHERE Url = '{0}' AND SoapAction = '{1}' AND ExternalServiceTransformId IS NULL)", externalService.Url, externalService.SoapAction);
         }
-        
-         
-        
-        
-        var openRatingEngine = Model.ExistingDatabaseValues.OpenRatingEngines.Where(ore => ore.SchemeRiskID == externalServiceItem.SchemeRiskId).OrderByDescending(o => o.EffectiveDate).First();
-        var openRatingEngineSelectQuery = string.Format("(SELECT OpenRatingEngineId FROM OpenRatingEngine WHERE SchemeRiskId = {0} AND OpenRatingEngineTypeId = {1} AND EffectiveDate = '{2}')",openRatingEngine.SchemeRiskID,openRatingEngine.OpenRatingEngineTypeID,openRatingEngine.EffectiveDateFormatted);
+
+
+
+
+        var openRatingEngine = Model.ExistingDatabaseValues.OpenRatingEngines.Where(ore => ore.SchemeRiskID == externalServiceItem.SchemeRiskId).OrderByDescending(o => o.SpecifiedEffectiveDate).First();
+        var openRatingEngineSelectQuery = string.Format("(SELECT OpenRatingEngineId FROM OpenRatingEngine WHERE SchemeRiskId = {0} AND OpenRatingEngineTypeId = {1} AND SpecifiedEffectiveDate = '{2}')", openRatingEngine.SchemeRiskID, openRatingEngine.OpenRatingEngineTypeID, openRatingEngine.EffectiveDateFormatted);
         @Html.Encode(Html.Raw(string.Format("INSERT INTO ExternalServiceVersioning(ExternalServiceItemId, ExternalServiceId, OpenRatingEngineId, IsLive) VALUES ({0},{1},{2},{3})", externalServiceItemSelectQuery, externalServiceSelectQuery, openRatingEngineSelectQuery, item.IsLive ? "1" : "0")))
         <br />
     }
@@ -165,8 +165,8 @@
         {
             externalServiceSelectQuery = string.Format("(SELECT ExternalServiceId FROM ExternalService WHERE Url = '{0}' AND SoapAction = '{1}' AND ExternalServiceTransformId IS NULL)",  Model.URL[i], Model.SoapAction[i]);    
         }
-            
-        var openRatingEngineSelectQuery = string.Format("(SELECT OpenRatingEngineId FROM OpenRatingEngine WHERE SchemeRiskId = {0} AND OpenRatingEngineTypeId = {1} AND EffectiveDate = '{2}')", Model.SchemeId, Model.OpenRatingEngineTypeId, Model.EffectiveDateFormatted);
+
+        var openRatingEngineSelectQuery = string.Format("(SELECT OpenRatingEngineId FROM OpenRatingEngine WHERE SchemeRiskId = {0} AND OpenRatingEngineTypeId = {1} AND SpecifiedEffectiveDate = '{2}')", Model.SchemeId, Model.OpenRatingEngineTypeId, Model.EffectiveDateFormatted);
         
         
          @Html.Encode(@Html.Raw(string.Format("INSERT INTO ExternalServiceVersioning(ExternalServiceItemId, ExternalServiceId, OpenRatingEngineId, IsLive) VALUES ({0},{1},{2},{3})", externalServiceItemSelectQuery, externalServiceSelectQuery, openRatingEngineSelectQuery,Model.IsLive ? "1" : "0")));
