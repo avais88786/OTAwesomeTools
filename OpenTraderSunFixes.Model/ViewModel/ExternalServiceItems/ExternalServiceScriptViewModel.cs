@@ -23,6 +23,7 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
             RequestTransforms = new List<string>();
             ResponseTransforms = new List<string>();
             iMarketResponseTypes = new List<string>();
+            isLive = new List<bool>();
         }
 
         [Display(Name="Scheme Id (Risk Id of Scheme)")]
@@ -61,6 +62,9 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
         [Display(Name = "iMarket Response Type Name")]
         public List<String> iMarketResponseTypes { get; set; }
 
+        [Display(Name = "Is Live ?")]
+        public List<Boolean> isLive { get; set; }
+
         public int OpenRatingEngineTypeId { get; set; }
 
         public DateTime OpenRatingEngineEffectiveDate { get; set; }
@@ -75,8 +79,6 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
                 return OpenRatingEngineEffectiveDate.ToString("yyyy-MM-dd HH:mm:ss.fff");
             }
         }
-
-        public bool IsLive { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         public IEnumerable<SelectListItem> ExternalStypes { get; set; }

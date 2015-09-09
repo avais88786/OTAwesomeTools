@@ -31,14 +31,16 @@
     --------------------------------------------------------------------------------------------------
     -- STEP 2: Truncate the tables rather than delete to prevent the keys from becoming ridiculous ---
     --------------------------------------------------------------------------------------------------
-
-    TRUNCATE TABLE ExternalServiceTransform
-    TRUNCATE TABLE ExternalService
-    TRUNCATE TABLE ExternalServiceItem
-    TRUNCATE TABLE ExternalServiceVersioning
-    TRUNCATE TABLE imarketExternalService
-    TRUNCATE TABLE imarketExternalServiceItem
-    TRUNCATE TABLE imarketResponseType
+    @if (!Model.ScriptTypeSingleSchemeOnly){
+        <text>TRUNCATE TABLE ExternalServiceTransform
+        TRUNCATE TABLE ExternalService
+        TRUNCATE TABLE ExternalServiceItem
+        TRUNCATE TABLE ExternalServiceVersioning
+        TRUNCATE TABLE imarketExternalService
+        TRUNCATE TABLE imarketExternalServiceItem
+        TRUNCATE TABLE imarketResponseType
+        </text>
+    }
 
  </section>
     @{int i = 0; }
@@ -169,7 +171,7 @@
         var openRatingEngineSelectQuery = string.Format("(SELECT OpenRatingEngineId FROM OpenRatingEngine WHERE SchemeRiskId = {0} AND OpenRatingEngineTypeId = {1} AND SpecifiedEffectiveDate = '{2}')", Model.SchemeId, Model.OpenRatingEngineTypeId, Model.EffectiveDateFormatted);
         
         
-         @Html.Encode(@Html.Raw(string.Format("INSERT INTO ExternalServiceVersioning(ExternalServiceItemId, ExternalServiceId, OpenRatingEngineId, IsLive) VALUES ({0},{1},{2},{3})", externalServiceItemSelectQuery, externalServiceSelectQuery, openRatingEngineSelectQuery,Model.IsLive ? "1" : "0")));
+         @Html.Encode(@Html.Raw(string.Format("INSERT INTO ExternalServiceVersioning(ExternalServiceItemId, ExternalServiceId, OpenRatingEngineId, IsLive) VALUES ({0},{1},{2},{3})", externalServiceItemSelectQuery, externalServiceSelectQuery, openRatingEngineSelectQuery,Model.isLive[i] ? "1" : "0")));
         <br />
     }
 

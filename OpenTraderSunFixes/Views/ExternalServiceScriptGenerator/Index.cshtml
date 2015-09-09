@@ -78,6 +78,7 @@
                         <th>@Html.LabelFor(model => model.ResponseTransforms)</th>
                         <th>@Html.LabelFor(model => model.TransformConfigs)</th>
                         <th>@Html.LabelFor(model => model.iMarketResponseTypes)</th>
+                        <th>@Html.LabelFor(model => model.isLive)</th>
 
                     </tr>
 
@@ -131,6 +132,10 @@
                             <td>
                                 @Html.TextBox("iMarketResponseTypes[" + @i + "]", "", new { @style = "display:inline-block", placeholder = "iMarket Response Type for " + @item.Text })
                                 @Html.Hidden("iMarketResponseTypes.Index", @i)
+                            </td>
+                            <td>
+                                @Html.CheckBox("isLive[" + @i + "]", false, new { @style = "display:inline-block"})
+                                @Html.Hidden("isLive.Index", @i)
                             </td>
                             @{i++;
                             }
