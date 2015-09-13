@@ -1,4 +1,6 @@
-﻿using OpenTraderSunFixes.DependencyResolver;
+﻿using AutoMapper;
+using OpenTraderSunFixes.DependencyResolver;
+using OTOMReverseEngineerXML.AutoMapperProfiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +23,13 @@ namespace OpenTraderSunFixes
             var container = StructureMapContainer.Container;
             System.Web.Mvc.DependencyResolver.SetResolver(new OpenTraderSunFixesWebDependencyResolver(container));
             //ModelBinders.Binders.Add(typeof(OpenTraderSunFixes.Model.SunFixAttributes), new OpenTraderSunFixes.Infrastructure.ModelBinders.SunFixAttributesModelBinder());
+
+            Mapper.Initialize(mapper =>
+            {
+                BaseConfigurations.AutoMapperOneTimeConfigurations();
+                mapper.AddProfile<TradesmanNBRqProfile>();
+                mapper.AddProfile<MiniFleetNBRqProfile>();
+            });
 
         }
     }

@@ -11,9 +11,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OpenTraderSunFixes.Model.GeneratedModel.Tests</RootNamespace>
     <AssemblyName>OpenTraderSunFixes.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -83,6 +88,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\iMarketReverseEngineerTranslationControllerTests.cs" />
+    <Compile Include="Controllers\TradesmanNBRqProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -91,14 +98,20 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\OpenTraderSunFixes.Infrastructure\OpenTraderSunFixes.Infrastructure.csproj">
+      <Project>{b16d11fe-d45f-4d35-8554-06060cf63f94}</Project>
+      <Name>OpenTraderSunFixes.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenTraderSunFixes.Service\OpenTraderSunFixes.DomainService.csproj">
+      <Project>{c0b963bb-d702-45d3-93c5-489b1c226f28}</Project>
+      <Name>OpenTraderSunFixes.DomainService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenTraderSunFixes\OpenTraderSunFixes.csproj">
-      <Project>{7B772412-2E61-4945-896E-A32034899EFB}</Project>
+      <Project>{7b772412-2e61-4945-896e-a32034899efb}</Project>
       <Name>OpenTraderSunFixes</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

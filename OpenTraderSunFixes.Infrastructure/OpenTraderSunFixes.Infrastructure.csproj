@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OpenTraderSunFixes.Infrastructure</RootNamespace>
     <AssemblyName>OpenTraderSunFixes.Infrastructure</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenGI.MVC.BusinessLines.ViewModels">
+      <HintPath>..\packages\OpenGi.MVC.ViewModel\OpenGI.MVC.BusinessLines.ViewModels.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -47,6 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapperProfiles\BaseConfigurations.cs" />
+    <Compile Include="AutoMapperProfiles\BaseProfile.cs" />
+    <Compile Include="AutoMapperProfiles\MiniFleetNBRqProfile.cs" />
+    <Compile Include="AutoMapperProfiles\TradesmanNBRqProfile.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="ModelBinders\SunFixAttributesModelBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

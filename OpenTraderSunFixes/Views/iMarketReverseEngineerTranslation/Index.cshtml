@@ -1,0 +1,34 @@
+﻿@model OpenTraderSunFixes.Model.ViewModel.iMarketReverseTranslations.EngineerXmlViewModel
+
+@section PageScripts{
+@Scripts.Render("~/Scripts/jQuery/iMarketEngineerXml.js")
+}
+
+<body style="max-width:initial">
+    <br/><br/>
+
+@using (@Html.BeginForm())
+{
+    <div style="display:inline;width:100%">
+    @Html.TextAreaFor(m => m.SourceXml, new { style = "width:45%;height:100px", spellcheck = "false", placeholder = "Source XML here......" })
+        <div style="display:inline-block;width:10%; margin:0px auto 0px auto;">
+            @Html.DropDownListFor(m => m.DestinationType, Model.MappingTypesAvailable, new { style = "display:block;margin:0px auto;" })
+            <br /><br />
+            <input type="submit" value="Reverse Enginner" style="display:block;margin:0px auto;"  />
+            <br /><br />
+            <label>Time Taken: </label> 
+            @if (@Model.TimeTaken == null){
+                <text>N/A</text>
+            }
+            else
+            {
+                @Model.TimeTaken; <text>secs</text>
+            }
+            
+        </div>
+        @Html.TextAreaFor(d=>d.DestinationXml, new { style = "width:44%;height:100px;",@readonly="readonly" })
+        </div>
+    
+    }
+</body>
+

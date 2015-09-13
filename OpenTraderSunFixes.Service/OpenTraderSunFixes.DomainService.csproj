@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OpenTraderSunFixes.DomainService</RootNamespace>
     <AssemblyName>OpenTraderSunFixes.DomainService</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,8 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Stack 5\Packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenGI.MVC.BusinessLines.ViewModels">
+      <HintPath>..\packages\OpenGi.MVC.ViewModel\OpenGI.MVC.BusinessLines.ViewModels.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\..\..\..\Documents\Visual Studio 2013\Projects\ShoppingNearby\ShoppingNearby.Service\bin\Debug\StructureMap.dll</HintPath>
@@ -49,6 +56,8 @@
   <ItemGroup>
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\XMLSerializer.cs" />
+    <Compile Include="iMarketReverseTranslations\IimarketReverseEngineerTranslationService.cs" />
+    <Compile Include="iMarketReverseTranslations\imarketReverseEngineerTranslationService.cs" />
     <Compile Include="ISunService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SunFixContext.cs" />
@@ -58,6 +67,10 @@
     <Compile Include="SunXMLFixStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OpenTraderSunFixes.Infrastructure\OpenTraderSunFixes.Infrastructure.csproj">
+      <Project>{b16d11fe-d45f-4d35-8554-06060cf63f94}</Project>
+      <Name>OpenTraderSunFixes.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenTraderSunFixes.Model\OpenTraderSunFixes.Model.csproj">
       <Project>{73b044db-42fd-440c-a9e2-4b85569f74ec}</Project>
       <Name>OpenTraderSunFixes.Model</Name>
