@@ -10,6 +10,7 @@ namespace OpenTraderSunFixes.Model.GeneratedModel.ExternalServiceItems
         public ExternalServiceItemsContext()
             : base("name=ExternalServiceItems")
         {
+            Database.SetInitializer<ExternalServiceItemsContext>(null);
         }
 
         public virtual DbSet<ExternalService> ExternalServices { get; set; }

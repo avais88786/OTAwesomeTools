@@ -103,6 +103,7 @@
     <Compile Include="SunFixType.cs" />
     <Compile Include="SunTransactionType.cs" />
     <Compile Include="SunXML.cs" />
+    <Compile Include="ViewModel\ExternalServiceItems\ConnectionDetails.cs" />
     <Compile Include="ViewModel\ExternalServiceItems\ExternalServiceScriptViewModel.cs" />
     <Compile Include="ViewModel\GeneratedXMLModel.cs" />
     <Compile Include="ViewModel\iMarketReverseTranslations\EngineerXmlViewModel.cs" />

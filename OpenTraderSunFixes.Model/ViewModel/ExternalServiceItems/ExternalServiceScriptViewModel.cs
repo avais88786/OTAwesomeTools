@@ -24,7 +24,10 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
             ResponseTransforms = new List<string>();
             iMarketResponseTypes = new List<string>();
             isLive = new List<bool>();
+            ConnectionDetails = new ConnectionDetails();
         }
+
+        public ConnectionDetails ConnectionDetails { get; set; }
 
         [Display(Name="Scheme Id (Risk Id of Scheme)")]
         //[Remote("GetSchemeName", "ExternalServiceScriptGenerator")]

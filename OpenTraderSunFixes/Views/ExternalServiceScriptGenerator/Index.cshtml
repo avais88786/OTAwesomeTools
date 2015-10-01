@@ -15,6 +15,11 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
+
+@section leftHeading{
+     iMarket - External Services
+}
+
 <body style="margin: 15px;">
     @using (Html.BeginForm())
     {
@@ -23,16 +28,15 @@
     
         <h3>External Service Script Generator: Lazy of editing and maintaining the existing script to insert and update external service values ? Use Me ! </h3>
         <fieldset style="background: #4f84b8; padding: 15px;border-radius: 5px;">
-            @*<div id="confessionArea">
-                <h4>Confess before I can help you : </h4>
-                @Html.RadioButton("iamlazy", false, new { id = "iamnotLazy" })   <label for="iamnotLazy">I dont want you, I will modify the big script and be happy!</label> 
-                <br/>
-                @Html.RadioButton("iamlazy", true, new { id = "iamLazy" })    <label for="iamLazy">I am lazy</label>
-            </div>*@
 
-            @*<div id="whatyoudoinghere">
-                add meme or something funny
-            </div>*@
+            @Html.DisplayNameFor(model => model.ConnectionDetails.DataSource)
+
+            @Html.TextBoxFor(model => model.ConnectionDetails.DataSource,new {@readonly="readonly",@class="spanElements"})
+
+            @Html.DisplayNameFor(model => model.ConnectionDetails.InitialCatalog)
+
+            @Html.TextBoxFor(model => model.ConnectionDetails.InitialCatalog, new { @readonly = "readonly", @class = "spanElements" })
+            <br/><br/>
 
             <div id="scriptingArea">
                 <div class="editor-label">

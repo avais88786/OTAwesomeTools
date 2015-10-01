@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.Script.Serialization;
+using System.Data.SqlClient;
 
 namespace OpenTraderSunFixes.Controllers
 {
@@ -23,7 +24,14 @@ namespace OpenTraderSunFixes.Controllers
             
                 new SelectListItem() { Value = x1.ExternalServiceTypeId.ToString(), Text = x1.Name }
             );
+
+            var config = System.Configuration.ConfigurationManager.ConnectionStrings["ExternalServiceItems"];
+            var connection = new SqlConnection(config.ConnectionString);
+            
             var vm = new ExternalServiceScriptViewModel();
+            vm.ConnectionDetails.DataSource = connection.DataSource;
+            vm.ConnectionDetails.InitialCatalog = connection.Database;
+            //vm.ConnectionDetails.UserName = connection.Credential.UserId;
             vm.ExternalStypes = items.Cast<SelectListItem>();
              
             return View(vm);

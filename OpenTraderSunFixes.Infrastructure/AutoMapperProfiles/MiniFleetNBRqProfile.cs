@@ -34,10 +34,10 @@ namespace OTOMReverseEngineerXML.AutoMapperProfiles
                 .ForMember(d => d.VehiclesCarryHazardousGoods, s => s.MapFrom(src => src.RiskProfile.Declarations.HazardousGoodsInd.Value))
                 .ForMember(d => d.Location, s => s.MapFrom(src => src.RiskProfile.Declarations.HazardousIndustry));
 
-            Mapper.CreateMap<MiniFleetNBRqRiskProfileDeclarationsHazardousIndustry, HazardousIndustryOrLocation>()
-                .ForMember(d => d.Location, s => s.MapFrom(src => new CodeList() { SelectedDescription = src.DestinationCode.ShortDescription, SelectedValue = src.DestinationCode.Value }))
-                .ForMember(d => d.LocationID, s => s.ResolveUsing<IgnoringResolver<int>>())
-                .ForMember(d => d.Id, s => s.ResolveUsing<IgnoringResolver<int>>());
+            //Mapper.CreateMap<MiniFleetNBRqRiskProfileDeclarationsHazardousIndustry, HazardousIndustryOrLocation>()
+            //    .ForMember(d => d.Location, s => s.MapFrom(src => new CodeList() { SelectedDescription = src.DestinationCode.ShortDescription, SelectedValue = src.DestinationCode.Value }))
+            //    .ForMember(d => d.LocationID, s => s.ResolveUsing<IgnoringResolver<int>>())
+            //    .ForMember(d => d.Id, s => s.ResolveUsing<IgnoringResolver<int>>());
 
             Mapper.CreateMap<MiniFleetNBRqRiskProfileDeclarationsHazardousIndustry, int>();
 

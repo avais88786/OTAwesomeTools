@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper\AutoMapper.dll</HintPath>
+      <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="OpenGI.MVC.BusinessLines.ViewModels">
-      <HintPath>..\packages\OpenGi.MVC.ViewModel\OpenGI.MVC.BusinessLines.ViewModels.dll</HintPath>
+      <HintPath>..\packages\OpenGi.ViewModels\OpenGI.MVC.BusinessLines.ViewModels.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
