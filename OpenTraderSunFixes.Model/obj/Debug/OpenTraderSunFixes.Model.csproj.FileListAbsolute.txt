@@ -13,3 +13,9 @@ C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Model\bin\Debu
 C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Model\obj\Debug\OpenTraderSunFixes.Model.csprojResolveAssemblyReference.cache
 C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Model\obj\Debug\OpenTraderSunFixes.Model.dll
 C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Model\obj\Debug\OpenTraderSunFixes.Model.pdb
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Model\bin\Debug\OpenTraderSunFixes.Model.dll.config
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Model\bin\Debug\OpenTraderSunFixes.Model.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Model\bin\Debug\OpenTraderSunFixes.Model.pdb
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Model\obj\Debug\OpenTraderSunFixes.Model.csprojResolveAssemblyReference.cache
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Model\obj\Debug\OpenTraderSunFixes.Model.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Model\obj\Debug\OpenTraderSunFixes.Model.pdb

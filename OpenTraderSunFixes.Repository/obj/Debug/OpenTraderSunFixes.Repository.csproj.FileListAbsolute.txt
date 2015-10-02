@@ -12,3 +12,10 @@ C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Repository\bin
 C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.csprojResolveAssemblyReference.cache
 C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.dll
 C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.pdb
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Repository\bin\Debug\OpenTraderSunFixes.Repository.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Repository\bin\Debug\OpenTraderSunFixes.Repository.pdb
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Repository\bin\Debug\OpenTraderSunFixes.Model.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Repository\bin\Debug\OpenTraderSunFixes.Model.pdb
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.csprojResolveAssemblyReference.cache
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Repository\obj\Debug\OpenTraderSunFixes.Repository.pdb

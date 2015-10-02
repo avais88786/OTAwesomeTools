@@ -24,3 +24,29 @@ C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Service\bin\De
 C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Service\obj\Debug\OpenTraderSunFixes.DomainService.csprojResolveAssemblyReference.cache
 C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Service\obj\Debug\OpenTraderSunFixes.DomainService.dll
 C:\Users\amohammad\Source\Repos\OTAwesomeTools\OpenTraderSunFixes.Service\obj\Debug\OpenTraderSunFixes.DomainService.pdb
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\obj\Debug\OpenTraderSunFixes.DomainService.csprojResolveAssemblyReference.cache
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\obj\Debug\OpenTraderSunFixes.DomainService.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\obj\Debug\OpenTraderSunFixes.DomainService.pdb
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.DomainService.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.DomainService.pdb
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\AutoMapper.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenGI.MVC.BusinessLines.ViewModels.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Infrastructure.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Model.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Repository.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\System.Web.Mvc.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\System.Web.WebPages.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\System.Web.Razor.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Infrastructure.pdb
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Model.pdb
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Repository.pdb
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\AutoMapper.xml
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\EntityFramework.xml
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenGI.MVC.BusinessLines.ViewModels.pdb
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\StructureMap.pdb
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\StructureMap.xml
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\System.Web.Mvc.xml
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\System.Web.WebPages.xml
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\System.Web.Razor.xml
+C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\System.Web.WebPages.Deployment.xml

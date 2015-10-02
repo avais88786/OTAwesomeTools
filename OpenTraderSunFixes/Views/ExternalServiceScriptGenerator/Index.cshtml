@@ -36,7 +36,16 @@
             @Html.DisplayNameFor(model => model.ConnectionDetails.InitialCatalog)
 
             @Html.TextBoxFor(model => model.ConnectionDetails.InitialCatalog, new { @readonly = "readonly", @class = "spanElements" })
+            
+            @Html.TextBoxFor(model => model.ConnectionDetails.UserName, new {  hidden="hidden",@class = "spanElements",placeholder="User Name" })
+
+            @Html.TextBoxFor(model => model.ConnectionDetails.Password, new { hidden = "hidden", @class = "spanElements", placeholder = "Password" })
+
+            <input type="button" id ="changeConnection" value="Change" class="spanElements"/>
+            <input type="button" id="changeConnectionConfirm" value="Confirm" class="spanElements" hidden="hidden"/>
             <br/><br/>
+
+            
 
             <div id="scriptingArea">
                 <div class="editor-label">

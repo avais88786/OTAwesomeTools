@@ -10,30 +10,40 @@ using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.Script.Serialization;
 using System.Data.SqlClient;
+using OpenTraderSunFixes.Helpers;
 
 namespace OpenTraderSunFixes.Controllers
 {
     public class ExternalServiceScriptGeneratorController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(ConnectionDetails connectionDetails = null)
         {
-            var x = new ExternalServiceItemsContext().ExternalServiceTypes;
-            
-            
+            ExternalServiceItemsContext dbContext = new ExternalServiceItemsContext(); 
+            if (connectionDetails != null)
+            {
+                if (connectionDetails.IsValid())
+                {
+                    dbContext = new ExternalServiceItemsContext();
+                    dbContext.ChangeDatabase(connectionDetails, true, "ExternalServiceItems");
+                    ModelState.Clear();
+                }
+            }
+
+            var x = dbContext.ExternalServiceTypes;
             var items = x.ToList().Select(x1 =>
             
                 new SelectListItem() { Value = x1.ExternalServiceTypeId.ToString(), Text = x1.Name }
             );
-
-            var config = System.Configuration.ConfigurationManager.ConnectionStrings["ExternalServiceItems"];
-            var connection = new SqlConnection(config.ConnectionString);
-            
             var vm = new ExternalServiceScriptViewModel();
-            vm.ConnectionDetails.DataSource = connection.DataSource;
-            vm.ConnectionDetails.InitialCatalog = connection.Database;
-            //vm.ConnectionDetails.UserName = connection.Credential.UserId;
+           
+            if (!connectionDetails.IsValid()) { 
+                var config = System.Configuration.ConfigurationManager.ConnectionStrings["ExternalServiceItems"];
+                var connection = new SqlConnection(config.ConnectionString);
+                vm.ConnectionDetails.DataSource = connection.DataSource;
+                vm.ConnectionDetails.InitialCatalog = connection.Database;
+            }
+            
             vm.ExternalStypes = items.Cast<SelectListItem>();
-             
             return View(vm);
         }
 

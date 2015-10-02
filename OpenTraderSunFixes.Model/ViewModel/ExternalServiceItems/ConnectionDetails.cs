@@ -19,5 +19,11 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
 
         [DisplayName("Password:")]
         public string Password { get; set; }
+
+
+        public bool IsValid()
+        {
+            return !(this.GetType().GetProperties().Any(p => string.IsNullOrEmpty((string)p.GetValue(this))));
+        }
     }
 }
