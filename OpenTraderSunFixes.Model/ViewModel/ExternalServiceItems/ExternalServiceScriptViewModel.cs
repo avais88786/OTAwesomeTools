@@ -29,6 +29,8 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
 
         public ConnectionDetails ConnectionDetails { get; set; }
 
+        public bool HasConnectionChanged { get; set; }
+
         [Display(Name="Scheme Id (Risk Id of Scheme)")]
         //[Remote("GetSchemeName", "ExternalServiceScriptGenerator")]
         public int SchemeId { get; set; }

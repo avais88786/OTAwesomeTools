@@ -16,6 +16,7 @@ namespace OpenTraderSunFixes.Controllers
 {
     public class ExternalServiceScriptGeneratorController : Controller
     {
+        [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Index(ConnectionDetails connectionDetails = null)
         {
             ExternalServiceItemsContext dbContext = new ExternalServiceItemsContext(); 
@@ -51,7 +52,12 @@ namespace OpenTraderSunFixes.Controllers
         [ValidateInput(false)]
         public ActionResult Index(ExternalServiceScriptViewModel ViewModel)
         {
-            return View("Script", ViewModel);
+            if (ViewModel.HasConnectionChanged)
+            {
+                return View("Index", ViewModel.ConnectionDetails);
+            }
+            else
+                return View("Script", ViewModel);
         }
 
         [AllowAnonymous]

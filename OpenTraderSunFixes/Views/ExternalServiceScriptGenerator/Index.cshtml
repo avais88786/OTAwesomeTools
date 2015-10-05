@@ -41,8 +41,10 @@
 
             @Html.TextBoxFor(model => model.ConnectionDetails.Password, new { hidden = "hidden", @class = "spanElements", placeholder = "Password" })
 
+            @Html.HiddenFor(model => model.HasConnectionChanged);
+
             <input type="button" id ="changeConnection" value="Change" class="spanElements"/>
-            <input type="button" id="changeConnectionConfirm" value="Confirm" class="spanElements" hidden="hidden"/>
+            <input type="submit" id="changeConnectionConfirm" value="Confirm" class="spanElements" hidden="hidden"/>
             <br/><br/>
 
             
