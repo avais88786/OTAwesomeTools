@@ -230,7 +230,6 @@ C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes\
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes\bin\OpenTraderSunFixes.Model.pdb
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes\bin\OpenTraderSunFixes.Repository.pdb
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes\bin\OpenTraderSunFixes.DomainService.pdb
-C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes\bin\AutoMapper.xml
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes\bin\StructureMap.pdb
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes\bin\StructureMap.xml
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes\bin\System.Web.Mvc.xml

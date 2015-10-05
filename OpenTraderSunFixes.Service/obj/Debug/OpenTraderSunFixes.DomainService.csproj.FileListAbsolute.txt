@@ -61,7 +61,6 @@ C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Infrastructure.pdb
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Model.pdb
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Repository.pdb
-C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\AutoMapper.xml
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\EntityFramework.xml
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\StructureMap.pdb
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\StructureMap.xml

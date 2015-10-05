@@ -150,7 +150,6 @@ C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Tests\bin\Debug\OpenTraderSunFixes.Infrastructure.pdb
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Tests\bin\Debug\OpenTraderSunFixes.DomainService.pdb
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Tests\bin\Debug\OpenTraderSunFixes.pdb
-C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Tests\bin\Debug\AutoMapper.xml
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Tests\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Tests\bin\Debug\System.Web.Helpers.xml
 C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Tests\bin\Debug\System.Web.Mvc.xml
