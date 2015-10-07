@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
@@ -54,17 +55,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExternalServiceItems\ExternalServiceItemsService.cs" />
+    <Compile Include="ExternalServiceItems\iExternalServiceItemsService.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\XMLSerializer.cs" />
     <Compile Include="iMarketReverseTranslations\IimarketReverseEngineerTranslationService.cs" />
     <Compile Include="iMarketReverseTranslations\imarketReverseEngineerTranslationService.cs" />
-    <Compile Include="ISunService.cs" />
+    <Compile Include="SunFixes\ISunService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SunFixContext.cs" />
-    <Compile Include="SunFixStrategy.cs" />
-    <Compile Include="SunService.cs" />
-    <Compile Include="SunTraderFixStrategy.cs" />
-    <Compile Include="SunXMLFixStrategy.cs" />
+    <Compile Include="SunFixes\SunFixContext.cs" />
+    <Compile Include="SunFixes\SunFixStrategy.cs" />
+    <Compile Include="SunFixes\SunService.cs" />
+    <Compile Include="SunFixes\SunTraderFixStrategy.cs" />
+    <Compile Include="SunFixes\SunXMLFixStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenTraderSunFixes.Infrastructure\OpenTraderSunFixes.Infrastructure.csproj">
@@ -80,6 +83,7 @@
       <Name>OpenTraderSunFixes.Repository</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

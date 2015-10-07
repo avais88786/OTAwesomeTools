@@ -9,6 +9,7 @@ using OpenTraderSunFixes.Repository;
 using System.Data.Entity;
 using OpenTraderSunFixes.Repository.EF;
 using OpenTraderSunFixes.Model;
+using OpenTraderSunFixes.DomainService.ExternalServiceItems;
 
 namespace OpenTraderSunFixes.DependencyResolver
 {
@@ -19,8 +20,8 @@ namespace OpenTraderSunFixes.DependencyResolver
             Scan(scan =>
             {
                 scan.Assembly(typeof(ISunService).Assembly);
+                For<iExternalServiceItemsService>().Use<ExternalServiceItemsService>();
                 scan.WithDefaultConventions();
-                //scan.SingleImplementationsOfInterface();
                 For<DbContext>().Use(() => new SunDBContext());
                 For(typeof(IRepository<>)).Use(typeof(EFRepository<>)).Ctor<DbContext>();
                 For<ICCTransactionRepository>().Use<CCTransactionRepository>().Ctor<DbContext>();
