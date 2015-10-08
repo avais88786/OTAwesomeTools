@@ -261,6 +261,7 @@
     <Content Include="Views\ExternalServiceScriptGenerator\Partial\_PartialOpenRatingEngines.cshtml" />
     <Content Include="Views\iMarketReverseEngineerTranslation\Index.cshtml" />
     <Content Include="Views\ExternalServiceScriptGenerator\Partial\_PartialWhatDoIHave.cshtml" />
+    <Content Include="Views\ExternalServiceScriptGenerator\Partial\_PartialWhatDoIHaveSubEntries.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

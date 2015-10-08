@@ -3,6 +3,101 @@
 <table class="SpannedTable">
     <tr>
         <th>Scheme</th>
+        <th>Status</th>
+    </tr>
+@{foreach (var scheme in Model)
+  {
+
+      var NBTest = scheme.FirstOrDefault(s => s.Type.Equals("NB") && !s.IsLive);
+      var NBLive = scheme.FirstOrDefault(s => s.Type.Equals("NB") && s.IsLive);
+      var NBAsync = scheme.FirstOrDefault(s => s.Type.Equals("NB Async"));
+      var NBAccTest = scheme.FirstOrDefault(s => s.Type.Equals("NB Acc") && !s.IsLive);
+      var NBAccLive = scheme.FirstOrDefault(s => s.Type.Equals("NB Acc") && s.IsLive);
+      var NBAccAsync = scheme.FirstOrDefault(s => s.Type.Equals("NB Acc Async"));
+      var MTATest = scheme.FirstOrDefault(s => s.Type.Equals("MTA") && !s.IsLive);
+      var MTALive = scheme.FirstOrDefault(s => s.Type.Equals("MTA") && s.IsLive);
+      var MTAAsync = scheme.FirstOrDefault(s => s.Type.Equals("MTA Async"));
+      var MTAAccTest = scheme.FirstOrDefault(s => s.Type.Equals("MTA Acc") && !s.IsLive);
+      var MTAAccLive = scheme.FirstOrDefault(s => s.Type.Equals("MTA Acc") && s.IsLive);
+      var MTAAccAsync = scheme.FirstOrDefault(s => s.Type.Equals("MTA Acc Async"));
+      
+      <tr>
+        <td><label style="cursor:pointer" data-onclick="clicked">@scheme.FirstOrDefault().RiskID</label> 
+         <div>
+             <table class="SpannedTableHidden">
+                 <tr>
+                     <th>Stage</th>
+                     <th>Value</th>
+                 </tr>
+                 @{
+                      ViewData["Stage"] = "New Business";
+                      ViewData["TestEndpointName"] = @NBTest == null ? null : @NBTest.EndpointName;
+                      ViewData["LiveEndpointName"] = @NBLive == null ? null : @NBLive.EndpointName;
+                      ViewData["SoapAction"] = @NBTest == null ? null : @NBTest.SoapAction;
+                      ViewData["DelayedSoapAction"] = @NBAsync == null ? null : @NBAsync.SoapAction;
+
+                      @Html.RenderPartial(@"Partial\_PartialWhatDoIHaveSubEntries");
+
+                      ViewData["Stage"] = "NB Acceptance";
+                      ViewData["TestEndpointName"] = @NBAccTest == null ? null : @NBAccTest.EndpointName;
+                      ViewData["LiveEndpointName"] = @NBAccLive == null ? null : @NBAccLive.EndpointName;
+                      ViewData["SoapAction"] = @NBAccTest == null ? null : @NBAccTest.SoapAction;
+                      ViewData["DelayedSoapAction"] = @NBAccLive == null ? null : @NBAccLive.SoapAction;
+
+                      @Html.RenderPartial(@"Partial\_PartialWhatDoIHaveSubEntries");
+
+                      ViewData["Stage"] = "MTA";
+                      ViewData["TestEndpointName"] = @MTATest == null ? null : @MTATest.EndpointName;
+                      ViewData["LiveEndpointName"] = @MTALive == null ? null : @MTALive.EndpointName;
+                      ViewData["SoapAction"] = @MTATest == null ? null : @MTATest.SoapAction;
+                      ViewData["DelayedSoapAction"] = @MTAAsync == null ? null : @MTAAsync.SoapAction;
+
+                      @Html.RenderPartial(@"Partial\_PartialWhatDoIHaveSubEntries");
+
+                      ViewData["Stage"] = "MTA Acceptance";
+                      ViewData["TestEndpointName"] = @MTAAccTest == null ? null : @MTAAccTest.EndpointName;
+                      ViewData["LiveEndpointName"] = @MTAAccLive == null ? null : @MTAAccLive.EndpointName;
+                      ViewData["SoapAction"] = @MTAAccTest == null ? null : @MTAAccTest.SoapAction;
+                      ViewData["DelayedSoapAction"] = @MTAAccAsync == null ? null : @MTAAccAsync.SoapAction;
+
+                      @Html.RenderPartial(@"Partial\_PartialWhatDoIHaveSubEntries");
+                      
+                   }
+             </table>
+         </div>
+          
+          
+         </td>
+
+        @{
+          var asyncs = scheme.Where(s => s.Type.Contains("Async")).Select(s2 => s2.Type).Distinct().Count();
+          var syncs = scheme.Where(s => !s.Type.Contains("Async")).Select(s2 => s2.Type).Distinct().Count();
+          var testServices = scheme.Where(s => !s.IsLive).Select(s2 => s2.Type).Count();
+          var liveServices = scheme.Where(s => s.IsLive).Select(s2 => s2.Type).Count();
+
+          if (asyncs <= 4 || syncs <= 4 || testServices <= 8 || liveServices <= 8) 
+          { 
+              <td style="color: #780000;">DataRequired</td>
+          }
+          else
+          {
+              <td style="color:green;">Everything Configured</td>
+          }
+}
+      </tr>
+      
+  }
+      
+      
+}
+
+
+</table>
+<br/>
+<br />
+<table class="SpannedTable">
+    <tr>
+        <th>Scheme</th>
         <th>Asyncs Present</th>
         <th>Syncs Present</th>
         <th>Test Services Present</th>

@@ -1,0 +1,45 @@
+﻿@{
+    var stage = ViewData["Stage"];
+    var testEndpointName = ViewData["TestEndpointName"];
+    var liveEndpointName = ViewData["LiveEndpointName"];
+    var soapAction = ViewData["SoapAction"];
+    var delayedSoapAction = ViewData["DelayedSoapAction"];
+            
+}
+
+<tr>
+    <td style="font-weight:bold;">@stage</td>
+    <td></td>
+</tr>
+<tr>
+    <td>
+        Test Endpoint
+    </td>
+    <td>
+        @testEndpointName
+    </td>
+</tr>
+<tr>
+    <td>
+        Live Endpoint
+    </td>
+    <td>
+        @liveEndpointName
+    </td>
+</tr>
+<tr>
+    <td>
+        @stage Request Soap Action
+    </td>
+    <td>
+        @soapAction
+    </td>
+</tr>
+<tr>
+    <td>
+        Delayed @stage Response Soap Action
+    </td>
+    <td>
+        @delayedSoapAction
+    </td>
+</tr>

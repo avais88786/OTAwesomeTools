@@ -51,6 +51,14 @@ textarea {
     text-align:center;
 }
 
+.SpannedTableHidden{
+    width:100%;
+}
+
+.SpannedTableHidden th {
+    text-align:center;
+}
+
 
 
 

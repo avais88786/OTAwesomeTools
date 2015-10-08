@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-
+    CollapseSubTables();
 
     $('.table th').not('th:first-child').hide();
     $('.table td').not('td:first-child').hide();
@@ -89,30 +89,14 @@
         }
     });
 
-    //$("#changeConnectionConfirm").click(function () {
-    //    var dataSource = $("[name$='DataSource']").val();
-    //    var initialCatalog = $("[name$='InitialCatalog']").val();
-    //    var userName = $("[name$='UserName']").val();
-    //    var password = $("[name$='Password']").val();
+    $("[data-onclick]").click(function () {
+        $(this).next('div').slideToggle();
+    });
 
-    //    var info = { DataSource: dataSource, InitialCatalog: initialCatalog, UserName: userName, Password: password };
 
-    //    $.ajax({
-    //        url: 'ExternalServiceScriptGenerator/Index',
-    //        data: info,
-    //        cache: false,
-    //        success: function (result) {
-    //            alert(result);
-    //            $("html").html($(result).find("html").html());
-    //        },
-    //        error: function () {
-              
-    //        },
-    //        complete: function () {
-            
-    //        }
-    //    })
-
-    //});
-
+    function CollapseSubTables(){
+        $.each($("[data-onclick]"),function(){
+            $(this).next('div').slideUp();
+        });
+    }
 });
