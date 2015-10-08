@@ -1,0 +1,36 @@
+﻿@model IEnumerable<IEnumerable<OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems.CurrentExternalServiceEntries>>
+
+<table class="SpannedTable">
+    <tr>
+        <th>Scheme</th>
+        <th>Asyncs Present</th>
+        <th>Syncs Present</th>
+        <th>Test Services Present</th>
+        <th>Live Services Present</th>
+    </tr>
+@{ foreach (var scheme in Model)
+ {
+    <tr>
+        <td>@scheme.FirstOrDefault().RiskID</td>
+        @{
+            var asyncs = string.Join(",", scheme.Where(s => s.Type.Contains("Async")).Select(s2 => s2.Type).Distinct());
+            var syncs = string.Join(",", scheme.Where(s => !s.Type.Contains("Async")).Select(s2 => s2.Type).Distinct());
+            var testServices = string.Join(",", scheme.Where(s => !s.IsLive).Select(s2=>s2.Type));
+            var liveServices = string.Join(",", scheme.Where(s => s.IsLive).Select(s2 => s2.Type));
+            <td>@asyncs</td>
+            <td>@syncs</td>
+            <td>@testServices</td>
+            <td>
+                @if(string.IsNullOrEmpty(liveServices)){
+                    @Html.Label("", "Nothing Configured", new { style = "color:#780000;" })
+                }
+                else { 
+                    @liveServices
+                }
+            </td>
+         }
+    </tr>
+
+ }
+}
+</table>

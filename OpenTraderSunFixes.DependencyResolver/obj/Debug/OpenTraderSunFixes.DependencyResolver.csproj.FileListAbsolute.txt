@@ -70,3 +70,27 @@ C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTrad
 C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\OpenGI.MVC.BusinessLines.ViewModels.pdb
 C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\AutoMapper.xml
 C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\OpenTraderSunFixes.Infrastructure.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\OpenTraderSunFixes.DependencyResolver.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\OpenTraderSunFixes.DependencyResolver.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\EntityFramework.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\OpenTraderSunFixes.DomainService.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\OpenTraderSunFixes.Model.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\OpenTraderSunFixes.Repository.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\StructureMap.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\StructureMap.Net4.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\System.Web.Mvc.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\OpenGI.MVC.BusinessLines.ViewModels.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\AutoMapper.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\OpenTraderSunFixes.Infrastructure.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\OpenTraderSunFixes.Model.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\OpenTraderSunFixes.Repository.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\OpenTraderSunFixes.DomainService.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\EntityFramework.xml
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\StructureMap.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\StructureMap.xml
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\StructureMap.Net4.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\System.Web.Mvc.xml
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\bin\Debug\OpenTraderSunFixes.Infrastructure.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\obj\Debug\OpenTraderSunFixes.DependencyResolver.csprojResolveAssemblyReference.cache
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\obj\Debug\OpenTraderSunFixes.DependencyResolver.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.DependencyResolver\obj\Debug\OpenTraderSunFixes.DependencyResolver.pdb

@@ -43,5 +43,14 @@ textarea {
 }
 
 
+.SpannedTable{
+    width:100%;
+}
+
+.SpannedTable th {
+    text-align:center;
+}
+
+
 
 

@@ -258,8 +258,9 @@
     <Content Include="Views\AccountsFix\Partial\_PartialFileUpload.cshtml" />
     <Content Include="Views\ExternalServiceScriptGenerator\Index.cshtml" />
     <Content Include="Views\ExternalServiceScriptGenerator\Script.cshtml" />
-    <Content Include="Views\ExternalServiceScriptGenerator\_PartialOpenRatingEngines.cshtml" />
+    <Content Include="Views\ExternalServiceScriptGenerator\Partial\_PartialOpenRatingEngines.cshtml" />
     <Content Include="Views\iMarketReverseEngineerTranslation\Index.cshtml" />
+    <Content Include="Views\ExternalServiceScriptGenerator\Partial\_PartialWhatDoIHave.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

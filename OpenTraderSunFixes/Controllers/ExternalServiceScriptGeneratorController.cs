@@ -11,47 +11,46 @@ using System.Web.UI;
 using System.Web.Script.Serialization;
 using System.Data.SqlClient;
 using OpenTraderSunFixes.Helpers;
+using OpenTraderSunFixes.DomainService.ExternalServiceItems;
 
 namespace OpenTraderSunFixes.Controllers
 {
     public class ExternalServiceScriptGeneratorController : Controller
     {
-        public ActionResult Index(ConnectionDetails connectionDetails = null)
-        {
-            ExternalServiceItemsContext dbContext = new ExternalServiceItemsContext(); 
-            if (connectionDetails != null)
-            {
-                if (connectionDetails.IsValid())
-                {
-                    dbContext = new ExternalServiceItemsContext();
-                    dbContext.ChangeDatabase(connectionDetails, true, "ExternalServiceItems");
-                    ModelState.Clear();
-                }
-            }
+        private iExternalServiceItemsService _iExternalServiceItemsService;
 
-            var x = dbContext.ExternalServiceTypes;
+        public ExternalServiceScriptGeneratorController(iExternalServiceItemsService iess)
+        {
+            _iExternalServiceItemsService = iess;
+        }
+
+        public ActionResult Index()
+        {
+
+            ConnectionDetails _connectionDetails = (ConnectionDetails)TempData["ConnectionDetails"];
+            var vm = _iExternalServiceItemsService.GetViewModel(_connectionDetails);
+
+            var x = vm.ListExternalServiceTypes;
             var items = x.ToList().Select(x1 =>
             
                 new SelectListItem() { Value = x1.ExternalServiceTypeId.ToString(), Text = x1.Name }
             );
-            var vm = new ExternalServiceScriptViewModel();
-           
-            if (!connectionDetails.IsValid()) { 
-                var config = System.Configuration.ConfigurationManager.ConnectionStrings["ExternalServiceItems"];
-                var connection = new SqlConnection(config.ConnectionString);
-                vm.ConnectionDetails.DataSource = connection.DataSource;
-                vm.ConnectionDetails.InitialCatalog = connection.Database;
-            }
-            
             vm.ExternalStypes = items.Cast<SelectListItem>();
-            return View(vm);
+
+             return View(vm);
         }
 
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult Index(ExternalServiceScriptViewModel ViewModel)
         {
-            return View("Script", ViewModel);
+            if (ViewModel.HasConnectionChanged)
+            {
+                TempData["ConnectionDetails"] = ViewModel.ConnectionDetails;
+                return RedirectToAction("Index");
+            }
+            else
+                return View("Script", ViewModel);
         }
 
         [AllowAnonymous]
@@ -85,4 +84,7 @@ namespace OpenTraderSunFixes.Controllers
 
 
     }
+
+    
+
 }

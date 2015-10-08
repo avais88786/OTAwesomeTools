@@ -42,11 +42,26 @@ C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTrad
 C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Model.pdb
 C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Repository.pdb
 C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\AutoMapper.xml
-C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\EntityFramework.xml
 C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenGI.MVC.BusinessLines.ViewModels.pdb
-C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\StructureMap.pdb
-C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\StructureMap.xml
 C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\System.Web.Mvc.xml
 C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\System.Web.WebPages.xml
 C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\System.Web.Razor.xml
 C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.DomainService.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.DomainService.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\EntityFramework.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Infrastructure.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Model.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Repository.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\StructureMap.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\System.Web.Mvc.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Infrastructure.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Model.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\OpenTraderSunFixes.Repository.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\EntityFramework.xml
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\StructureMap.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\StructureMap.xml
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\bin\Debug\System.Web.Mvc.xml
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\obj\Debug\OpenTraderSunFixes.DomainService.csprojResolveAssemblyReference.cache
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\obj\Debug\OpenTraderSunFixes.DomainService.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Service\obj\Debug\OpenTraderSunFixes.DomainService.pdb

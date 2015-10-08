@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 
 @Styles.Render("~/Content/bootstrap.css")
+<link href="~/Content/Site.css" rel="stylesheet" />
 @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
 @Scripts.Render("~/Scripts/jquery.validate.js")
 @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
@@ -41,11 +42,13 @@
 
             @Html.TextBoxFor(model => model.ConnectionDetails.Password, new { hidden = "hidden", @class = "spanElements", placeholder = "Password" })
 
+            @Html.HiddenFor(model => model.HasConnectionChanged)
+
             <input type="button" id ="changeConnection" value="Change" class="spanElements"/>
-            <input type="button" id="changeConnectionConfirm" value="Confirm" class="spanElements" hidden="hidden"/>
+            <input type="submit" id="changeConnectionConfirm" value="Confirm" class="spanElements" hidden="hidden"/>
             <br/><br/>
 
-            
+            @Html.Partial(@"Partial\_PartialWhatDoIHave", Model.WhatDoIHave)
 
             <div id="scriptingArea">
                 <div class="editor-label">

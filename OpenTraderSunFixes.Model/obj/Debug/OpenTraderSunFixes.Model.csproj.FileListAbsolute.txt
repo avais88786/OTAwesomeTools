@@ -19,3 +19,11 @@ C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTrad
 C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Model\obj\Debug\OpenTraderSunFixes.Model.csprojResolveAssemblyReference.cache
 C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Model\obj\Debug\OpenTraderSunFixes.Model.dll
 C:\Users\amohammad\Documents\Visual Studio 2013\Projects\OTAwesomeTools\OpenTraderSunFixes.Model\obj\Debug\OpenTraderSunFixes.Model.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Model\bin\Debug\OpenTraderSunFixes.Model.dll.config
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Model\bin\Debug\OpenTraderSunFixes.Model.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Model\bin\Debug\OpenTraderSunFixes.Model.pdb
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Model\bin\Debug\EntityFramework.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Model\bin\Debug\EntityFramework.xml
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Model\obj\Debug\OpenTraderSunFixes.Model.csprojResolveAssemblyReference.cache
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Model\obj\Debug\OpenTraderSunFixes.Model.dll
+C:\Users\Avaisuddin\OneDrive\GitHubRepository\OTAwesomeTools\OpenTraderSunFixes.Model\obj\Debug\OpenTraderSunFixes.Model.pdb

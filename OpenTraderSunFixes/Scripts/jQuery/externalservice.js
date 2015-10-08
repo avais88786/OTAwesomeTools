@@ -73,7 +73,9 @@
             $("[name$='InitialCatalog']").removeAttr("readonly");
             $("[name$='UserName']").removeAttr("hidden");
             $("[name$='Password']").removeAttr("hidden");
+            $("[name$='HasConnectionChanged']").val("True");
             $("#changeConnectionConfirm").removeAttr("hidden");
+
             $(this).val("Cancel")
         }
         else {
@@ -82,34 +84,35 @@
             $("[name$='UserName']").attr("hidden", "hidden");
             $("[name$='Password']").attr("hidden", "hidden");
             $("#changeConnectionConfirm").attr("hidden", "hidden");
+            $("[name$='HasConnectionChanged']").val("False");
             $(this).val("Change")
         }
     });
 
-    $("#changeConnectionConfirm").click(function () {
-        var dataSource = $("[name$='DataSource']").val();
-        var initialCatalog = $("[name$='InitialCatalog']").val();
-        var userName = $("[name$='UserName']").val();
-        var password = $("[name$='Password']").val();
+    //$("#changeConnectionConfirm").click(function () {
+    //    var dataSource = $("[name$='DataSource']").val();
+    //    var initialCatalog = $("[name$='InitialCatalog']").val();
+    //    var userName = $("[name$='UserName']").val();
+    //    var password = $("[name$='Password']").val();
 
-        var info = { DataSource: dataSource, InitialCatalog: initialCatalog, UserName: userName, Password: password };
+    //    var info = { DataSource: dataSource, InitialCatalog: initialCatalog, UserName: userName, Password: password };
 
-        $.ajax({
-            url: 'ExternalServiceScriptGenerator/Index',
-            data: info,
-            cache: false,
-            success: function (result) {
-                alert(result);
-                $("html").html($(result).find("html").html());
-            },
-            error: function () {
+    //    $.ajax({
+    //        url: 'ExternalServiceScriptGenerator/Index',
+    //        data: info,
+    //        cache: false,
+    //        success: function (result) {
+    //            alert(result);
+    //            $("html").html($(result).find("html").html());
+    //        },
+    //        error: function () {
               
-            },
-            complete: function () {
+    //        },
+    //        complete: function () {
             
-            }
-        })
+    //        }
+    //    })
 
-    });
+    //});
 
 });
