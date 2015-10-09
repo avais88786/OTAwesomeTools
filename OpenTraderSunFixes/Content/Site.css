@@ -45,19 +45,32 @@ textarea {
 
 .SpannedTable{
     width:100%;
+    background-color:#FDF3E7;
+}
+
+.SpannedTable td {
+    padding:5px;
 }
 
 .SpannedTable th {
     text-align:center;
+    padding:3px;
 }
 
 .SpannedTableHidden{
     width:100%;
+    background-color:#A8B4A7;
 }
 
 .SpannedTableHidden th {
     text-align:center;
 }
+
+.SpannedTableHidden td {
+    color:#3B3738;
+}
+
+
 
 
 

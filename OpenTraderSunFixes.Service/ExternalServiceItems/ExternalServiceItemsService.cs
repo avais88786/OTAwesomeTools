@@ -43,18 +43,22 @@ namespace OpenTraderSunFixes.DomainService.ExternalServiceItems
                          var responseType = ttt == null ? null : dbContext.imarketResponseTypes
                                                     .Where(imrt => imrt.imarketResponseTypeId == ttt.imarketResponseTypeId)
                                                     .FirstOrDefault();
+                         var riskDetails = dbContext.Risks.Single(r => r.RiskId == es.SchemeRiskId);
+                         var parentRisk = dbContext.Risks.SingleOrDefault(pr => pr.RiskId == riskDetails.ParentRiskId);
                          return new CurrentExternalServiceEntries
                          {
                              Url = esv == null ? null : esv.ExternalService.Url,
                              SoapAction = dbContext.ExternalServiceVersionings.First(esv1 => esv1.ExternalServiceItemId == es.ExternalServiceItemId).ExternalService.SoapAction,
-                             RiskID = dbContext.Risks.Single(r => r.RiskId == es.SchemeRiskId).Description,
+                             SchemeName = riskDetails.Description,
                              EndpointName = es.Name,
                              ServiceTypeDescription = es.Description,
                              ResponseTypeName = ttt == null ? null : (responseType == null ? null : responseType.Name),
-                             IsLive = esv == null ? false : esv.IsLive
+                             IsLive = esv == null ? false : esv.IsLive,
+                             RiskId = es.SchemeRiskId.Value,
+                             BusinessLine = parentRisk == null ? null : parentRisk.Description
                          };
                      });
-            vm.WhatDoIHave = yy.OrderBy(yyy => yyy.First().RiskID);
+            vm.WhatDoIHave = yy.OrderBy(yyy => yyy.First().RiskId);
             return vm;
         }
     }

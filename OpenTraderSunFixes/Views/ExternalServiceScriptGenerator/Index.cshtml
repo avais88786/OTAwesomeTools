@@ -27,8 +27,7 @@
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
     
-        <h3>External Service Script Generator: Lazy of editing and maintaining the existing script to insert and update external service values ? Use Me ! </h3>
-        <fieldset style="background: #4f84b8; padding: 15px;border-radius: 5px;">
+        <fieldset style="background: #C63D0F; padding: 15px; border-radius: 5px; ">
 
             @Html.DisplayNameFor(model => model.ConnectionDetails.DataSource)
 
@@ -48,9 +47,10 @@
             <input type="submit" id="changeConnectionConfirm" value="Confirm" class="spanElements" hidden="hidden"/>
             <br/><br/>
 
+            <h4>What's already been configured : </h4>
             @Html.Partial(@"Partial\_PartialWhatDoIHave", Model.WhatDoIHave)
 
-            <div id="scriptingArea">
+            <div id="scriptingArea" style="background-color: #FDF3E7;padding:5px">
                 <div class="editor-label">
                     @Html.LabelFor(model => model.ScriptTypeSingleSchemeOnly)
                 </div>

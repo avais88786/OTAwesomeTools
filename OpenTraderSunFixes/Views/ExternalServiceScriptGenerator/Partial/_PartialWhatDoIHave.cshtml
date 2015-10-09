@@ -5,9 +5,10 @@
         <th>Scheme</th>
         <th>Status</th>
     </tr>
-@{foreach (var scheme in Model)
+@{var BusinessLine = string.Empty; 
+  foreach (var scheme in Model)
   {
-
+      var businessLine = scheme.FirstOrDefault().BusinessLine;
       var NBTest = scheme.FirstOrDefault(s => s.Type.Equals("NB") && !s.IsLive);
       var NBLive = scheme.FirstOrDefault(s => s.Type.Equals("NB") && s.IsLive);
       var NBAsync = scheme.FirstOrDefault(s => s.Type.Equals("NB Async"));
@@ -20,9 +21,19 @@
       var MTAAccTest = scheme.FirstOrDefault(s => s.Type.Equals("MTA Acc") && !s.IsLive);
       var MTAAccLive = scheme.FirstOrDefault(s => s.Type.Equals("MTA Acc") && s.IsLive);
       var MTAAccAsync = scheme.FirstOrDefault(s => s.Type.Equals("MTA Acc Async"));
+
+      if (!string.IsNullOrEmpty(businessLine) && !businessLine.Equals(BusinessLine))
+      {
+          <tr>
+              <td style="font-weight:bold" colspan="2" align="center">
+                  @BusinessLine
+                  @{BusinessLine = businessLine;}
+              </td>
+          </tr>
+      }
       
       <tr>
-        <td><label style="cursor:pointer" data-onclick="clicked">@scheme.FirstOrDefault().RiskID</label> 
+        <td><label style="cursor:pointer" data-onclick="clicked">@scheme.FirstOrDefault().SchemeName</label> 
          <div>
              <table class="SpannedTableHidden">
                  <tr>
@@ -75,9 +86,9 @@
           var testServices = scheme.Where(s => !s.IsLive).Select(s2 => s2.Type).Count();
           var liveServices = scheme.Where(s => s.IsLive).Select(s2 => s2.Type).Count();
 
-          if (asyncs <= 4 || syncs <= 4 || testServices <= 8 || liveServices <= 8) 
+          if (asyncs < 2 || syncs < 4 || testServices < 6 || liveServices < 6) 
           { 
-              <td style="color: #780000;">DataRequired</td>
+              <td style="color: #CC0000;">DataRequired</td>
           }
           else
           {
@@ -95,7 +106,7 @@
 </table>
 <br/>
 <br />
-<table class="SpannedTable">
+@*<table class="SpannedTable">
     <tr>
         <th>Scheme</th>
         <th>Asyncs Present</th>
@@ -128,4 +139,4 @@
 
  }
 }
-</table>
+</table>*@

@@ -12,7 +12,11 @@ namespace OpenTraderSunFixes.Model.ViewModel.ExternalServiceItems
         private string _acceptanceKey = "Accept";
         private string _asyncKey = "Async";
 
-        public string RiskID;
+        public string BusinessLine;
+
+        public string SchemeName;
+
+        public int RiskId;
 
         public string Url;
 

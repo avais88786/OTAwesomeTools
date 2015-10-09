@@ -16,7 +16,14 @@
         Test Endpoint
     </td>
     <td>
-        @testEndpointName
+        @{if (testEndpointName == null)
+        {
+            <label style="color:red">Needed</label>
+        }
+        else
+        {
+            @testEndpointName
+        }}
     </td>
 </tr>
 <tr>
@@ -24,7 +31,14 @@
         Live Endpoint
     </td>
     <td>
-        @liveEndpointName
+        @{if (liveEndpointName == null) 
+        { 
+            <label style="color:red">Needed</label>      
+        }
+        else
+        {
+            @liveEndpointName
+        }}
     </td>
 </tr>
 <tr>
@@ -32,7 +46,14 @@
         @stage Request Soap Action
     </td>
     <td>
-        @soapAction
+        @{if (soapAction == null)
+        {
+            <label style="color:red">Needed</label>
+        }
+        else
+        {
+            @soapAction
+        }}
     </td>
 </tr>
 <tr>
@@ -40,6 +61,13 @@
         Delayed @stage Response Soap Action
     </td>
     <td>
-        @delayedSoapAction
+        @{if (delayedSoapAction == null)
+        {
+            <label style="color:red">@( ((string)@stage).Contains("Accept") ? "Might be required, query insurer" : "Needed"  )</label>
+        }
+        else
+        {
+            @delayedSoapAction
+        }}
     </td>
 </tr>
