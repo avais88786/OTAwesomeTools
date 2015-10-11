@@ -58,7 +58,7 @@ namespace OpenTraderSunFixes.DomainService.ExternalServiceItems
                              BusinessLine = parentRisk == null ? null : parentRisk.Description
                          };
                      });
-            vm.WhatDoIHave = yy.OrderBy(yyy => yyy.First().RiskId);
+            vm.WhatDoIHave = yy.OrderBy(yyy => yyy.First().BusinessLine);
             return vm;
         }
     }

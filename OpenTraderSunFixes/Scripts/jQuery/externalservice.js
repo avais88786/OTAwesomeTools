@@ -89,14 +89,28 @@
         }
     });
 
-    $("[data-onclick]").click(function () {
+    $("[data-onclickScheme]").click(function () {
         $(this).next('div').slideToggle();
     });
 
 
+    $("[data-onclickBusinessLine]").click(function () {
+        $(this).nextUntil('[data-onclickBusinessLine]').each(function (index, element) {
+            $(this).slideToggle();
+        });
+    });
+
+
     function CollapseSubTables(){
-        $.each($("[data-onclick]"),function(){
+        $.each($("[data-onclickScheme]"), function () {
             $(this).next('div').slideUp();
         });
+
+        $.each($("[data-onclickBusinessLine]"), function () {
+            $(this).nextUntil('[data-onclickBusinessLine]').each(function (index, element) {
+                $(this).slideUp();
+            })
+        });
+
     }
 });
